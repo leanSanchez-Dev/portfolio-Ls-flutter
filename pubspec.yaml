@@ -1,0 +1,64 @@
+name: portfolio_ls
+description: "A new Flutter project."
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
+
+#
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.2.6 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.2
+  timelines: ^0.1.0
+  velocity_x: ^4.1.2
+  font_awesome_flutter: ^10.7.0
+  json_theme: ^4.0.0
+  provider: ^6.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/
+    - assets/appainter_theme.json
+    - assets/appainter_theme_dark.json
+    - assets/appainter_theme_blue.json
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/assets-and-images/#resolution-aware
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/assets-and-images/#from-packages
+
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: fonts/Poppins-Regular.ttf
+        - asset: fonts/Poppins-Light.ttf
+          weight: 400
+        - asset: fonts/Poppins-Medium.ttf
+          weight: 600
+        - asset: fonts/Poppins-SemiBold.ttf
+          weight: 700
+        - asset: fonts/Poppins-Bold.ttf
+          weight: 800
+        - asset: fonts/Poppins-Bold.ttf
+          weight: 900
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages
