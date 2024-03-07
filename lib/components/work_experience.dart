@@ -37,9 +37,11 @@ class _WorkExperienceState extends State<WorkExperience> {
         ],
       ),
       padding: const EdgeInsets.all(30),
-      height: context.screenHeight > 900
-          ? context.screenHeight * 0.93
-          : context.screenHeight * 0.7,
+      height: context.screenWidth > 900
+          ? context.screenHeight
+          : context.screenWidth < 900
+              ? null
+              : context.screenHeight * 0.7,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
