@@ -27,11 +27,30 @@ class _PortfolioState extends State<Portfolio> {
       Padding(
         padding: const EdgeInsets.all(8.0),
         child: ElevatedButton(
-            onPressed: () {}, child: const Text('Work Experience')),
+          style: ButtonStyle(
+            elevation: const MaterialStatePropertyAll(2),
+            shadowColor: MaterialStatePropertyAll(
+              Colors.cyan.withOpacity(0.3),
+            ),
+          ),
+          onPressed: () {},
+          child: const Text(
+            'Work Experience',
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
+        ),
       ),
       Padding(
         padding: const EdgeInsets.all(8.0),
         child: ElevatedButton(
+            style: ButtonStyle(
+              elevation: const MaterialStatePropertyAll(2),
+              shadowColor: MaterialStatePropertyAll(
+                Colors.cyan.withOpacity(0.3),
+              ),
+            ),
             onPressed: () {
               if (isMobile) {
                 Navigator.pop(context);
@@ -40,7 +59,12 @@ class _PortfolioState extends State<Portfolio> {
                 Scrollable.ensureVisible(skillsKey.currentContext!);
               });
             },
-            child: const Text('Skills')),
+            child: const Text(
+              'Skills',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            )),
       ),
       // IconButton(
       //     onPressed: () {
