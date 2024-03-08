@@ -20,6 +20,7 @@ class _PortfolioState extends State<Portfolio> {
   List<Widget> navItems = [];
   bool isMobile = false;
   final skillsKey = GlobalKey();
+  final workExp = GlobalKey();
 
   @override
   void initState() {
@@ -33,7 +34,14 @@ class _PortfolioState extends State<Portfolio> {
               Colors.cyan.withOpacity(0.3),
             ),
           ),
-          onPressed: () {},
+          onPressed: () {
+            if (isMobile) {
+              Navigator.pop(context);
+            }
+            Timer(const Duration(milliseconds: 200), () {
+              Scrollable.ensureVisible(workExp.currentContext!);
+            });
+          },
           child: const Text(
             'Work Experience',
             style: TextStyle(
@@ -95,12 +103,14 @@ class _PortfolioState extends State<Portfolio> {
         child: Center(
           child: Column(
             children: [
-              const Wrap(
+              Wrap(
                 alignment: WrapAlignment.center,
                 spacing: 30,
                 children: [
-                  About(),
-                  WorkExperience(),
+                  const About(),
+                  WorkExperience(
+                    key: workExp,
+                  ),
                 ],
               ),
               Skills(

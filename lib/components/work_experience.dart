@@ -38,7 +38,7 @@ class _WorkExperienceState extends State<WorkExperience> {
       ),
       padding: const EdgeInsets.all(30),
       height: context.screenWidth > 900
-          ? context.screenHeight
+          ? context.screenHeight + 50
           : context.screenWidth < 900
               ? null
               : context.screenHeight * 0.7,

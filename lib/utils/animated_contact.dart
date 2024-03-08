@@ -5,7 +5,7 @@ class AnimatedContact extends StatefulWidget {
   final IconData iconData;
   final String title;
   final String subTitle;
-  final VoidCallback onTap;
+  final void Function()? onTap;
 
   const AnimatedContact({
     super.key,
@@ -24,7 +24,7 @@ class _AnimatedContactState extends State<AnimatedContact> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: widget.onTap,
       onHover: (value) {
         setState(() {
           isHovering = value;

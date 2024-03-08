@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio_ls/utils/social_row.dart';
 
 class Footer extends StatefulWidget {
   const Footer({super.key});
