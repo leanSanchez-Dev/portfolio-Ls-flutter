@@ -152,7 +152,8 @@ class _AboutState extends State<About> {
                 title: 'Linkedin',
                 subTitle: 'Leonardo Sanchez',
                 iconData: FontAwesomeIcons.linkedinIn,
-                onTap: () => launch('https://github.com/leanSanchez-Dev',
+                onTap: () => launch(
+                    'https://www.linkedin.com/in/leansanchez-dev/',
                     isNewTab: true),
               ),
               const SizedBox(height: 10),
@@ -160,8 +161,15 @@ class _AboutState extends State<About> {
                 title: 'GitHub',
                 subTitle: 'LeanSanchez-dev',
                 iconData: FontAwesomeIcons.github,
-                onTap: () => launch(
-                    'https://www.linkedin.com/in/leansanchez-dev/',
+                onTap: () => launch('https://github.com/leanSanchez-Dev',
+                    isNewTab: true),
+              ),
+              const SizedBox(height: 5),
+              AnimatedContact(
+                title: 'GitLap',
+                subTitle: 'LeanSanchez-dev',
+                iconData: FontAwesomeIcons.gitlab,
+                onTap: () => launch('https://gitlab.com//leansanchez-dev/',
                     isNewTab: true),
               ),
               const SizedBox(height: 5),

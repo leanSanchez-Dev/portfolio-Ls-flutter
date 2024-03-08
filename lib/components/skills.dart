@@ -49,15 +49,15 @@ class _SkillsState extends State<Skills> {
             ],
           ),
           padding: const EdgeInsets.all(28),
-          child: const Column(
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 'Programing languages',
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(top: 16.0, bottom: 8),
                 child: Divider(),
               ),
@@ -66,32 +66,32 @@ class _SkillsState extends State<Skills> {
                 runSpacing: 8,
                 children: [
                   Chip(
-                    label: Text(
+                    label: const Text(
                       'Dart',
                     ),
-                    labelStyle: TextStyle(color: Colors.indigo),
-                    side: BorderSide(color: Colors.indigo),
+                    labelStyle: TextStyle(color: Colors.indigoAccent.shade700),
+                    side: BorderSide(color: Colors.indigoAccent.shade700),
                   ),
                   Chip(
-                    label: Text(
+                    label: const Text(
                       'Java Mobile',
                     ),
-                    labelStyle: TextStyle(color: Colors.indigo),
-                    side: BorderSide(color: Colors.indigo),
+                    labelStyle: TextStyle(color: Colors.indigoAccent.shade700),
+                    side: BorderSide(color: Colors.indigoAccent.shade700),
                   ),
                   Chip(
-                    label: Text(
+                    label: const Text(
                       'Kotlin',
                     ),
-                    labelStyle: TextStyle(color: Colors.indigo),
-                    side: BorderSide(color: Colors.indigo),
+                    labelStyle: TextStyle(color: Colors.indigoAccent.shade700),
+                    side: BorderSide(color: Colors.indigoAccent.shade700),
                   ),
                   Chip(
-                    label: Text(
+                    label: const Text(
                       'JavaScript',
                     ),
-                    labelStyle: TextStyle(color: Colors.indigo),
-                    side: BorderSide(color: Colors.indigo),
+                    labelStyle: TextStyle(color: Colors.indigoAccent.shade700),
+                    side: BorderSide(color: Colors.indigoAccent.shade700),
                   )
                 ],
               )
@@ -112,15 +112,15 @@ class _SkillsState extends State<Skills> {
             ],
           ),
           padding: const EdgeInsets.all(28),
-          child: const Column(
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 'Frameworks',
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(top: 16.0, bottom: 8),
                 child: Divider(),
               ),
@@ -129,25 +129,25 @@ class _SkillsState extends State<Skills> {
                 runSpacing: 8,
                 children: [
                   Chip(
-                    label: Text(
+                    label: const Text(
                       'React Native',
                     ),
-                    labelStyle: TextStyle(color: Colors.cyan),
-                    side: BorderSide(color: Colors.cyan),
+                    labelStyle: TextStyle(color: Colors.cyanAccent.shade700),
+                    side: BorderSide(color: Colors.cyanAccent.shade700),
                   ),
                   Chip(
-                    label: Text(
+                    label: const Text(
                       'Django',
                     ),
-                    labelStyle: TextStyle(color: Colors.cyan),
-                    side: BorderSide(color: Colors.cyan),
+                    labelStyle: TextStyle(color: Colors.cyanAccent.shade700),
+                    side: BorderSide(color: Colors.cyanAccent.shade700),
                   ),
                   Chip(
-                    label: Text(
+                    label: const Text(
                       'Flutter',
                     ),
-                    labelStyle: TextStyle(color: Colors.cyan),
-                    side: BorderSide(color: Colors.cyan),
+                    labelStyle: TextStyle(color: Colors.cyanAccent.shade700),
+                    side: BorderSide(color: Colors.cyanAccent.shade700),
                   )
                 ],
               )
@@ -188,15 +188,15 @@ class _SkillsState extends State<Skills> {
                     label: Text(
                       'Figma',
                     ),
-                    labelStyle: TextStyle(color: Colors.cyan),
-                    side: BorderSide(color: Colors.cyan),
+                    labelStyle: TextStyle(color: Colors.deepPurpleAccent),
+                    side: BorderSide(color: Colors.deepPurpleAccent),
                   ),
                   Chip(
                     label: Text(
                       'Illustrator',
                     ),
-                    labelStyle: TextStyle(color: Colors.cyan),
-                    side: BorderSide(color: Colors.cyan),
+                    labelStyle: TextStyle(color: Colors.deepPurpleAccent),
+                    side: BorderSide(color: Colors.deepPurpleAccent),
                   )
                 ],
               ),

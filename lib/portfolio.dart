@@ -26,7 +26,7 @@ class _PortfolioState extends State<Portfolio> {
   void initState() {
     navItems = [
       Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(10.0),
         child: ElevatedButton(
           style: ButtonStyle(
             elevation: const MaterialStatePropertyAll(2),
@@ -51,7 +51,7 @@ class _PortfolioState extends State<Portfolio> {
         ),
       ),
       Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(10.0),
         child: ElevatedButton(
             style: ButtonStyle(
               elevation: const MaterialStatePropertyAll(2),
@@ -88,7 +88,7 @@ class _PortfolioState extends State<Portfolio> {
     isMobile = MediaQuery.of(context).size.width > 700 ? false : true;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Leo Programer'),
+        title: const Text('LeanSanchez - Dev'),
         actions: isMobile ? null : navItems,
       ),
       drawer: isMobile
