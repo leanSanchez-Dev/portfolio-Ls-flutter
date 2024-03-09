@@ -66319,7 +66319,7 @@ p=A.a([new A.cL(0.05,B.bx,A.O(B.c.b0(76.5),0,188,212),B.h,5)],t.sq)
 if(A.aW(a,B.Q,j).w.a.a>900)o=A.aW(a,B.Q,j).w.a.b+50
 else o=A.aW(a,B.Q,j).w.a.a<900?l:A.aW(a,B.Q,j).w.a.b*0.7
 n=t.D
-return A.cW(l,A.i2(A.a([A.i2(A.a([A.vQ(B.dJ,A.a([A.aa_(m.d?A.aeR("assets/dev_bg.png",A.aW(a,l,j).w.a.b*0.2,B.P3):A.aeR("assets/ls_bg.png",A.aW(a,l,j).w.a.b*0.2,B.P4),B.AC,B.dW,B.dW),B.Iu,A.abb(1,new A.jh(B.B7,30,m.gZR(),l),l,l,l,1,l,l)],n),B.o,B.dy),B.G3,B.G4,new A.d0(B.AE,A.GQ(B.fa,A.a([A.h3(B.c3,1,B.NU,l,B.b7,B.n),A.h3(B.c3,1,B.NZ,l,B.b7,B.n),A.h3(B.c3,1,B.NH,l,B.b7,B.n),A.h3(B.c3,1,B.NL,l,B.b7,B.n)],n),B.bw,8,8),l),B.h4,B.iw,new A.kQ(B.B2,"Linkedin","Leonardo Sanchez",new A.a25(m),l),B.w0,new A.kQ(B.B6,"GitHub",k,new A.a26(m),l),B.iw,new A.kQ(B.B4,"GitLap",k,new A.a27(m),l),B.iw],n),B.ao,B.aq,B.ad),B.zY],n),B.ao,B.EX,B.ad),B.o,l,l,new A.ca(r.at,l,l,q,p,l,B.am),l,o,B.h7,B.kw,l,l,s)},
+return A.cW(l,A.i2(A.a([A.i2(A.a([A.vQ(B.dJ,A.a([A.aa_(m.d?A.aeR("assets/dev_bg.png",A.aW(a,l,j).w.a.b*0.2,B.P3):A.aeR("assets/ls_bg.png",A.aW(a,l,j).w.a.b*0.2,B.P4),B.AC,B.dW,B.dW),B.Iu,A.abb(1,new A.jh(B.B7,30,m.gZR(),l),l,l,l,1,l,l)],n),B.o,B.dy),B.G3,B.G4,new A.d0(B.AE,A.GQ(B.fa,A.a([A.h3(B.c3,1,B.NU,l,B.b7,B.n),A.h3(B.c3,1,B.NZ,l,B.b7,B.n),A.h3(B.c3,1,B.NH,l,B.b7,B.n),A.h3(B.c3,1,B.NL,l,B.b7,B.n)],n),B.bw,8,8),l),B.h4,B.iw,new A.kQ(B.B2,"Linkedin","Leonardo Sanchez",new A.a25(m),l),B.w0,new A.kQ(B.B6,"GitHub",k,new A.a26(m),l),B.iw,new A.kQ(B.B4,"GitLab",k,new A.a27(m),l),B.iw],n),B.ao,B.aq,B.ad),B.zY],n),B.ao,B.EX,B.ad),B.o,l,l,new A.ca(r.at,l,l,q,p,l,B.am),l,o,B.h7,B.kw,l,l,s)},
 ZS(){this.ap(new A.a24(this))},
 mB(a,b){return this.a4t(a,!0)},
 a4t(a,b){var s=0,r=A.S(t.H),q
