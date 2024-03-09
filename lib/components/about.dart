@@ -166,7 +166,7 @@ class _AboutState extends State<About> {
               ),
               const SizedBox(height: 5),
               AnimatedContact(
-                title: 'GitLap',
+                title: 'GitLab',
                 subTitle: 'LeanSanchez-dev',
                 iconData: FontAwesomeIcons.gitlab,
                 onTap: () => launch('https://gitlab.com//leansanchez-dev/',
