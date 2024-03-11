@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:portfolio_ls/components/about.dart';
+import 'package:portfolio_ls/components/projects.dart';
 import 'package:portfolio_ls/components/work_experience.dart';
 import 'package:portfolio_ls/components/footer.dart';
 import 'package:portfolio_ls/components/skills.dart';
@@ -116,6 +117,7 @@ class _PortfolioState extends State<Portfolio> {
               Skills(
                 key: skillsKey,
               ),
+              const Projects(),
               const Footer()
             ],
           ),
