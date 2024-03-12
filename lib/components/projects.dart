@@ -152,8 +152,8 @@ class _ProjectsState extends State<Projects> {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                    Colors.cyan.withOpacity(0.1),
-                    Theme.of(context).cardColor.withOpacity(0.4),
+                    Colors.teal.withOpacity(0.1),
+                    Theme.of(context).cardColor.withOpacity(0.5),
                   ],
                 ),
                 borderRadius: BorderRadius.circular(16.0),
@@ -167,17 +167,20 @@ class _ProjectsState extends State<Projects> {
                 children: [
                   Text(
                     project.project.toUpperCase(),
-                    style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700,
+                    style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w900,
                         letterSpacing: 4,
-                        color: Colors.white),
+                        color: Colors.teal.shade800),
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 8.0),
                   Text(
                     project.empresa,
-                    style: TextStyle(fontSize: 14, color: Colors.teal.shade50),
+                    style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.teal.shade50,
+                        fontWeight: FontWeight.w600),
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 8.0),
@@ -207,9 +210,9 @@ class _ProjectsState extends State<Projects> {
                             Text(
                               project.tag,
                               style: const TextStyle(
-                                fontSize: 12.0,
-                                color: Colors.white,
-                              ),
+                                  fontSize: 12.0,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w700),
                             ),
                           ],
                         ),

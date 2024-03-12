@@ -13,7 +13,7 @@ class _SkillsState extends State<Skills> {
     return context.screenWidth < 900
         ? context.screenWidth * 0.9
         : context.screenWidth < 1600
-            ? context.screenWidth * 0.84
+            ? context.screenWidth * 0.9
             : context.screenWidth * 0.82 / 3;
   }
 

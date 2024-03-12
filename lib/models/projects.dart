@@ -38,7 +38,7 @@ List<Map<String, String>> jsonPj = [
   {
     "project": "Neat",
     "empresa": "RedCap S.A.S",
-    "tag": "Java",
+    "tag": "Flutter",
     "url": "assets/slide/neat.jpeg",
   },
   {

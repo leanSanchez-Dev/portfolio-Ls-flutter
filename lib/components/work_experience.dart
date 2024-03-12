@@ -21,7 +21,7 @@ class _WorkExperienceState extends State<WorkExperience> {
     return Container(
       margin: const EdgeInsets.only(top: 20),
       width: context.screenWidth < 900
-          ? context.screenWidth * 0.9
+          ? context.screenWidth * 0.93
           : context.screenWidth < 1600
               ? context.screenWidth * 0.5
               : context.screenWidth * 0.64,
@@ -70,6 +70,8 @@ class _WorkExperienceState extends State<WorkExperience> {
                 contentsAlign: ContentsAlign.alternating,
                 contentsBuilder: (_, i) {
                   return Card(
+                    elevation: 0.8,
+                    shadowColor: Colors.cyan.shade300,
                     child: Padding(
                         padding: const EdgeInsets.all(12),
                         child: Column(

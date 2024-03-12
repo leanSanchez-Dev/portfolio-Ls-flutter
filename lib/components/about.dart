@@ -22,9 +22,9 @@ class _AboutState extends State<About> {
     return Container(
       margin: const EdgeInsets.only(top: 20),
       width: context.screenWidth < 900
-          ? context.screenWidth * 0.9
+          ? context.screenWidth * 0.93
           : context.screenWidth < 1600
-              ? context.screenWidth * 0.3
+              ? context.screenWidth * 0.4
               : context.screenWidth * 0.2,
       decoration: BoxDecoration(
         color: Theme.of(context).cardColor,
@@ -92,7 +92,8 @@ class _AboutState extends State<About> {
               const Padding(
                 padding: EdgeInsets.symmetric(vertical: 8.0),
                 child: Text(
-                  'Tecnólogo en Análisis y Desarrollo de Sistemas de Información (ADSI) con competencias en desarrollo de software, diseño mobile y análisis de bases de datos. Estoy familiarizado con la metodología ágil Scrum y me dedico a crear, planificar, gestionar y ejecutar programas que buscan mejorar la eficiencia empresarial, todo ello manteniendo siempre un alto estándar de ética profesional.',
+                  // 'Tecnólogo en Análisis y Desarrollo de Sistemas de Información (ADSI) con competencias en desarrollo de software, diseño mobile y análisis de bases de datos. Estoy familiarizado con la metodología ágil Scrum y me dedico a crear, planificar, gestionar y ejecutar programas que buscan mejorar la eficiencia empresarial, todo ello manteniendo siempre un alto estándar de ética profesional.',
+                  'Technologist in Analysis and Development of Information Systems (ADSI) with skills in software development, mobile design and database analysis. I am familiar with the Agile Scrum methodology and I am dedicated to creating, planning, managing and executing programs that seek to improve business efficiency, all while maintaining a high standard of professional ethics.',
                   textAlign: TextAlign.center,
                 ),
               ),
