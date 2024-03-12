@@ -56,7 +56,7 @@ class _BannerInfState extends State<BannerInf> {
               ),
               onPressed: () {},
               child: const Text(
-                'Contac Me',
+                'Contact Me',
                 style: TextStyle(
                   color: Colors.white,
                 ),
