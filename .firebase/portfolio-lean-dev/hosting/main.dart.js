@@ -68719,7 +68719,7 @@ p=A.a([new A.cn(0.05,B.aW,A.O(B.c.aD(76.5),0,188,212),B.h,5)],t.sq)
 if(A.aM(a,B.E,j).w.a.a>900)o=A.aM(a,B.E,j).w.a.b+50
 else o=A.aM(a,B.E,j).w.a.a<900?l:A.aM(a,B.E,j).w.a.b*0.7
 n=t.D
-return A.c7(l,A.eY(A.a([A.eY(A.a([A.mH(B.c1,A.a([A.aaX(m.d?A.abN("assets/dev_bg.png",A.aM(a,l,j).w.a.b*0.2,B.PH):A.abN("assets/ls_bg.png",A.aM(a,l,j).w.a.b*0.2,B.PI),B.AY,B.e2,B.e2),B.wi,A.Fe(1,new A.i1(B.Bu,30,m.ga0Q(),l),l,l,l,1,l,l)],n),B.o,B.bT),B.Gt,B.Gu,new A.cq(B.kO,A.HC(B.fk,A.a([A.fq(B.c8,1,B.Ot,l,l,B.aX,B.n),A.fq(B.c8,1,B.Oz,l,l,B.aX,B.n),A.fq(B.c8,1,B.Of,l,l,B.aX,B.n),A.fq(B.c8,1,B.Oj,l,l,B.aX,B.n)],n),B.bD,8,8),l),B.hf,B.iR,new A.l1(B.Bq,"Linkedin","Leonardo Sanchez",new A.a2I(m),l),B.J1,new A.l1(B.l3,"GitHub",k,new A.a2J(m),l),B.iR,new A.l1(B.Bs,"GitLab",k,new A.a2K(m),l),B.iR],n),B.aa,B.ar,B.a3),B.Aj],n),B.aa,B.qi,B.a3),B.o,l,l,new A.c6(r.ax,l,l,q,p,l,B.a6),l,o,B.hi,B.hk,l,l,s)},
+return A.c7(l,A.eY(A.a([A.eY(A.a([A.mH(B.c1,A.a([A.aaX(m.d?A.abN("assets/dev_bg.png",A.aM(a,l,j).w.a.b*0.2,B.PH):A.abN("assets/ls_bg.png",A.aM(a,l,j).w.a.b*0.2,B.PI),B.AY,B.e2,B.e2),B.wi,A.Fe(1,new A.i1(B.Bu,30,m.ga0Q(),l),l,l,l,1,l,l)],n),B.o,B.bT),B.Gt,B.Gu,new A.cq(B.kO,A.HC(B.fk,A.a([A.fq(B.c8,1,B.Ou,l,l,B.aX,B.n),A.fq(B.c8,1,B.OA,l,l,B.aX,B.n),A.fq(B.c8,1,B.Of,l,l,B.aX,B.n),A.fq(B.c8,1,B.Oj,l,l,B.aX,B.n)],n),B.bD,8,8),l),B.hf,B.iR,new A.l1(B.Bq,"Linkedin","Leonardo Sanchez",new A.a2I(m),l),B.J1,new A.l1(B.l3,"GitHub",k,new A.a2J(m),l),B.iR,new A.l1(B.Bs,"GitLab",k,new A.a2K(m),l),B.iR],n),B.aa,B.ar,B.a3),B.Aj],n),B.aa,B.qi,B.a3),B.o,l,l,new A.c6(r.ax,l,l,q,p,l,B.a6),l,o,B.hi,B.hk,l,l,s)},
 a0R(){this.az(new A.a2H(this))},
 na(a,b){return this.a6x(a,!0)},
 a6x(a,b){var s=0,r=A.S(t.H),q
@@ -68746,7 +68746,7 @@ A.r5.prototype={
 af(){return new A.I6(B.j)}}
 A.I6.prototype={
 J(a){var s=null,r=t.w,q=A.aM(a,B.E,r).w,p=A.a_(a),o=A.en(20),n=A.a([new A.cn(0.05,B.aW,A.O(B.c.aD(76.5),0,188,212),B.h,5)],t.sq)
-return A.c7(s,A.eY(A.a([A.abN("assets/dev_bg.png",A.aM(a,s,r).w.a.b*0.3,s),B.J2,B.Or,B.fc,A.fQ("Let's make something great together",A.dn(s,s,B.h9,s,s,s,s,s,s,s,s,14,s,s,s,s,s,!0,s,s,s,s,s,s,s,s),B.aR),B.J3,A.CC(B.OC,new A.a3n(),A.l9(s,s,s,B.FF,s,s,s,s,s,s,s,s,s,s,new A.bs(A.O(B.c.aD(127.5),158,158,158),t.Il),s,s,s,s,s,s,s))],t.D),B.aa,B.ar,B.a3),B.o,s,s,new A.c6(p.ax,s,s,o,n,s,B.a6),s,s,B.hi,B.hk,s,s,q.a.a*0.85)}}
+return A.c7(s,A.eY(A.a([A.abN("assets/dev_bg.png",A.aM(a,s,r).w.a.b*0.3,s),B.J2,B.Or,B.fc,A.fQ("Let's make something great together",A.dn(s,s,B.h9,s,s,s,s,s,s,s,s,14,s,s,s,s,s,!0,s,s,s,s,s,s,s,s),B.aR),B.J3,A.CC(B.Ot,new A.a3n(),A.l9(s,s,s,B.FF,s,s,s,s,s,s,s,s,s,s,new A.bs(A.O(B.c.aD(127.5),158,158,158),t.Il),s,s,s,s,s,s,s))],t.D),B.aa,B.ar,B.a3),B.o,s,s,new A.c6(p.ax,s,s,o,n,s,B.a6),s,s,B.hi,B.hk,s,s,q.a.a*0.85)}}
 A.a3n.prototype={
 $0(){},
 $S:0}
@@ -68754,7 +68754,7 @@ A.tp.prototype={
 af(){return new A.JI(B.j)}}
 A.JI.prototype={
 J(a){var s=null
-return A.c7(s,A.kc(A.a([B.OA,B.J_,A.Ds(s,B.BE,new A.a52(),s,s),B.iQ,A.Ds(s,B.BC,new A.a53(),s,s)],t.D),B.aa,B.cj,B.a3),B.o,B.zb,s,s,s,s,s,B.kO,s,s,s)}}
+return A.c7(s,A.kc(A.a([B.OB,B.J_,A.Ds(s,B.BE,new A.a52(),s,s),B.iQ,A.Ds(s,B.BC,new A.a53(),s,s)],t.D),B.aa,B.cj,B.a3),B.o,B.zb,s,s,s,s,s,B.kO,s,s,s)}}
 A.a52.prototype={
 $0(){},
 $S:0}
@@ -68828,7 +68828,7 @@ if(p.a.a<1600){r.toString
 p=A.aM(r,B.E,s).w.a.a*0.9}else{r.toString
 p=A.aM(r,B.E,s).w.a.a*0.82/3}}return p},
 J(a){var s,r=null,q=A.c7(B.Q,A.fQ("My skills".toUpperCase(),B.ff,r),B.o,r,r,r,r,r,r,B.B1,r,r,r),p=this.yV(),o=A.a_(a),n=A.en(20),m=B.c.aD(76.5),l=t.sq,k=A.a([new A.cn(0.05,B.aW,A.O(m,0,188,212),B.h,5)],l),j=t.D
-p=A.c7(r,A.eY(A.a([B.Ox,B.ie,A.HC(B.bD,A.a([A.fq(r,r,B.Oq,r,A.dn(r,r,B.bk,r,r,r,r,r,r,r,r,r,r,r,r,r,r,!0,r,r,r,r,r,r,r,r),r,new A.b4(B.bk,1,B.y,-1)),A.fq(r,r,B.Ow,r,A.dn(r,r,B.bk,r,r,r,r,r,r,r,r,r,r,r,r,r,r,!0,r,r,r,r,r,r,r,r),r,new A.b4(B.bk,1,B.y,-1)),A.fq(r,r,B.Ok,r,A.dn(r,r,B.bk,r,r,r,r,r,r,r,r,r,r,r,r,r,r,!0,r,r,r,r,r,r,r,r),r,new A.b4(B.bk,1,B.y,-1)),A.fq(r,r,B.Oo,r,A.dn(r,r,B.bk,r,r,r,r,r,r,r,r,r,r,r,r,r,r,!0,r,r,r,r,r,r,r,r),r,new A.b4(B.bk,1,B.y,-1))],j),B.bD,8,8)],j),B.bl,B.ar,B.a3),B.o,r,r,new A.c6(o.ax,r,r,n,k,r,B.a6),r,r,r,B.hj,r,r,p)
+p=A.c7(r,A.eY(A.a([B.Oy,B.ie,A.HC(B.bD,A.a([A.fq(r,r,B.Oq,r,A.dn(r,r,B.bk,r,r,r,r,r,r,r,r,r,r,r,r,r,r,!0,r,r,r,r,r,r,r,r),r,new A.b4(B.bk,1,B.y,-1)),A.fq(r,r,B.Ox,r,A.dn(r,r,B.bk,r,r,r,r,r,r,r,r,r,r,r,r,r,r,!0,r,r,r,r,r,r,r,r),r,new A.b4(B.bk,1,B.y,-1)),A.fq(r,r,B.Ok,r,A.dn(r,r,B.bk,r,r,r,r,r,r,r,r,r,r,r,r,r,r,!0,r,r,r,r,r,r,r,r),r,new A.b4(B.bk,1,B.y,-1)),A.fq(r,r,B.Oo,r,A.dn(r,r,B.bk,r,r,r,r,r,r,r,r,r,r,r,r,r,r,!0,r,r,r,r,r,r,r,r),r,new A.b4(B.bk,1,B.y,-1))],j),B.bD,8,8)],j),B.bl,B.ar,B.a3),B.o,r,r,new A.c6(o.ax,r,r,n,k,r,B.a6),r,r,r,B.hj,r,r,p)
 k=this.yV()
 n=A.a_(a)
 o=A.en(20)
@@ -68874,7 +68874,7 @@ af(){var s=null,r=t.A
 return new A.LD(A.a([],t.D),new A.bq(s,r),new A.bq(s,r),new A.bq(s,r),new A.bq(s,r),B.j)}}
 A.LD.prototype={
 aO(){var s=this,r=null,q=B.c.aD(76.5),p=t.Il
-s.d=A.a([new A.cq(B.e7,A.CC(B.Oy,new A.a6U(s),A.l9(r,r,r,B.eE,r,r,r,r,r,r,r,r,r,r,new A.bs(A.O(q,0,188,212),p),r,r,r,r,r,r,r)),r),new A.cq(B.e7,A.CC(B.Os,new A.a6V(s),A.l9(r,r,r,B.eE,r,r,r,r,r,r,r,r,r,r,new A.bs(A.O(q,0,188,212),p),r,r,r,r,r,r,r)),r),new A.cq(B.e7,A.CC(B.Oi,new A.a6W(s),A.l9(r,r,r,B.eE,r,r,r,r,r,r,r,r,r,r,new A.bs(A.O(q,0,188,212),p),r,r,r,r,r,r,r)),r),new A.cq(B.e7,A.CC(B.Ol,new A.a6X(s),A.l9(r,r,r,B.eE,r,r,r,r,r,r,r,r,r,r,new A.bs(A.O(q,0,188,212),p),r,r,r,r,r,r,r)),r)],t.D)
+s.d=A.a([new A.cq(B.e7,A.CC(B.Oz,new A.a6U(s),A.l9(r,r,r,B.eE,r,r,r,r,r,r,r,r,r,r,new A.bs(A.O(q,0,188,212),p),r,r,r,r,r,r,r)),r),new A.cq(B.e7,A.CC(B.Os,new A.a6V(s),A.l9(r,r,r,B.eE,r,r,r,r,r,r,r,r,r,r,new A.bs(A.O(q,0,188,212),p),r,r,r,r,r,r,r)),r),new A.cq(B.e7,A.CC(B.Oi,new A.a6W(s),A.l9(r,r,r,B.eE,r,r,r,r,r,r,r,r,r,r,new A.bs(A.O(q,0,188,212),p),r,r,r,r,r,r,r)),r),new A.cq(B.e7,A.CC(B.Ol,new A.a6X(s),A.l9(r,r,r,B.eE,r,r,r,r,r,r,r,r,r,r,new A.bs(A.O(q,0,188,212),p),r,r,r,r,r,r,r)),r)],t.D)
 s.b9()},
 J(a){var s,r,q,p,o=this,n=null,m=!(A.aM(a,n,t.w).w.a.a>700)||!1
 o.e=m
@@ -68887,7 +68887,7 @@ p=p?B.x4:n
 q=new A.Cv(new A.DW(new A.a0t(!0,!0,!0,m,r),n,B.S,!1,n,n,p,!1,n,q,B.az,B.vB,n,B.a2,n),n)
 m=q}else m=n
 r=t.D
-return new A.vS(new A.r_(B.OB,s,new A.LE(n,n,1/0,56),n),new A.Gx(B.xx,A.jx(A.eY(A.a([A.HC(B.fk,A.a([B.x3,new A.x7(o.r)],r),B.bD,0,30),new A.wl(o.f),new A.v5(o.w),B.wj,new A.r5(o.x),B.wj,B.Bj],r),B.aa,B.ar,B.a3),n,n),n),m,n)}}
+return new A.vS(new A.r_(B.OC,s,new A.LE(n,n,1/0,56),n),new A.Gx(B.xx,A.jx(A.eY(A.a([A.HC(B.fk,A.a([B.x3,new A.x7(o.r)],r),B.bD,0,30),new A.wl(o.f),new A.v5(o.w),B.wj,new A.r5(o.x),B.wj,B.Bj],r),B.aa,B.ar,B.a3),n,n),n),m,n)}}
 A.a6U.prototype={
 $0(){var s,r=this.a
 if(r.e){s=r.c
@@ -72156,8 +72156,8 @@ B.qr=new A.E4(B.Fz,4286336511)
 B.wx=new A.k(!0,B.qr,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)
 B.jq=new A.b4(B.qr,1,B.y,-1)
 B.z3=new A.nA(B.Od,B.wx,null,B.jq,null,null,null,null)
-B.Ou=new A.bC("Illustrator",null,null,null,null)
-B.z2=new A.nA(B.Ou,B.wx,null,B.jq,null,null,null,null)
+B.Ov=new A.bC("Illustrator",null,null,null,null)
+B.z2=new A.nA(B.Ov,B.wx,null,B.jq,null,null,null,null)
 B.DJ=A.a(s([B.z3,B.z2]),t.D)
 B.PK=new A.x8(B.bD,8,B.bD,8,B.DJ,null)
 B.DI=A.a(s([B.Og,B.ie,B.PK]),t.D)
@@ -73503,8 +73503,8 @@ B.kP=new A.aO(0,8,0,8)
 B.MV=new A.k(!0,null,null,null,null,null,28,B.cb,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)
 B.Op=new A.bC("Leonardo Sanchez",null,B.MV,B.aR,null)
 B.Gt=new A.cq(B.kP,B.Op,null)
-B.Ov=new A.bC("Technologist in Analysis and Development of Information Systems (ADSI) with skills in software development, mobile design and database analysis. I am familiar with the Agile Scrum methodology and I am dedicated to creating, planning, managing and executing programs that seek to improve business efficiency, all while maintaining a high standard of professional ethics.",null,null,B.aR,null)
-B.Gu=new A.cq(B.kP,B.Ov,null)
+B.Ow=new A.bC("Technologist in Analysis and Development of Information Systems (ADSI) with skills in software development, mobile design and database analysis. I am familiar with the Agile Scrum methodology and I am dedicated to creating, planning, managing and executing programs that seek to improve business efficiency, all while maintaining a high standard of professional ethics.",null,null,B.aR,null)
+B.Gu=new A.cq(B.kP,B.Ow,null)
 B.Gv=new A.uN(null)
 B.aH=new A.F0(0,"fill")
 B.U=new A.F0(1,"stroke")
@@ -74130,15 +74130,15 @@ B.Oo=new A.bC("JavaScript",null,null,null,null)
 B.Oq=new A.bC("Dart",null,null,null,null)
 B.Or=new A.bC("Let's go!!",null,B.ff,null,null)
 B.Os=new A.bC("Skills",null,B.dI,null,null)
-B.Ot=new A.bC("Flutter Developer",null,B.dH,null,null)
-B.Ow=new A.bC("Java Mobile",null,null,null,null)
-B.Ox=new A.bC("Programing languages",null,B.iW,null,null)
-B.Oy=new A.bC("Work Experience",null,B.dI,null,null)
-B.Oz=new A.bC("UX / UI",null,B.dH,null,null)
+B.Ot=new A.bC("Contact Me",null,B.dI,null,null)
+B.Ou=new A.bC("Flutter Developer",null,B.dH,null,null)
+B.Ox=new A.bC("Java Mobile",null,null,null,null)
+B.Oy=new A.bC("Programing languages",null,B.iW,null,null)
+B.Oz=new A.bC("Work Experience",null,B.dI,null,null)
+B.OA=new A.bC("UX / UI",null,B.dH,null,null)
 B.Kn=new A.k(!0,B.i7,null,null,null,null,14,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)
-B.OA=new A.bC("\xa9 2024 - LeanSanchez-Dev",null,B.Kn,null,null)
-B.OB=new A.bC("LeanSanchez - Dev",null,null,null,null)
-B.OC=new A.bC("Contac Me",null,B.dI,null,null)
+B.OB=new A.bC("\xa9 2024 - LeanSanchez-Dev",null,B.Kn,null,null)
+B.OC=new A.bC("LeanSanchez - Dev",null,null,null,null)
 B.R3=new A.a1S(0,"system")
 B.OD=new A.wO(null)
 B.dJ=new A.Hb(0,"clamp")
