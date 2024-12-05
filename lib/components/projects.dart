@@ -14,7 +14,7 @@ class Projects extends StatefulWidget {
 }
 
 class _ProjectsState extends State<Projects> {
-  final CarouselController _controller = CarouselController();
+  final CarouselSliderController _controller = CarouselSliderController();
   List<Project> projects =
       jsonPj.map((item) => Project.fromJson(item)).toList();
   @override
