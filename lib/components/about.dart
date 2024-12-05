@@ -159,6 +159,13 @@ class _AboutState extends State<About> {
               ),
               const SizedBox(height: 10),
               AnimatedContact(
+                title: 'E-mail',
+                subTitle: 'Leansanchez14@gmail.com',
+                iconData: FontAwesomeIcons.envelopesBulk,
+                onTap: () {},
+              ),
+              const SizedBox(height: 5),
+              AnimatedContact(
                 title: 'GitHub',
                 subTitle: 'LeanSanchez-dev',
                 iconData: FontAwesomeIcons.github,
