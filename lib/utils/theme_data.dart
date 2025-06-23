@@ -13,13 +13,11 @@ final ThemeData themeData = ThemeData(
 
   // Color scheme (consider using ThemeData.from with a custom ColorScheme if desired)
   colorScheme: const ColorScheme(
-    background: _primaryColor,
     brightness: Brightness.dark,
     error: Color(0xFFFFB4AB), // Light red
     errorContainer: Color(0xFF93000A), // Darker red
     inversePrimary: Color(0xFF225FA6), // Light blue
     inverseSurface: Color(0xFFE3E2E6), // Light gray
-    onBackground: Color(0xFFE3E2E6), // Light gray
     onError: Color(0xFF690005), // Dark red
     onErrorContainer: Color(0xFFFFB4AB), // Light red
     onInverseSurface: Color(0xFF2F3033), // Dark gray
@@ -41,7 +39,7 @@ final ThemeData themeData = ThemeData(
     shadow: Colors.black, // Black shadow
     surface: _primaryColor, // Dark blue
     surfaceTint: _primaryColor, // Dark blue (for compatibility)
-    surfaceVariant: Color(0xFF43474E), // Darker gray
+    surfaceContainerHighest: Color(0xFF43474E), // Darker gray
     tertiary: Color(0xFFDBBDE2), // Light blue
     tertiaryContainer: Color(0xFF553E5D), // Darker blue
   ),
@@ -50,7 +48,7 @@ final ThemeData themeData = ThemeData(
   canvasColor: _canvasColor,
   dialogBackgroundColor: _primaryColor,
   disabledColor: const Color(0x62FFFFFF), // Light gray with 62% opacity
-  dividerColor: const Color(0x1FEEEE6), // Light green with 1F% opacity
+  dividerColor: const Color(0x01feeee6), // Light green with 1F% opacity
   focusColor: Colors.white,
   highlightColor: const Color(0x40CCCCCC), // Light gray with 40% opacity
   hintColor: const Color(0x99FFFFFF), // Light gray with 99% opacity

@@ -49,8 +49,8 @@ class _BannerInfState extends State<BannerInf> {
           const SizedBox(height: 24),
           ElevatedButton(
               style: ButtonStyle(
-                elevation: const MaterialStatePropertyAll(4),
-                shadowColor: MaterialStatePropertyAll(
+                elevation: const WidgetStatePropertyAll(4),
+                shadowColor: WidgetStatePropertyAll(
                   Colors.grey.withOpacity(0.5),
                 ),
               ),

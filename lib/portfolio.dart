@@ -33,8 +33,8 @@ class _PortfolioState extends State<Portfolio> {
         padding: const EdgeInsets.all(10.0),
         child: ElevatedButton(
           style: ButtonStyle(
-            elevation: const MaterialStatePropertyAll(2),
-            shadowColor: MaterialStatePropertyAll(
+            elevation: const WidgetStatePropertyAll(2),
+            shadowColor: WidgetStatePropertyAll(
               Colors.cyan.withOpacity(0.3),
             ),
           ),
@@ -58,8 +58,8 @@ class _PortfolioState extends State<Portfolio> {
         padding: const EdgeInsets.all(10.0),
         child: ElevatedButton(
             style: ButtonStyle(
-              elevation: const MaterialStatePropertyAll(2),
-              shadowColor: MaterialStatePropertyAll(
+              elevation: const WidgetStatePropertyAll(2),
+              shadowColor: WidgetStatePropertyAll(
                 Colors.cyan.withOpacity(0.3),
               ),
             ),
@@ -82,8 +82,8 @@ class _PortfolioState extends State<Portfolio> {
         padding: const EdgeInsets.all(10.0),
         child: ElevatedButton(
             style: ButtonStyle(
-              elevation: const MaterialStatePropertyAll(2),
-              shadowColor: MaterialStatePropertyAll(
+              elevation: const WidgetStatePropertyAll(2),
+              shadowColor: WidgetStatePropertyAll(
                 Colors.cyan.withOpacity(0.3),
               ),
             ),
@@ -106,8 +106,8 @@ class _PortfolioState extends State<Portfolio> {
         padding: const EdgeInsets.all(10.0),
         child: ElevatedButton(
             style: ButtonStyle(
-              elevation: const MaterialStatePropertyAll(2),
-              shadowColor: MaterialStatePropertyAll(
+              elevation: const WidgetStatePropertyAll(2),
+              shadowColor: WidgetStatePropertyAll(
                 Colors.cyan.withOpacity(0.3),
               ),
             ),

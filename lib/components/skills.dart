@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class Skills extends StatefulWidget {
-  const Skills({Key? key}) : super(key: key);
+  const Skills({super.key});
 
   @override
   State<Skills> createState() => _SkillsState();

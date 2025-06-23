@@ -26,6 +26,13 @@ class Experience {
 
 List<Map<String, String>> jsonStr = [
   {
+    "cargo": "Desarrollador FullStack Flutter",
+    "empresa": "CODESA",
+    "fecha_inicio": "May - 2024",
+    "fecha_fin": "Actualmente",
+    "descripcion": "Dev frontend Mobile Flutter"
+  },
+  {
     "cargo": "Desarrollador mobile Flutter",
     "empresa": "TCS - Bancolombia",
     "fecha_inicio": "Nov 2022",

@@ -12,7 +12,7 @@ class _FooterState extends State<Footer> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: const Color(0xf7f7f7), // Color de fondo
+      color: const Color(0x00f7f7f7), // Color de fondo
       padding: const EdgeInsets.symmetric(
           vertical: 10.0), // Padding superior e inferior
 
