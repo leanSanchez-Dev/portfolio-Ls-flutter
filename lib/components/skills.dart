@@ -74,7 +74,7 @@ class _SkillsState extends State<Skills> {
                   ),
                   Chip(
                     label: const Text(
-                      'Java Mobile',
+                      'Java',
                     ),
                     labelStyle: TextStyle(color: Colors.indigoAccent.shade700),
                     side: BorderSide(color: Colors.indigoAccent.shade700),
@@ -89,6 +89,13 @@ class _SkillsState extends State<Skills> {
                   Chip(
                     label: const Text(
                       'JavaScript',
+                    ),
+                    labelStyle: TextStyle(color: Colors.indigoAccent.shade700),
+                    side: BorderSide(color: Colors.indigoAccent.shade700),
+                  ),
+                  Chip(
+                    label: const Text(
+                      'TypeScript',
                     ),
                     labelStyle: TextStyle(color: Colors.indigoAccent.shade700),
                     side: BorderSide(color: Colors.indigoAccent.shade700),
@@ -130,7 +137,14 @@ class _SkillsState extends State<Skills> {
                 children: [
                   Chip(
                     label: const Text(
-                      'React Native',
+                      'Flutter',
+                    ),
+                    labelStyle: TextStyle(color: Colors.cyanAccent.shade700),
+                    side: BorderSide(color: Colors.cyanAccent.shade700),
+                  ),
+                  Chip(
+                    label: const Text(
+                      'Angular',
                     ),
                     labelStyle: TextStyle(color: Colors.cyanAccent.shade700),
                     side: BorderSide(color: Colors.cyanAccent.shade700),
@@ -142,13 +156,6 @@ class _SkillsState extends State<Skills> {
                     labelStyle: TextStyle(color: Colors.cyanAccent.shade700),
                     side: BorderSide(color: Colors.cyanAccent.shade700),
                   ),
-                  Chip(
-                    label: const Text(
-                      'Flutter',
-                    ),
-                    labelStyle: TextStyle(color: Colors.cyanAccent.shade700),
-                    side: BorderSide(color: Colors.cyanAccent.shade700),
-                  )
                 ],
               )
             ],
@@ -197,7 +204,14 @@ class _SkillsState extends State<Skills> {
                     ),
                     labelStyle: TextStyle(color: Colors.deepPurpleAccent),
                     side: BorderSide(color: Colors.deepPurpleAccent),
-                  )
+                  ),
+                  Chip(
+                    label: Text(
+                      'GIT',
+                    ),
+                    labelStyle: TextStyle(color: Colors.deepPurpleAccent),
+                    side: BorderSide(color: Colors.deepPurpleAccent),
+                  ),
                 ],
               ),
             ],

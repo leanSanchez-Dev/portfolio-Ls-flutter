@@ -93,7 +93,7 @@ class _AboutState extends State<About> {
                 padding: EdgeInsets.symmetric(vertical: 8.0),
                 child: Text(
                   // 'Tecnólogo en Análisis y Desarrollo de Sistemas de Información (ADSI) con competencias en desarrollo de software, diseño mobile y análisis de bases de datos. Estoy familiarizado con la metodología ágil Scrum y me dedico a crear, planificar, gestionar y ejecutar programas que buscan mejorar la eficiencia empresarial, todo ello manteniendo siempre un alto estándar de ética profesional.',
-                  'Technologist in Analysis and Development of Information Systems (ADSI) with skills in software development, mobile design and database analysis. I am familiar with the Agile Scrum methodology and I am dedicated to creating, planning, managing and executing programs that seek to improve business efficiency, all while maintaining a high standard of professional ethics.',
+                  'Soy desarrollador mobile con más de 5 años de experiencia en tecnología, especializado en Flutter para la creación de aplicaciones Android e iOS. A lo largo de mi carrera he trabajado en startups y empresas del sector financiero y tecnológico, participando en proyectos de alto impacto y enfrentando desafíos reales en producción.\n\nMe enfoco en construir soluciones móviles eficientes, escalables y orientadas al usuario, aplicando buenas prácticas de arquitectura, integración y mantenimiento. Actualmente continúo perfeccionando mis habilidades técnicas y mi fluidez en inglés, con el objetivo de seguir creciendo profesionalmente y aportar valor a nivel internacional.',
                   textAlign: TextAlign.center,
                 ),
               ),
