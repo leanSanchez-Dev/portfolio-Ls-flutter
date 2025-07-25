@@ -1,34 +1,28 @@
-// import 'dart:convert';
-
 import 'package:flutter/material.dart';
-// import 'package:flutter/services.dart';
-// import 'package:json_theme/json_theme.dart';
+import 'package:portfolio_ls/utils/theme_data.dart';
 
-class ThemeProvider with ChangeNotifier {
-  final ThemeData darkMode;
-  ThemeProvider(this.darkMode);
-
-  late ThemeData lightMode;
-
-  late ThemeData _themeData = darkMode;
+class ThemeProvider extends ChangeNotifier {
+  ThemeData _themeData = lightTheme;
+  bool _isDarkMode = false;
 
   ThemeData get themeData => _themeData;
+  bool get isDarkMode => _isDarkMode;
 
-  set themeData(ThemeData themeData) {
-    _themeData = themeData;
+  void toggleTheme() {
+    _isDarkMode = !_isDarkMode;
+    _themeData = _isDarkMode ? darkTheme : lightTheme;
     notifyListeners();
   }
 
-  Future<void> toggleTheme() async {
-    if (_themeData == lightMode) {
-      _themeData = darkMode;
-    } else {
-      // final themeStr =
-      //     await rootBundle.loadString('assets/appainter_theme.json');
-      // final themeJson = jsonDecode(themeStr);
-      // lightMode = ThemeDecoder.decodeThemeData(themeJson)!;
-      // _themeData = lightMode;
-    }
+  void setLightTheme() {
+    _themeData = lightTheme;
+    _isDarkMode = false;
+    notifyListeners();
+  }
+
+  void setDarkTheme() {
+    _themeData = darkTheme;
+    _isDarkMode = true;
     notifyListeners();
   }
 }

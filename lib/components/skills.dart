@@ -1,223 +1,316 @@
 import 'package:flutter/material.dart';
-import 'package:velocity_x/velocity_x.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:portfolio_ls/utils/animations.dart';
 
 class Skills extends StatefulWidget {
-  const Skills({super.key});
+  const Skills({Key? key}) : super(key: key);
 
   @override
   State<Skills> createState() => _SkillsState();
 }
 
 class _SkillsState extends State<Skills> {
-  double _validationWiht() {
-    return context.screenWidth < 900
-        ? context.screenWidth * 0.9
-        : context.screenWidth < 1600
-            ? context.screenWidth * 0.9
-            : context.screenWidth * 0.82 / 3;
+  double _validationWidth() {
+    return MediaQuery.of(context).size.width < 900
+        ? MediaQuery.of(context).size.width * 0.9
+        : MediaQuery.of(context).size.width < 1600
+            ? MediaQuery.of(context).size.width * 0.28
+            : MediaQuery.of(context).size.width * 0.25;
   }
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      spacing: 30,
-      runSpacing: 30,
-      alignment: WrapAlignment.center,
-      runAlignment: WrapAlignment.center,
-      children: [
-        Container(
-          padding: const EdgeInsets.only(
-            top: 32,
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(vertical: 60, horizontal: 20),
+      child: Column(
+        children: [
+          // Section Header
+          AnimatedFadeSlide(
+            delay: const Duration(milliseconds: 100),
+            child: Column(
+              children: [
+                Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).primaryColor.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(
+                      color: Theme.of(context).primaryColor.withOpacity(0.3),
+                      width: 1,
+                    ),
+                  ),
+                  child: Text(
+                    'SKILLS & EXPERTISE',
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: Theme.of(context).primaryColor,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 1.2,
+                        ),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  'Technical Skills',
+                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                ),
+                const SizedBox(height: 8),
+                Container(
+                  constraints: const BoxConstraints(maxWidth: 600),
+                  child: Text(
+                    'Here are the technologies and tools I work with to bring ideas to life.',
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                          color: Theme.of(context).textTheme.bodyMedium?.color,
+                        ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ],
+            ),
           ),
-          alignment: Alignment.center,
-          child: Text(
-            'My skills'.toUpperCase(),
-            style: const TextStyle(fontSize: 30, fontWeight: FontWeight.w600),
-          ),
-        ),
-        Container(
-          width: _validationWiht(),
-          decoration: BoxDecoration(
-            color: Theme.of(context).cardColor,
-            borderRadius: BorderRadius.circular(20.0),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.cyan.withOpacity(0.3), // Color de la sombra
-                blurRadius: 5,
-                spreadRadius: 0.05,
-              ),
-            ],
-          ),
-          padding: const EdgeInsets.all(28),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
+
+          const SizedBox(height: 50),
+
+          // Skills Grid
+          Wrap(
+            spacing: 30,
+            runSpacing: 30,
+            alignment: WrapAlignment.center,
             children: [
-              const Text(
-                'Programing languages',
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
+              // Programming Languages
+              AnimatedFadeSlide(
+                delay: const Duration(milliseconds: 200),
+                child: _buildSkillCard(
+                  title: 'Programming Languages',
+                  icon: FontAwesomeIcons.code,
+                  skills: [
+                    SkillData('Dart', 0.9, const Color(0xFF0175C2)),
+                    SkillData('JavaScript', 0.85, const Color(0xFFF7DF1E)),
+                    SkillData('Java', 0.8, const Color(0xFFED8B00)),
+                    SkillData('Kotlin', 0.75, const Color(0xFF7F52FF)),
+                    SkillData('Python', 0.7, const Color(0xFF3776AB)),
+                  ],
+                ),
               ),
-              const Padding(
-                padding: EdgeInsets.only(top: 16.0, bottom: 8),
-                child: Divider(),
+
+              // Frameworks & Libraries
+              AnimatedFadeSlide(
+                delay: const Duration(milliseconds: 300),
+                child: _buildSkillCard(
+                  title: 'Frameworks & Libraries',
+                  icon: FontAwesomeIcons.layerGroup,
+                  skills: [
+                    SkillData('Flutter', 0.95, const Color(0xFF02569B)),
+                    SkillData('React Native', 0.8, const Color(0xFF61DAFB)),
+                    SkillData('Django', 0.75, const Color(0xFF092E20)),
+                    SkillData('Node.js', 0.7, const Color(0xFF339933)),
+                    SkillData('Express.js', 0.7, const Color(0xFF000000)),
+                  ],
+                ),
               ),
-              Wrap(
-                spacing: 8,
-                runSpacing: 8,
+
+              // Tools & Design
+              AnimatedFadeSlide(
+                delay: const Duration(milliseconds: 400),
+                child: _buildSkillCard(
+                  title: 'Tools & Design',
+                  icon: FontAwesomeIcons.tools,
+                  skills: [
+                    SkillData('Figma', 0.9, const Color(0xFFF24E1E)),
+                    SkillData('Git', 0.85, const Color(0xFFF05032)),
+                    SkillData('Adobe XD', 0.8, const Color(0xFFFF61F6)),
+                    SkillData('Firebase', 0.8, const Color(0xFFFFCA28)),
+                    SkillData('VS Code', 0.9, const Color(0xFF007ACC)),
+                  ],
+                ),
+              ),
+            ],
+          ),
+
+          const SizedBox(height: 60),
+
+          // Additional Skills Section
+          AnimatedFadeSlide(
+            delay: const Duration(milliseconds: 500),
+            child: Container(
+              width: double.infinity,
+              constraints: const BoxConstraints(maxWidth: 800),
+              padding: const EdgeInsets.all(32),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    Theme.of(context).primaryColor.withOpacity(0.1),
+                    Theme.of(context).primaryColor.withOpacity(0.05),
+                  ],
+                ),
+                borderRadius: BorderRadius.circular(24),
+                border: Border.all(
+                  color: Theme.of(context).primaryColor.withOpacity(0.2),
+                  width: 1,
+                ),
+              ),
+              child: Column(
                 children: [
-                  Chip(
-                    label: const Text(
-                      'Dart',
-                    ),
-                    labelStyle: TextStyle(color: Colors.indigoAccent.shade700),
-                    side: BorderSide(color: Colors.indigoAccent.shade700),
+                  Icon(
+                    FontAwesomeIcons.lightbulb,
+                    color: Theme.of(context).primaryColor,
+                    size: 32,
                   ),
-                  Chip(
-                    label: const Text(
-                      'Java',
-                    ),
-                    labelStyle: TextStyle(color: Colors.indigoAccent.shade700),
-                    side: BorderSide(color: Colors.indigoAccent.shade700),
+                  const SizedBox(height: 16),
+                  Text(
+                    'Core Competencies',
+                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).primaryColor,
+                        ),
                   ),
-                  Chip(
-                    label: const Text(
-                      'Kotlin',
-                    ),
-                    labelStyle: TextStyle(color: Colors.indigoAccent.shade700),
-                    side: BorderSide(color: Colors.indigoAccent.shade700),
-                  ),
-                  Chip(
-                    label: const Text(
-                      'JavaScript',
-                    ),
-                    labelStyle: TextStyle(color: Colors.indigoAccent.shade700),
-                    side: BorderSide(color: Colors.indigoAccent.shade700),
-                  ),
-                  Chip(
-                    label: const Text(
-                      'TypeScript',
-                    ),
-                    labelStyle: TextStyle(color: Colors.indigoAccent.shade700),
-                    side: BorderSide(color: Colors.indigoAccent.shade700),
-                  )
-                ],
-              )
-            ],
-          ),
-        ),
-        Container(
-          width: _validationWiht(),
-          decoration: BoxDecoration(
-            color: Theme.of(context).cardColor,
-            borderRadius: BorderRadius.circular(20.0),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.cyan.withOpacity(0.3), // Color de la sombra
-                blurRadius: 5,
-                spreadRadius: 0.05,
-              ),
-            ],
-          ),
-          padding: const EdgeInsets.all(28),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              const Text(
-                'Frameworks',
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(top: 16.0, bottom: 8),
-                child: Divider(),
-              ),
-              Wrap(
-                spacing: 8,
-                runSpacing: 8,
-                children: [
-                  Chip(
-                    label: const Text(
-                      'Flutter',
-                    ),
-                    labelStyle: TextStyle(color: Colors.cyanAccent.shade700),
-                    side: BorderSide(color: Colors.cyanAccent.shade700),
-                  ),
-                  Chip(
-                    label: const Text(
-                      'Angular',
-                    ),
-                    labelStyle: TextStyle(color: Colors.cyanAccent.shade700),
-                    side: BorderSide(color: Colors.cyanAccent.shade700),
-                  ),
-                  Chip(
-                    label: const Text(
-                      'Django',
-                    ),
-                    labelStyle: TextStyle(color: Colors.cyanAccent.shade700),
-                    side: BorderSide(color: Colors.cyanAccent.shade700),
-                  ),
-                ],
-              )
-            ],
-          ),
-        ),
-        Container(
-          width: _validationWiht(),
-          decoration: BoxDecoration(
-            color: Theme.of(context).cardColor,
-            borderRadius: BorderRadius.circular(20.0),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.cyan.withOpacity(0.3), // Color de la sombra
-                blurRadius: 5,
-                spreadRadius: 0.05,
-              ),
-            ],
-          ),
-          padding: const EdgeInsets.all(28),
-          child: const Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text(
-                'Other Tools',
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 16.0, bottom: 8),
-                child: Divider(),
-              ),
-              Wrap(
-                spacing: 8,
-                runSpacing: 8,
-                children: [
-                  Chip(
-                    label: Text(
-                      'Figma',
-                    ),
-                    labelStyle: TextStyle(color: Colors.deepPurpleAccent),
-                    side: BorderSide(color: Colors.deepPurpleAccent),
-                  ),
-                  Chip(
-                    label: Text(
-                      'Illustrator',
-                    ),
-                    labelStyle: TextStyle(color: Colors.deepPurpleAccent),
-                    side: BorderSide(color: Colors.deepPurpleAccent),
-                  ),
-                  Chip(
-                    label: Text(
-                      'GIT',
-                    ),
-                    labelStyle: TextStyle(color: Colors.deepPurpleAccent),
-                    side: BorderSide(color: Colors.deepPurpleAccent),
+                  const SizedBox(height: 16),
+                  Wrap(
+                    alignment: WrapAlignment.center,
+                    spacing: 12,
+                    runSpacing: 12,
+                    children: [
+                      'Mobile Development',
+                      'Web Development',
+                      'UI/UX Design',
+                      'API Integration',
+                      'Database Design',
+                      'Agile Methodology',
+                      'Team Leadership',
+                      'Problem Solving',
+                    ].map((skill) => _buildCompetencyChip(skill)).toList(),
                   ),
                 ],
               ),
-            ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
+
+  Widget _buildSkillCard({
+    required String title,
+    required IconData icon,
+    required List<SkillData> skills,
+  }) {
+    return AnimatedHoverContainer(
+      hoverScale: 1.02,
+      hoverElevation: 15,
+      hoverShadowColor: Theme.of(context).primaryColor,
+      child: Container(
+        width: _validationWidth(),
+        padding: const EdgeInsets.all(24),
+        decoration: BoxDecoration(
+          color: Theme.of(context).cardColor,
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(
+            color: Theme.of(context).dividerColor.withOpacity(0.2),
+            width: 1,
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Theme.of(context).shadowColor.withOpacity(0.1),
+              blurRadius: 20,
+              spreadRadius: 0,
+              offset: const Offset(0, 10),
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Card Header
+            Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).primaryColor.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Icon(
+                    icon,
+                    color: Theme.of(context).primaryColor,
+                    size: 20,
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Text(
+                    title,
+                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                          fontWeight: FontWeight.w600,
+                        ),
+                  ),
+                ),
+              ],
+            ),
+
+            const SizedBox(height: 24),
+
+            // Skills List
+            ...skills.asMap().entries.map((entry) {
+              int index = entry.key;
+              SkillData skill = entry.value;
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 16),
+                child: AnimatedCircularProgress(
+                  progress: skill.level,
+                  label: skill.name,
+                  color: skill.color,
+                  delay: Duration(milliseconds: 100 * (index + 1)),
+                ),
+              );
+            }).toList(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCompetencyChip(String skill) {
+    return AnimatedHoverContainer(
+      hoverScale: 1.05,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        decoration: BoxDecoration(
+          color: Theme.of(context).cardColor,
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(
+            color: Theme.of(context).primaryColor.withOpacity(0.3),
+            width: 1,
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Theme.of(context).shadowColor.withOpacity(0.1),
+              blurRadius: 8,
+              spreadRadius: 0,
+              offset: const Offset(0, 2),
+            ),
+          ],
+        ),
+        child: Text(
+          skill,
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                color: Theme.of(context).primaryColor,
+                fontWeight: FontWeight.w500,
+              ),
+        ),
+      ),
+    );
+  }
+}
+
+class SkillData {
+  final String name;
+  final double level;
+  final Color color;
+
+  SkillData(this.name, this.level, this.color);
 }
