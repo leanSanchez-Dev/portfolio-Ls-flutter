@@ -22,10 +22,10 @@ class _AboutState extends State<About> {
     return Container(
       margin: const EdgeInsets.only(top: 20),
       width: context.screenWidth < 900
-          ? context.screenWidth * 0.93
+          ? context.screenWidth * 0.95
           : context.screenWidth < 1600
-              ? context.screenWidth * 0.4
-              : context.screenWidth * 0.2,
+              ? context.screenWidth * 0.42
+              : context.screenWidth * 0.3,
       decoration: BoxDecoration(
         color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(20.0),

@@ -64223,7 +64223,7 @@ p=A.b([new A.ce(0.05,B.b8,A.S(B.c.a2(76.5),0,188,212),B.f,5)],t.sq)
 if(A.aE(a,B.F,j).w.a.a>900)o=A.aE(a,B.F,j).w.a.b+50
 else o=A.aE(a,B.F,j).w.a.a<900?l:A.aE(a,B.F,j).w.a.b*0.7
 n=t.D
-return A.cx(l,A.eV(A.b([A.eV(A.b([A.mv(B.c7,A.b([A.abf(m.d?A.ac5("assets/dev_bg.png",A.aE(a,l,j).w.a.b*0.2,B.OJ):A.ac5("assets/ls_bg.png",A.aE(a,l,j).w.a.b*0.2,B.OK),B.A9,B.e3,B.e3),B.vE,A.E6(1,new A.hT(B.AK,30,m.gZK(),l),l,l,l,1,l,l)],n),B.q,B.c_),B.Fs,B.Fr,new A.ci(B.kf,A.Gy(B.dE,A.b([A.eT(B.cc,1,B.ND,l,l,B.aW,B.p),A.eT(B.cc,1,B.NK,l,l,B.aW,B.p),A.eT(B.cc,1,B.NC,l,l,B.aW,B.p),A.eT(B.cc,1,B.NQ,l,l,B.aW,B.p)],n),B.aT,8,8),l),B.hd,B.f_,new A.j9(B.AG,"Linkedin","Leonardo Sanchez",new A.a38(m),l),B.Iz,new A.j9(B.AJ,"E-mail","Leansanchez14@gmail.com",new A.a39(),l),B.f_,new A.j9(B.ks,"GitHub",k,new A.a3a(m),l),B.f_,new A.j9(B.AC,"GitLab",k,new A.a3b(m),l),B.f_],n),B.R,B.ad,B.a2),B.zv],n),B.R,B.hL,B.a2),B.q,l,l,new A.c3(r.at,l,l,q,p,l,B.a7),l,o,B.hg,B.hi,l,l,s)},
+return A.cx(l,A.eV(A.b([A.eV(A.b([A.mv(B.c7,A.b([A.abf(m.d?A.ac5("assets/dev_bg.png",A.aE(a,l,j).w.a.b*0.2,B.OJ):A.ac5("assets/ls_bg.png",A.aE(a,l,j).w.a.b*0.2,B.OK),B.A9,B.e3,B.e3),B.vE,A.E6(1,new A.hT(B.AK,30,m.gZK(),l),l,l,l,1,l,l)],n),B.q,B.c_),B.Fs,B.Fr,new A.ci(B.kf,A.Gy(B.dE,A.b([A.eT(B.cc,1,B.ND,l,l,B.aW,B.p),A.eT(B.cc,1,B.NJ,l,l,B.aW,B.p),A.eT(B.cc,1,B.NC,l,l,B.aW,B.p),A.eT(B.cc,1,B.NQ,l,l,B.aW,B.p)],n),B.aT,8,8),l),B.hd,B.f_,new A.j9(B.AG,"Linkedin","Leonardo Sanchez",new A.a38(m),l),B.Iz,new A.j9(B.AJ,"E-mail","Leansanchez14@gmail.com",new A.a39(),l),B.f_,new A.j9(B.ks,"GitHub",k,new A.a3a(m),l),B.f_,new A.j9(B.AC,"GitLab",k,new A.a3b(m),l),B.f_],n),B.R,B.ad,B.a2),B.zv],n),B.R,B.hL,B.a2),B.q,l,l,new A.c3(r.at,l,l,q,p,l,B.a7),l,o,B.hg,B.hi,l,l,s)},
 ZL(){this.av(new A.a37(this))},
 mC(a,b){return this.a4i(a,!0)},
 a4i(a,b){var s=0,r=A.P(t.H),q
@@ -64335,12 +64335,12 @@ if(p.a.a<1600){r.toString
 p=A.aE(r,B.F,s).w.a.a*0.9}else{r.toString
 p=A.aE(r,B.F,s).w.a.a*0.82/3}}return p},
 K(a){var s,r=null,q=A.cx(B.O,A.fN("My skills".toUpperCase(),B.f2,r),B.q,r,r,r,r,r,r,B.Ae,r,r,r),p=this.xJ(),o=A.a3(a),n=A.el(20),m=B.c.a2(76.5),l=t.sq,k=A.b([new A.ce(0.05,B.b8,A.S(m,0,188,212),B.f,5)],l),j=t.D
-p=A.cx(r,A.eV(A.b([B.NJ,B.i_,A.Gy(B.aT,A.b([A.eT(r,r,B.NV,r,A.dd(r,r,B.aU,r,r,r,r,r,r,r,r,r,r,r,r,r,r,!0,r,r,r,r,r,r,r,r),r,new A.be(B.aU,1,B.D,-1)),A.eT(r,r,B.NR,r,A.dd(r,r,B.aU,r,r,r,r,r,r,r,r,r,r,r,r,r,r,!0,r,r,r,r,r,r,r,r),r,new A.be(B.aU,1,B.D,-1)),A.eT(r,r,B.NP,r,A.dd(r,r,B.aU,r,r,r,r,r,r,r,r,r,r,r,r,r,r,!0,r,r,r,r,r,r,r,r),r,new A.be(B.aU,1,B.D,-1)),A.eT(r,r,B.NO,r,A.dd(r,r,B.aU,r,r,r,r,r,r,r,r,r,r,r,r,r,r,!0,r,r,r,r,r,r,r,r),r,new A.be(B.aU,1,B.D,-1)),A.eT(r,r,B.NM,r,A.dd(r,r,B.aU,r,r,r,r,r,r,r,r,r,r,r,r,r,r,!0,r,r,r,r,r,r,r,r),r,new A.be(B.aU,1,B.D,-1))],j),B.aT,8,8)],j),B.aB,B.ad,B.a2),B.q,r,r,new A.c3(o.at,r,r,n,k,r,B.a7),r,r,r,B.hh,r,r,p)
+p=A.cx(r,A.eV(A.b([B.NI,B.i_,A.Gy(B.aT,A.b([A.eT(r,r,B.NV,r,A.dd(r,r,B.aU,r,r,r,r,r,r,r,r,r,r,r,r,r,r,!0,r,r,r,r,r,r,r,r),r,new A.be(B.aU,1,B.D,-1)),A.eT(r,r,B.NR,r,A.dd(r,r,B.aU,r,r,r,r,r,r,r,r,r,r,r,r,r,r,!0,r,r,r,r,r,r,r,r),r,new A.be(B.aU,1,B.D,-1)),A.eT(r,r,B.NP,r,A.dd(r,r,B.aU,r,r,r,r,r,r,r,r,r,r,r,r,r,r,!0,r,r,r,r,r,r,r,r),r,new A.be(B.aU,1,B.D,-1)),A.eT(r,r,B.NN,r,A.dd(r,r,B.aU,r,r,r,r,r,r,r,r,r,r,r,r,r,r,!0,r,r,r,r,r,r,r,r),r,new A.be(B.aU,1,B.D,-1)),A.eT(r,r,B.NL,r,A.dd(r,r,B.aU,r,r,r,r,r,r,r,r,r,r,r,r,r,r,!0,r,r,r,r,r,r,r,r),r,new A.be(B.aU,1,B.D,-1))],j),B.aT,8,8)],j),B.aB,B.ad,B.a2),B.q,r,r,new A.c3(o.at,r,r,n,k,r,B.a7),r,r,r,B.hh,r,r,p)
 k=this.xJ()
 n=A.a3(a)
 o=A.el(20)
 s=A.b([new A.ce(0.05,B.b8,A.S(m,0,188,212),B.f,5)],l)
-k=A.cx(r,A.eV(A.b([B.Nx,B.i_,A.Gy(B.aT,A.b([A.eT(r,r,B.NS,r,A.dd(r,r,B.cd,r,r,r,r,r,r,r,r,r,r,r,r,r,r,!0,r,r,r,r,r,r,r,r),r,new A.be(B.cd,1,B.D,-1)),A.eT(r,r,B.Ny,r,A.dd(r,r,B.cd,r,r,r,r,r,r,r,r,r,r,r,r,r,r,!0,r,r,r,r,r,r,r,r),r,new A.be(B.cd,1,B.D,-1)),A.eT(r,r,B.NN,r,A.dd(r,r,B.cd,r,r,r,r,r,r,r,r,r,r,r,r,r,r,!0,r,r,r,r,r,r,r,r),r,new A.be(B.cd,1,B.D,-1))],j),B.aT,8,8)],j),B.aB,B.ad,B.a2),B.q,r,r,new A.c3(n.at,r,r,o,s,r,B.a7),r,r,r,B.hh,r,r,k)
+k=A.cx(r,A.eV(A.b([B.Nx,B.i_,A.Gy(B.aT,A.b([A.eT(r,r,B.NS,r,A.dd(r,r,B.cd,r,r,r,r,r,r,r,r,r,r,r,r,r,r,!0,r,r,r,r,r,r,r,r),r,new A.be(B.cd,1,B.D,-1)),A.eT(r,r,B.Ny,r,A.dd(r,r,B.cd,r,r,r,r,r,r,r,r,r,r,r,r,r,r,!0,r,r,r,r,r,r,r,r),r,new A.be(B.cd,1,B.D,-1)),A.eT(r,r,B.NM,r,A.dd(r,r,B.cd,r,r,r,r,r,r,r,r,r,r,r,r,r,r,!0,r,r,r,r,r,r,r,r),r,new A.be(B.cd,1,B.D,-1))],j),B.aT,8,8)],j),B.aB,B.ad,B.a2),B.q,r,r,new A.c3(n.at,r,r,o,s,r,B.a7),r,r,r,B.hh,r,r,k)
 s=this.xJ()
 return A.Gy(B.dE,A.b([q,p,k,A.cx(r,B.zu,B.q,r,r,new A.c3(A.a3(a).at,r,r,A.el(20),A.b([new A.ce(0.05,B.b8,A.S(m,0,188,212),B.f,5)],l),r,B.a7),r,r,r,B.hh,r,r,s)],j),B.dE,30,30)}}
 A.wB.prototype={
@@ -64381,7 +64381,7 @@ af(){var s=null,r=t.A
 return new A.Ko(A.b([],t.D),new A.bf(s,r),new A.bf(s,r),new A.bf(s,r),new A.bf(s,r))}}
 A.Ko.prototype={
 aC(){var s=this,r=null,q=B.c.a2(76.5),p=t.rc
-s.d=A.b([new A.ci(B.e8,A.BV(B.NG,new A.a7q(s),A.kV(r,r,r,r,B.f4,r,r,r,r,r,r,r,r,r,r,r,new A.bv(A.S(q,0,188,212),p),r,r,r,r,r,r,r)),r),new A.ci(B.e8,A.BV(B.NH,new A.a7r(s),A.kV(r,r,r,r,B.f4,r,r,r,r,r,r,r,r,r,r,r,new A.bv(A.S(q,0,188,212),p),r,r,r,r,r,r,r)),r),new A.ci(B.e8,A.BV(B.NA,new A.a7s(s),A.kV(r,r,r,r,B.f4,r,r,r,r,r,r,r,r,r,r,r,new A.bv(A.S(q,0,188,212),p),r,r,r,r,r,r,r)),r),new A.ci(B.e8,A.BV(B.NY,new A.a7t(s),A.kV(r,r,r,r,B.f4,r,r,r,r,r,r,r,r,r,r,r,new A.bv(A.S(q,0,188,212),p),r,r,r,r,r,r,r)),r)],t.D)
+s.d=A.b([new A.ci(B.e8,A.BV(B.NF,new A.a7q(s),A.kV(r,r,r,r,B.f4,r,r,r,r,r,r,r,r,r,r,r,new A.bv(A.S(q,0,188,212),p),r,r,r,r,r,r,r)),r),new A.ci(B.e8,A.BV(B.NG,new A.a7r(s),A.kV(r,r,r,r,B.f4,r,r,r,r,r,r,r,r,r,r,r,new A.bv(A.S(q,0,188,212),p),r,r,r,r,r,r,r)),r),new A.ci(B.e8,A.BV(B.NA,new A.a7s(s),A.kV(r,r,r,r,B.f4,r,r,r,r,r,r,r,r,r,r,r,new A.bv(A.S(q,0,188,212),p),r,r,r,r,r,r,r)),r),new A.ci(B.e8,A.BV(B.NY,new A.a7t(s),A.kV(r,r,r,r,B.f4,r,r,r,r,r,r,r,r,r,r,r,new A.bv(A.S(q,0,188,212),p),r,r,r,r,r,r,r)),r)],t.D)
 s.aW()},
 K(a){var s,r,q,p=this,o=null,n=A.aE(a,o,t.w).w
 n=p.e=!(n.a.a>700)
@@ -64391,7 +64391,7 @@ r=A.ao([null,0],t.LO,t.S)
 q=n.length
 n=new A.BP(new A.D5(new A.a11(!0,!0,!0,n,r),o,B.N,!1,o,o,B.ws,!1,o,q,B.at,B.uT,o,B.a1,B.ab,o),o)}else n=o
 r=t.D
-return new A.vi(new A.qD(B.NI,s,new A.Kp(o,o,1/0,56),o),new A.Fu(B.wP,A.kZ(A.eV(A.b([A.Gy(B.dE,A.b([B.wo,new A.wB(p.r)],r),B.aT,0,30),new A.vL(p.f),new A.uz(p.w),B.vF,new A.qH(p.x),B.vF,B.Ax],r),B.R,B.ad,B.a2),o,o),o),n,o)}}
+return new A.vi(new A.qD(B.NH,s,new A.Kp(o,o,1/0,56),o),new A.Fu(B.wP,A.kZ(A.eV(A.b([A.Gy(B.dE,A.b([B.wo,new A.wB(p.r)],r),B.aT,0,30),new A.vL(p.f),new A.uz(p.w),B.vF,new A.qH(p.x),B.vF,B.Ax],r),B.R,B.ad,B.a2),o,o),o),n,o)}}
 A.a7q.prototype={
 $0(){var s,r=this.a
 if(r.e){s=r.c
@@ -67626,8 +67626,8 @@ B.fx=new A.be(B.pS,1,B.D,-1)
 B.ye=new A.l_(B.NB,B.iH,null,B.fx,null,null,null,null)
 B.NU=new A.bu("Illustrator",null,null,null,null)
 B.yc=new A.l_(B.NU,B.iH,null,B.fx,null,null,null,null)
-B.NL=new A.bu("GIT",null,null,null,null)
-B.yd=new A.l_(B.NL,B.iH,null,B.fx,null,null,null,null)
+B.NK=new A.bu("GIT",null,null,null,null)
+B.yd=new A.l_(B.NK,B.iH,null,B.fx,null,null,null,null)
 B.Cu=A.b(s([B.ye,B.yc,B.yd]),t.D)
 B.P1=new A.wC(B.aT,8,B.aT,8,B.Cu,null)
 B.Ca=A.b(s([B.NW,B.i_,B.P1]),t.D)
@@ -68919,8 +68919,8 @@ B.Fo=new A.DP(0,"portrait")
 B.Fp=new A.DP(1,"landscape")
 B.Fq=new A.uk(null)
 B.kg=new A.aR(0,8,0,8)
-B.NF=new A.bu("Soy desarrollador mobile con m\xe1s de 5 a\xf1os de experiencia en tecnolog\xeda, especializado en Flutter para la creaci\xf3n de aplicaciones Android e iOS. A lo largo de mi carrera he trabajado en startups y empresas del sector financiero y tecnol\xf3gico, participando en proyectos de alto impacto y enfrentando desaf\xedos reales en producci\xf3n.\n\nMe enfoco en construir soluciones m\xf3viles eficientes, escalables y orientadas al usuario, aplicando buenas pr\xe1cticas de arquitectura, integraci\xf3n y mantenimiento. Actualmente contin\xfao perfeccionando mis habilidades t\xe9cnicas y mi fluidez en ingl\xe9s, con el objetivo de seguir creciendo profesionalmente y aportar valor a nivel internacional.",null,null,B.aS,null)
-B.Fr=new A.ci(B.kg,B.NF,null)
+B.NO=new A.bu("Soy desarrollador mobile con m\xe1s de 5 a\xf1os de experiencia en tecnolog\xeda, especializado en Flutter para la creaci\xf3n de aplicaciones Android e iOS. A lo largo de mi carrera he trabajado en startups y empresas del sector financiero y tecnol\xf3gico, participando en proyectos de alto impacto y enfrentando desaf\xedos reales en producci\xf3n. Me enfoco en construir soluciones m\xf3viles eficientes, escalables y orientadas al usuario, aplicando buenas pr\xe1cticas de arquitectura, integraci\xf3n y mantenimiento. Actualmente contin\xfao perfeccionando mis habilidades t\xe9cnicas y mi fluidez en ingl\xe9s, con el objetivo de seguir creciendo profesionalmente y aportar valor a nivel internacional.",null,null,B.aS,null)
+B.Fr=new A.ci(B.kg,B.NO,null)
 B.Lh=new A.i(!0,null,null,null,null,null,28,B.ce,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)
 B.NT=new A.bu("Leonardo Sanchez",null,B.Lh,B.aS,null)
 B.Fs=new A.ci(B.kg,B.NT,null)
@@ -69551,14 +69551,14 @@ B.NC=new A.bu("App Developer",null,B.dA,null,null)
 B.ND=new A.bu("Flutter Developer",null,B.dA,null,null)
 B.M2=new A.i(!0,B.hN,null,null,null,null,14,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)
 B.NE=new A.bu("\xa9 2024 - LeanSanchez-Dev",null,B.M2,null,null)
-B.NG=new A.bu("Work Experience",null,B.dz,null,null)
-B.NH=new A.bu("Skills",null,B.dz,null,null)
-B.NI=new A.bu("LeanSanchez - Dev",null,null,null,null)
-B.NJ=new A.bu("Programing languages",null,B.iI,null,null)
-B.NK=new A.bu("UX / UI",null,B.dA,null,null)
-B.NM=new A.bu("TypeScript",null,null,null,null)
-B.NN=new A.bu("Django",null,null,null,null)
-B.NO=new A.bu("JavaScript",null,null,null,null)
+B.NF=new A.bu("Work Experience",null,B.dz,null,null)
+B.NG=new A.bu("Skills",null,B.dz,null,null)
+B.NH=new A.bu("LeanSanchez - Dev",null,null,null,null)
+B.NI=new A.bu("Programing languages",null,B.iI,null,null)
+B.NJ=new A.bu("UX / UI",null,B.dA,null,null)
+B.NL=new A.bu("TypeScript",null,null,null,null)
+B.NM=new A.bu("Django",null,null,null,null)
+B.NN=new A.bu("JavaScript",null,null,null,null)
 B.NP=new A.bu("Kotlin",null,null,null,null)
 B.NQ=new A.bu("Frontend Developer",null,B.dA,null,null)
 B.NR=new A.bu("Java",null,null,null,null)
