@@ -29,7 +29,7 @@ class _AboutState extends State<About> with TickerProviderStateMixin {
       duration: const Duration(milliseconds: 1200),
       vsync: this,
     );
-    
+
     if (mounted) {
       _profileController.forward();
     }
@@ -114,7 +114,8 @@ class _AboutState extends State<About> with TickerProviderStateMixin {
                         borderRadius: BorderRadius.circular(20),
                         boxShadow: [
                           BoxShadow(
-                            color: Theme.of(context).primaryColor.withOpacity(0.2),
+                            color:
+                                Theme.of(context).primaryColor.withOpacity(0.2),
                             blurRadius: 20,
                             offset: const Offset(0, 10),
                           ),
@@ -154,7 +155,9 @@ class _AboutState extends State<About> with TickerProviderStateMixin {
                             borderRadius: BorderRadius.circular(16),
                             boxShadow: [
                               BoxShadow(
-                                color: Theme.of(context).primaryColor.withOpacity(0.3),
+                                color: Theme.of(context)
+                                    .primaryColor
+                                    .withOpacity(0.3),
                                 blurRadius: 8,
                                 offset: const Offset(0, 4),
                               ),
@@ -186,7 +189,8 @@ class _AboutState extends State<About> with TickerProviderStateMixin {
                 ),
                 const SizedBox(height: 8),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
                   decoration: BoxDecoration(
                     color: AppColors.getChipBackground(context),
                     borderRadius: BorderRadius.circular(20),
@@ -196,6 +200,7 @@ class _AboutState extends State<About> with TickerProviderStateMixin {
                   ),
                   child: Text(
                     AppLocalizations.of(context)!.roleTitle,
+                    textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color: AppColors.getChipText(context),
                           fontWeight: FontWeight.w600,
@@ -228,7 +233,10 @@ class _AboutState extends State<About> with TickerProviderStateMixin {
               AppLocalizations.of(context)!.aboutMeDescription,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     height: 1.6,
-                    color: Theme.of(context).colorScheme.onSurface.withOpacity(0.8),
+                    color: Theme.of(context)
+                        .colorScheme
+                        .onSurface
+                        .withOpacity(0.8),
                   ),
               textAlign: TextAlign.center,
             ),
@@ -240,10 +248,10 @@ class _AboutState extends State<About> with TickerProviderStateMixin {
 
   Widget _buildSkillChips() {
     final skills = [
-      AppLocalizations.of(context)!.flutterDeveloper,
-      AppLocalizations.of(context)!.uxUiDesign,
-      AppLocalizations.of(context)!.appDeveloper,
+      // AppLocalizations.of(context)!.flutterDeveloper,
+      // AppLocalizations.of(context)!.appDeveloper,
       AppLocalizations.of(context)!.frontendDeveloper,
+      AppLocalizations.of(context)!.uxUiDesign,
     ];
 
     return StaggeredList(
@@ -254,7 +262,7 @@ class _AboutState extends State<About> with TickerProviderStateMixin {
   Widget _buildSkillChip(String skill) {
     return AnimatedHoverContainer(
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
         margin: const EdgeInsets.all(4),
         decoration: BoxDecoration(
           color: AppColors.getChipBackground(context),
@@ -322,7 +330,8 @@ class _AboutState extends State<About> with TickerProviderStateMixin {
     );
   }
 
-  Widget _buildContactItem(String title, String subtitle, IconData icon, VoidCallback onTap) {
+  Widget _buildContactItem(
+      String title, String subtitle, IconData icon, VoidCallback onTap) {
     return AnimatedHoverContainer(
       child: InkWell(
         onTap: onTap,
@@ -364,7 +373,10 @@ class _AboutState extends State<About> with TickerProviderStateMixin {
                     Text(
                       subtitle,
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                            color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onSurface
+                                .withOpacity(0.7),
                           ),
                     ),
                   ],

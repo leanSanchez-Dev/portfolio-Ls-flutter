@@ -108,206 +108,206 @@ class _CVSectionState extends State<CVSection> {
     final theme = Theme.of(context);
 
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 80, horizontal: 20),
+      padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
       child: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 1200),
           child: Column(
             children: [
-              // Título de la sección
-              AnimatedFadeSlide(
-                duration: const Duration(milliseconds: 600),
-                child: Text(
-                  'Mi CV',
-                  style: theme.textTheme.headlineMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: theme.primaryColor,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 16),
-              AnimatedFadeSlide(
-                delay: const Duration(milliseconds: 200),
-                duration: const Duration(milliseconds: 600),
-                child: Text(
-                  'Descarga o previsualiza mi curriculum vitae',
-                  style: theme.textTheme.bodyLarge?.copyWith(
-                    color: theme.textTheme.bodyLarge?.color
-                        ?.withValues(alpha: 0.7),
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              const SizedBox(height: 40),
-
-              if (_isLoading)
-                const CircularProgressIndicator()
-              else if (_cvData != null) ...[
-                // Tarjeta del CV
-                AnimatedFadeSlide(
-                  delay: const Duration(milliseconds: 400),
-                  duration: const Duration(milliseconds: 600),
-                  child: HoverCard(
-                    padding: const EdgeInsets.all(32),
-                    child: Column(
-                      children: [
-                        // Header del CV
-                        Row(
-                          children: [
-                            Container(
-                              width: 80,
-                              height: 80,
-                              decoration: BoxDecoration(
-                                color:
-                                    theme.primaryColor.withValues(alpha: 0.1),
-                                borderRadius: BorderRadius.circular(16),
-                              ),
-                              child: Icon(
-                                FontAwesomeIcons.fileText,
-                                size: 40,
-                                color: theme.primaryColor,
-                              ),
-                            ),
-                            const SizedBox(width: 24),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    _cvData!.name,
-                                    style:
-                                        theme.textTheme.headlineSmall?.copyWith(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 4),
-                                  Text(
-                                    _cvData!.title,
-                                    style: theme.textTheme.bodyLarge?.copyWith(
-                                      color: theme.primaryColor,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 8),
-                                  Text(
-                                    _cvData!.summary,
-                                    style: theme.textTheme.bodyMedium?.copyWith(
-                                      color: theme.textTheme.bodyMedium?.color
-                                          ?.withValues(alpha: 0.7),
-                                    ),
-                                    maxLines: 3,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 32),
-
-                        // Estadísticas del CV
-                        Row(
-                          children: [
-                            Expanded(
-                              child: _buildStatCard(
-                                icon: FontAwesomeIcons.briefcase,
-                                title: 'Experiencia',
-                                value: '${_cvData!.experience.length}',
-                                subtitle: 'empresas',
-                              ),
-                            ),
-                            const SizedBox(width: 16),
-                            Expanded(
-                              child: _buildStatCard(
-                                icon: FontAwesomeIcons.graduationCap,
-                                title: 'Educación',
-                                value: '${_cvData!.education.length}',
-                                subtitle: 'títulos',
-                              ),
-                            ),
-                            const SizedBox(width: 16),
-                            Expanded(
-                              child: _buildStatCard(
-                                icon: FontAwesomeIcons.code,
-                                title: 'Habilidades',
-                                value: '${_cvData!.skills.length}',
-                                subtitle: 'tecnologías',
-                              ),
-                            ),
-                            const SizedBox(width: 16),
-                            Expanded(
-                              child: _buildStatCard(
-                                icon: FontAwesomeIcons.projectDiagram,
-                                title: 'Proyectos',
-                                value: '${_cvData!.projects.length}',
-                                subtitle: 'completados',
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 32),
-
-                        // Botones de acción
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            AnimatedHoverContainer(
-                              hoverScale: 1.05,
-                              child: ElevatedButton.icon(
-                                onPressed: _isLoading ? null : _previewCV,
-                                icon: const Icon(FontAwesomeIcons.eye),
-                                label: const Text('Previsualizar'),
-                                style: ElevatedButton.styleFrom(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 24,
-                                    vertical: 16,
-                                  ),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            const SizedBox(width: 16),
-                            AnimatedHoverContainer(
-                              hoverScale: 1.05,
-                              child: ElevatedButton.icon(
-                                onPressed: _isLoading ? null : _downloadCV,
-                                icon: const Icon(FontAwesomeIcons.download),
-                                label: const Text('Descargar PDF'),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: theme.primaryColor,
-                                  foregroundColor: Colors.white,
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 24,
-                                    vertical: 16,
-                                  ),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
+              Column(
+                children: [
+                  // Título de la sección
+                  AnimatedFadeSlide(
+                    duration: const Duration(milliseconds: 600),
+                    child: Text(
+                      'Mi CV',
+                      style: theme.textTheme.headlineMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: theme.primaryColor,
+                      ),
                     ),
                   ),
-                ),
+                  const SizedBox(height: 16),
+                  AnimatedFadeSlide(
+                    delay: const Duration(milliseconds: 200),
+                    duration: const Duration(milliseconds: 600),
+                    child: Text(
+                      'Descarga o previsualiza mi curriculum vitae',
+                      style: theme.textTheme.bodyLarge?.copyWith(
+                        color: theme.textTheme.bodyLarge?.color
+                            ?.withValues(alpha: 0.7),
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  const SizedBox(height: 40),
 
-                const SizedBox(height: 40),
+                  if (_isLoading)
+                    const CircularProgressIndicator()
+                  else if (_cvData != null) ...[
+                    // Tarjeta del CV
+                    AnimatedFadeSlide(
+                      delay: const Duration(milliseconds: 400),
+                      duration: const Duration(milliseconds: 600),
+                      child: HoverCard(
+                        padding: const EdgeInsets.all(32),
+                        child: Column(
+                          children: [
+                            // Header del CV
+                            Row(
+                              children: [
+                                Container(
+                                  width: 80,
+                                  height: 80,
+                                  decoration: BoxDecoration(
+                                    color: theme.primaryColor
+                                        .withValues(alpha: 0.1),
+                                    borderRadius: BorderRadius.circular(16),
+                                  ),
+                                  child: Icon(
+                                    FontAwesomeIcons.fileText,
+                                    size: 40,
+                                    color: theme.primaryColor,
+                                  ),
+                                ),
+                                const SizedBox(width: 24),
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        _cvData!.name,
+                                        style: theme.textTheme.headlineSmall
+                                            ?.copyWith(
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 4),
+                                      Text(
+                                        _cvData!.title,
+                                        style:
+                                            theme.textTheme.bodyLarge?.copyWith(
+                                          color: theme.primaryColor,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 8),
+                                      Text(
+                                        _cvData!.summary,
+                                        style: theme.textTheme.bodyMedium
+                                            ?.copyWith(
+                                          color: theme
+                                              .textTheme.bodyMedium?.color
+                                              ?.withValues(alpha: 0.7),
+                                        ),
+                                        maxLines: 3,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 32),
 
-                // Vista previa de habilidades
-                AnimatedFadeSlide(
-                  delay: const Duration(milliseconds: 600),
-                  duration: const Duration(milliseconds: 600),
-                  child: _buildSkillsPreview(),
-                ),
-              ] else
-                const Text(
-                  'Error al cargar los datos del CV',
-                  style: TextStyle(color: Colors.red),
-                ),
+                            // Estadísticas del CV
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: _buildStatCard(
+                                    icon: FontAwesomeIcons.briefcase,
+                                    title: 'Experiencia',
+                                    value: '${_cvData!.experience.length}',
+                                    subtitle: 'empresas',
+                                  ),
+                                ),
+                                const SizedBox(width: 16),
+                                Expanded(
+                                  child: _buildStatCard(
+                                    icon: FontAwesomeIcons.graduationCap,
+                                    title: 'Educación',
+                                    value: '${_cvData!.education.length}',
+                                    subtitle: 'títulos',
+                                  ),
+                                ),
+                                const SizedBox(width: 16),
+                                Expanded(
+                                  child: _buildStatCard(
+                                    icon: FontAwesomeIcons.code,
+                                    title: 'Habilidades',
+                                    value: '${_cvData!.skills.length}',
+                                    subtitle: 'tecnologías',
+                                  ),
+                                ),
+                                const SizedBox(width: 16),
+                                Expanded(
+                                  child: _buildStatCard(
+                                    icon: FontAwesomeIcons.projectDiagram,
+                                    title: 'Proyectos',
+                                    value: '${_cvData!.projects.length}',
+                                    subtitle: 'completados',
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 32),
+
+                            // Botones de acción
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                AnimatedHoverContainer(
+                                  hoverScale: 1.05,
+                                  child: ElevatedButton.icon(
+                                    onPressed: _isLoading ? null : _previewCV,
+                                    icon: const Icon(FontAwesomeIcons.eye),
+                                    label: const Text('Previsualizar'),
+                                    style: ElevatedButton.styleFrom(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 24,
+                                        vertical: 16,
+                                      ),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(12),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(width: 16),
+                                AnimatedHoverContainer(
+                                  hoverScale: 1.05,
+                                  child: ElevatedButton.icon(
+                                    onPressed: _isLoading ? null : _downloadCV,
+                                    icon: const Icon(FontAwesomeIcons.download),
+                                    label: const Text('Descargar PDF'),
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: theme.primaryColor,
+                                      foregroundColor: Colors.white,
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 24,
+                                        vertical: 16,
+                                      ),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(12),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    // Vista previa de habilidades
+                  ] else
+                    const Text(
+                      'Error al cargar los datos del CV',
+                      style: TextStyle(color: Colors.red),
+                    ),
+                ],
+              ),
             ],
           ),
         ),
@@ -361,69 +361,6 @@ class _CVSectionState extends State<CVSection> {
               color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.6),
             ),
             textAlign: TextAlign.center,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildSkillsPreview() {
-    final theme = Theme.of(context);
-
-    if (_cvData?.skills.isEmpty ?? true) return const SizedBox.shrink();
-
-    final topSkills = _cvData!.skills
-        .where((skill) => skill.proficiency >= 0.8)
-        .take(6)
-        .toList();
-
-    return HoverCard(
-      padding: const EdgeInsets.all(24),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Principales Habilidades',
-            style: theme.textTheme.headlineSmall?.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 16),
-          Wrap(
-            spacing: 12,
-            runSpacing: 12,
-            children: topSkills
-                .map((skill) => HoverChip(
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            skill.name,
-                            style: theme.textTheme.bodyMedium?.copyWith(
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          const SizedBox(width: 8),
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 6, vertical: 2),
-                            decoration: BoxDecoration(
-                              color: theme.primaryColor,
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Text(
-                              '${(skill.proficiency * 100).round()}%',
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 10,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ))
-                .toList(),
           ),
         ],
       ),
