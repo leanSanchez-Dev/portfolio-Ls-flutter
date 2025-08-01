@@ -6,9 +6,11 @@ import 'package:portfolio_ls/components/projects.dart';
 import 'package:portfolio_ls/components/work_experience.dart';
 import 'package:portfolio_ls/components/footer.dart';
 import 'package:portfolio_ls/components/skills.dart';
+import 'package:portfolio_ls/components/language_selector.dart';
 import 'package:portfolio_ls/providers/theme_provider.dart';
 import 'package:portfolio_ls/utils/animations.dart';
 import 'package:provider/provider.dart';
+import 'package:portfolio_ls/l10n/app_localizations.dart';
 
 class Portfolio extends StatefulWidget {
   const Portfolio({super.key});
@@ -38,98 +40,108 @@ class _PortfolioState extends State<Portfolio> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        controller: _scrollController,
-        slivers: [
-          // Modern App Bar
-          SliverAppBar(
-            expandedHeight: 80.0,
-            floating: true,
-            pinned: true,
-            snap: false,
-            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-            flexibleSpace: FlexibleSpaceBar(
-              background: Container(
-                decoration: BoxDecoration(
-                  color: Theme.of(context).scaffoldBackgroundColor,
-                  border: Border(
-                    bottom: BorderSide(
-                      color: Theme.of(context).dividerColor.withOpacity(0.1),
-                      width: 1,
+      body: Stack(
+        children: [
+          CustomScrollView(
+            controller: _scrollController,
+            slivers: [
+              // Modern App Bar
+              SliverAppBar(
+                expandedHeight: 80.0,
+                floating: true,
+                pinned: true,
+                snap: false,
+                backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                flexibleSpace: FlexibleSpaceBar(
+                  background: Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).scaffoldBackgroundColor,
+                      border: Border(
+                        bottom: BorderSide(
+                          color: Theme.of(context).dividerColor.withOpacity(0.1),
+                          width: 1,
+                        ),
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ),
-            title: AnimatedFadeSlide(
-              child: Row(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).primaryColor,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Text(
-                      'LS',
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                    ),
-                  ),
-                  const SizedBox(width: 12),
-                  Text(
-                    'Leonardo Sanchez',
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          fontWeight: FontWeight.w600,
+                title: AnimatedFadeSlide(
+                  child: Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).primaryColor,
+                          borderRadius: BorderRadius.circular(8),
                         ),
+                        child: Text(
+                          'LS',
+                          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Text(
+                        'Leonardo Sanchez',
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                              fontWeight: FontWeight.w600,
+                            ),
+                      ),
+                    ],
                   ),
+                ),
+                actions: [
+                  if (MediaQuery.of(context).size.width > 800)
+                    ..._buildDesktopNavigation(),
+                  const LanguageSelector(),
+                  const SizedBox(width: 12),
+                  _buildThemeToggle(),
+                  const SizedBox(width: 16),
                 ],
               ),
-            ),
-            actions: [
-              if (MediaQuery.of(context).size.width > 800)
-                ..._buildDesktopNavigation(),
-              _buildThemeToggle(),
-              const SizedBox(width: 16),
+
+              // Portfolio Content
+              SliverList(
+                delegate: SliverChildListDelegate([
+                  // About Section
+                  const About(),
+
+                  // Skills Section
+                  Container(
+                    key: skillsKey,
+                    child: const Skills(),
+                  ),
+
+                  // Work Experience Section
+                  Container(
+                    key: workExpKey,
+                    child: const WorkExperience(),
+                  ),
+
+                  // Projects Section
+                  Container(
+                    key: projectsKey,
+                    child: const Projects(),
+                  ),
+
+                  // Banner CTA Section
+                  const BannerInf(),
+
+                  // Footer Section
+                  Container(
+                    key: contactKey,
+                    child: const Footer(),
+                  ),
+                ]),
+              ),
             ],
           ),
-
-          // Portfolio Content
-          SliverList(
-            delegate: SliverChildListDelegate([
-              // About Section
-              const About(),
-
-              // Skills Section
-              Container(
-                key: skillsKey,
-                child: const Skills(),
-              ),
-
-              // Work Experience Section
-              Container(
-                key: workExpKey,
-                child: const WorkExperience(),
-              ),
-
-              // Projects Section
-              Container(
-                key: projectsKey,
-                child: const Projects(),
-              ),
-
-              // Banner CTA Section
-              const BannerInf(),
-
-              // Footer Section
-              Container(
-                key: contactKey,
-                child: const Footer(),
-              ),
-            ]),
-          ),
+          
+          // Floating Language Selector for mobile
+          if (MediaQuery.of(context).size.width <= 800)
+            const FloatingLanguageSelector(),
         ],
       ),
 

@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio_ls/utils/animations.dart';
 import 'package:portfolio_ls/utils/theme_data.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:portfolio_ls/l10n/app_localizations.dart';
 
 class BannerInf extends StatefulWidget {
   const BannerInf({super.key});
@@ -154,15 +155,36 @@ class _BannerInfState extends State<BannerInf> with TickerProviderStateMixin {
             child: Column(
               children: [
                 TypewriterText(
-                  text: "Let's Build Something Amazing!",
-                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                  text: AppLocalizations.of(context)!.hiThere,
+                  style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                         fontWeight: FontWeight.bold,
                         color: Theme.of(context).colorScheme.onSurface,
                       ),
                 ),
+                const SizedBox(height: 12),
+                Text(
+                  AppLocalizations.of(context)!.intro,
+                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                        fontWeight: FontWeight.w600,
+                        color: Theme.of(context).primaryColor,
+                      ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  AppLocalizations.of(context)!.roleTitle,
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        fontWeight: FontWeight.w500,
+                        color: Theme.of(context)
+                            .colorScheme
+                            .onSurface
+                            .withOpacity(0.8),
+                      ),
+                  textAlign: TextAlign.center,
+                ),
                 const SizedBox(height: 16),
                 Text(
-                  'Ready to bring your ideas to life? Let\'s collaborate and create exceptional mobile experiences together.',
+                  AppLocalizations.of(context)!.introDescription,
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                         height: 1.6,
                         color: Theme.of(context)
@@ -265,7 +287,7 @@ class _BannerInfState extends State<BannerInf> with TickerProviderStateMixin {
             size: 16,
           ),
           label: Text(
-            'Contact Me',
+            AppLocalizations.of(context)!.contactMe,
             style: TextStyle(
               color: Colors.white,
               fontSize: 16,
@@ -334,7 +356,7 @@ class _BannerInfState extends State<BannerInf> with TickerProviderStateMixin {
             size: 16,
           ),
           label: Text(
-            'View Projects',
+            AppLocalizations.of(context)!.viewProjects,
             style: TextStyle(
               color: Theme.of(context).brightness == Brightness.dark
                   ? Colors.white

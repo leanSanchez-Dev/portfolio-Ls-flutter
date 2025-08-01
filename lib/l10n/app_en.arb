@@ -1,0 +1,182 @@
+{
+  "appTitle": "Leonardo Sanchez - Portfolio",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  
+  "hello": "Hello",
+  "@hello": {
+    "description": "A greeting"
+  },
+  
+  "hiThere": "Hi there!",
+  "@hiThere": {
+    "description": "Casual greeting"
+  },
+  
+  "intro": "I'm Leonardo",
+  "@intro": {
+    "description": "Introduction text"
+  },
+  
+  "roleTitle": "Flutter Developer & Frontend Specialist",
+  "@roleTitle": {
+    "description": "Professional role title"
+  },
+  
+  "introDescription": "Passionate about creating exceptional mobile and web experiences with modern technologies. Specialized in Flutter development with solid experience in Angular and native Android.",
+  "@introDescription": {
+    "description": "Introduction description"
+  },
+  
+  "contactMe": "Contact Me",
+  "@contactMe": {
+    "description": "Contact button text"
+  },
+  
+  "viewProjects": "View Projects",
+  "@viewProjects": {
+    "description": "View projects button text"
+  },
+  
+  "aboutTitle": "About Me",
+  "@aboutTitle": {
+    "description": "About section title"
+  },
+  
+  "aboutDescription": "Flutter developer with {years}+ years of experience creating mobile and web applications. Passionate about clean code, exceptional user experience, and staying up-to-date with the latest technologies.",
+  "@aboutDescription": {
+    "description": "About section description",
+    "placeholders": {
+      "years": {
+        "type": "String",
+        "description": "Years of experience"
+      }
+    }
+  },
+  
+  "skillsTitle": "Skills & Expertise",
+  "@skillsTitle": {
+    "description": "Skills section title"
+  },
+  
+  "programmingLanguages": "Programming Languages",
+  "@programmingLanguages": {
+    "description": "Programming languages category"
+  },
+  
+  "frameworksLibraries": "Frameworks & Libraries",
+  "@frameworksLibraries": {
+    "description": "Frameworks and libraries category"
+  },
+  
+  "toolsDesign": "Tools & Design",
+  "@toolsDesign": {
+    "description": "Tools and design category"
+  },
+  
+  "coreCompetencies": "Core Competencies",
+  "@coreCompetencies": {
+    "description": "Core competencies section title"
+  },
+  
+  "flutterDeveloper": "Flutter Developer",
+  "@flutterDeveloper": {
+    "description": "Flutter developer role"
+  },
+  
+  "uxUiDesign": "UX / UI Design",
+  "@uxUiDesign": {
+    "description": "UX/UI design skill"
+  },
+  
+  "appDeveloper": "App Developer",
+  "@appDeveloper": {
+    "description": "App developer role"
+  },
+  
+  "frontendDeveloper": "Frontend Developer",
+  "@frontendDeveloper": {
+    "description": "Frontend developer role"
+  },
+  
+  "workExperienceTitle": "Work Experience",
+  "@workExperienceTitle": {
+    "description": "Work experience section title"
+  },
+  
+  "current": "Current",
+  "@current": {
+    "description": "Current position indicator"
+  },
+  
+  "projectsTitle": "Projects",
+  "@projectsTitle": {
+    "description": "Projects section title"
+  },
+  
+  "projectsDescription": "Explore some of my most recent work and contributions to the development community.",
+  "@projectsDescription": {
+    "description": "Projects section description"
+  },
+  
+  "viewOnGitHub": "View on GitHub",
+  "@viewOnGitHub": {
+    "description": "View on GitHub button text"
+  },
+  
+  "contactInfo": "Contact Information",
+  "@contactInfo": {
+    "description": "Contact information section title"
+  },
+  
+  "linkedin": "LinkedIn",
+  "@linkedin": {
+    "description": "LinkedIn social network"
+  },
+  
+  "email": "Email",
+  "@email": {
+    "description": "Email contact method"
+  },
+  
+  "github": "GitHub",
+  "@github": {
+    "description": "GitHub platform"
+  },
+  
+  "gitlab": "GitLab",
+  "@gitlab": {
+    "description": "GitLab platform"
+  },
+  
+  "technologies": "Technologies",
+  "@technologies": {
+    "description": "Technologies section"
+  },
+  
+  "responsibilities": "Responsibilities",
+  "@responsibilities": {
+    "description": "Responsibilities section"
+  },
+  
+  "projects": "Projects",
+  "@projects": {
+    "description": "Projects section"
+  },
+  
+  "language": "Language",
+  "@language": {
+    "description": "Language selector"
+  },
+  
+  "spanish": "Spanish",
+  "@spanish": {
+    "description": "Spanish language"
+  },
+  
+  "english": "English",
+  "@english": {
+    "description": "English language"
+  }
+}

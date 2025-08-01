@@ -4,6 +4,7 @@ import 'package:portfolio_ls/utils/animations.dart';
 import 'package:portfolio_ls/utils/social_row.dart';
 import 'package:portfolio_ls/utils/theme_data.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:portfolio_ls/l10n/app_localizations.dart';
 
 class About extends StatefulWidget {
   const About({super.key});
