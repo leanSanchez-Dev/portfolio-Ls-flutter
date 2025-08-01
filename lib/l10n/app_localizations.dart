@@ -385,6 +385,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Technologies:'**
   String get technologiesLabel;
+
+  /// Skills navigation item
+  ///
+  /// In en, this message translates to:
+  /// **'Skills'**
+  String get skillsNav;
+
+  /// Experience navigation item
+  ///
+  /// In en, this message translates to:
+  /// **'Experience'**
+  String get experienceNav;
+
+  /// Projects navigation item
+  ///
+  /// In en, this message translates to:
+  /// **'Projects'**
+  String get projectsNav;
+
+  /// Contact navigation item
+  ///
+  /// In en, this message translates to:
+  /// **'Contact'**
+  String get contactNav;
+
+  /// Tooltip for switching to light mode
+  ///
+  /// In en, this message translates to:
+  /// **'Switch to Light Mode'**
+  String get switchToLightMode;
+
+  /// Tooltip for switching to dark mode
+  ///
+  /// In en, this message translates to:
+  /// **'Switch to Dark Mode'**
+  String get switchToDarkMode;
+
+  /// Light mode label
+  ///
+  /// In en, this message translates to:
+  /// **'Light Mode'**
+  String get lightMode;
+
+  /// Dark mode label
+  ///
+  /// In en, this message translates to:
+  /// **'Dark Mode'**
+  String get darkMode;
 }
 
 class _AppLocalizationsDelegate

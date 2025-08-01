@@ -154,10 +154,10 @@ class _PortfolioState extends State<Portfolio> {
 
   List<Widget> _buildDesktopNavigation() {
     return [
-      _buildNavItem('Skills', () => _scrollToSection(skillsKey)),
-      _buildNavItem('Experience', () => _scrollToSection(workExpKey)),
-      _buildNavItem('Projects', () => _scrollToSection(projectsKey)),
-      _buildNavItem('Contact', () => _scrollToSection(contactKey)),
+      _buildNavItem(AppLocalizations.of(context)!.skillsNav, () => _scrollToSection(skillsKey)),
+      _buildNavItem(AppLocalizations.of(context)!.experienceNav, () => _scrollToSection(workExpKey)),
+      _buildNavItem(AppLocalizations.of(context)!.projectsNav, () => _scrollToSection(projectsKey)),
+      _buildNavItem(AppLocalizations.of(context)!.contactNav, () => _scrollToSection(contactKey)),
     ];
   }
 
@@ -192,8 +192,8 @@ class _PortfolioState extends State<Portfolio> {
               ),
             ),
             tooltip: themeProvider.isDarkMode
-                ? 'Switch to Light Mode'
-                : 'Switch to Dark Mode',
+                ? AppLocalizations.of(context)!.switchToLightMode
+                : AppLocalizations.of(context)!.switchToDarkMode,
           ),
         );
       },
@@ -246,22 +246,22 @@ class _PortfolioState extends State<Portfolio> {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 children: [
                   _buildMobileNavItem(
-                    'Skills',
+                    AppLocalizations.of(context)!.skillsNav,
                     FontAwesomeIcons.code,
                     () => _scrollToSection(skillsKey),
                   ),
                   _buildMobileNavItem(
-                    'Experience',
+                    AppLocalizations.of(context)!.experienceNav,
                     FontAwesomeIcons.briefcase,
                     () => _scrollToSection(workExpKey),
                   ),
                   _buildMobileNavItem(
-                    'Projects',
+                    AppLocalizations.of(context)!.projectsNav,
                     FontAwesomeIcons.folderOpen,
                     () => _scrollToSection(projectsKey),
                   ),
                   _buildMobileNavItem(
-                    'Contact',
+                    AppLocalizations.of(context)!.contactNav,
                     FontAwesomeIcons.envelope,
                     () => _scrollToSection(contactKey),
                   ),
@@ -282,7 +282,7 @@ class _PortfolioState extends State<Portfolio> {
                       color: Theme.of(context).primaryColor,
                     ),
                     title: Text(
-                      themeProvider.isDarkMode ? 'Light Mode' : 'Dark Mode',
+                      themeProvider.isDarkMode ? AppLocalizations.of(context)!.lightMode : AppLocalizations.of(context)!.darkMode,
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
                     onTap: () {

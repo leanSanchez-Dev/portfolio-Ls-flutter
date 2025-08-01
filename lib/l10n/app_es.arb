@@ -46,5 +46,13 @@
   "currently": "Actualmente",
   "projectsLabel": "Proyectos:",
   "responsibilitiesLabel": "Responsabilidades:",
-  "technologiesLabel": "Tecnologías:"
+  "technologiesLabel": "Tecnologías:",
+  "skillsNav": "Habilidades",
+  "experienceNav": "Experiencia",
+  "projectsNav": "Proyectos",
+  "contactNav": "Contacto",
+  "switchToLightMode": "Cambiar a Modo Claro",
+  "switchToDarkMode": "Cambiar a Modo Oscuro",
+  "lightMode": "Modo Claro",
+  "darkMode": "Modo Oscuro"
 }

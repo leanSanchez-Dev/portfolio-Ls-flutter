@@ -158,4 +158,28 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get technologiesLabel => 'Technologies:';
+
+  @override
+  String get skillsNav => 'Skills';
+
+  @override
+  String get experienceNav => 'Experience';
+
+  @override
+  String get projectsNav => 'Projects';
+
+  @override
+  String get contactNav => 'Contact';
+
+  @override
+  String get switchToLightMode => 'Switch to Light Mode';
+
+  @override
+  String get switchToDarkMode => 'Switch to Dark Mode';
+
+  @override
+  String get lightMode => 'Light Mode';
+
+  @override
+  String get darkMode => 'Dark Mode';
 }

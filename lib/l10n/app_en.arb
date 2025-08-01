@@ -243,5 +243,45 @@
   "technologiesLabel": "Technologies:",
   "@technologiesLabel": {
     "description": "Technologies section label"
+  },
+  
+  "skillsNav": "Skills",
+  "@skillsNav": {
+    "description": "Skills navigation item"
+  },
+  
+  "experienceNav": "Experience",
+  "@experienceNav": {
+    "description": "Experience navigation item"
+  },
+  
+  "projectsNav": "Projects",
+  "@projectsNav": {
+    "description": "Projects navigation item"
+  },
+  
+  "contactNav": "Contact",
+  "@contactNav": {
+    "description": "Contact navigation item"
+  },
+  
+  "switchToLightMode": "Switch to Light Mode",
+  "@switchToLightMode": {
+    "description": "Tooltip for switching to light mode"
+  },
+  
+  "switchToDarkMode": "Switch to Dark Mode",
+  "@switchToDarkMode": {
+    "description": "Tooltip for switching to dark mode"
+  },
+  
+  "lightMode": "Light Mode",
+  "@lightMode": {
+    "description": "Light mode label"
+  },
+  
+  "darkMode": "Dark Mode",
+  "@darkMode": {
+    "description": "Dark mode label"
   }
 }
