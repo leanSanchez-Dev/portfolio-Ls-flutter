@@ -33,9 +33,13 @@ class _ProjectsState extends State<Projects> with TickerProviderStateMixin {
       vsync: this,
     );
 
-    _headerController.forward();
+    if (mounted) {
+      _headerController.forward();
+    }
     Future.delayed(const Duration(milliseconds: 400), () {
-      _carouselController.forward();
+      if (mounted) {
+        _carouselController.forward();
+      }
     });
   }
 
@@ -48,9 +52,9 @@ class _ProjectsState extends State<Projects> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Container( 
       margin: const EdgeInsets.symmetric(vertical: 40),
-      width: double.infinity,
+      width: double.infinity, 
       child: Column(
         children: [
           _buildHeader(),

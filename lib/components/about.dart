@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio_ls/utils/animations.dart';
 import 'package:portfolio_ls/utils/social_row.dart';
+import 'package:portfolio_ls/utils/theme_data.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class About extends StatefulWidget {
@@ -28,9 +29,13 @@ class _AboutState extends State<About> with TickerProviderStateMixin {
       vsync: this,
     );
     
-    _profileController.forward();
+    if (mounted) {
+      _profileController.forward();
+    }
     Future.delayed(const Duration(milliseconds: 300), () {
-      _contentController.forward();
+      if (mounted) {
+        _contentController.forward();
+      }
     });
   }
 
@@ -55,11 +60,11 @@ class _AboutState extends State<About> with TickerProviderStateMixin {
       child: AnimatedFadeSlide(
         child: Card(
           elevation: 0,
-          color: Theme.of(context).cardColor,
+          color: AppColors.getCardBackground(context),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(24),
             side: BorderSide(
-              color: Theme.of(context).dividerColor.withOpacity(0.1),
+              color: AppColors.getBorder(context),
               width: 1,
             ),
           ),
@@ -182,16 +187,16 @@ class _AboutState extends State<About> with TickerProviderStateMixin {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
                   decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor.withOpacity(0.1),
+                    color: AppColors.getChipBackground(context),
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(
-                      color: Theme.of(context).primaryColor.withOpacity(0.2),
+                      color: AppColors.getBorderStrong(context),
                     ),
                   ),
                   child: Text(
                     'Flutter Developer',
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: Theme.of(context).primaryColor,
+                          color: AppColors.getChipText(context),
                           fontWeight: FontWeight.w600,
                         ),
                   ),
@@ -251,16 +256,16 @@ class _AboutState extends State<About> with TickerProviderStateMixin {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         margin: const EdgeInsets.all(4),
         decoration: BoxDecoration(
-          color: Theme.of(context).primaryColor.withOpacity(0.1),
+          color: AppColors.getChipBackground(context),
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
-            color: Theme.of(context).primaryColor.withOpacity(0.2),
+            color: AppColors.getBorderStrong(context),
           ),
         ),
         child: Text(
           skill,
           style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: Theme.of(context).primaryColor,
+                color: AppColors.getChipText(context),
                 fontWeight: FontWeight.w500,
               ),
         ),
@@ -324,9 +329,10 @@ class _AboutState extends State<About> with TickerProviderStateMixin {
         child: Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
+            color: AppColors.getHoverBackground(context),
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
-              color: Theme.of(context).dividerColor.withOpacity(0.1),
+              color: AppColors.getBorder(context),
             ),
           ),
           child: Row(
@@ -334,12 +340,12 @@ class _AboutState extends State<About> with TickerProviderStateMixin {
               Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: Theme.of(context).primaryColor.withOpacity(0.1),
+                  color: AppColors.getIconBackground(context),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Icon(
                   icon,
-                  color: Theme.of(context).primaryColor,
+                  color: AppColors.getIconColor(context),
                   size: 16,
                 ),
               ),

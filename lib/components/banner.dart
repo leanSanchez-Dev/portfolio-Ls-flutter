@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio_ls/utils/animations.dart';
+import 'package:portfolio_ls/utils/theme_data.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class BannerInf extends StatefulWidget {
@@ -28,7 +29,9 @@ class _BannerInfState extends State<BannerInf> with TickerProviderStateMixin {
 
     _controller.forward();
     Future.delayed(const Duration(milliseconds: 600), () {
-      _buttonController.forward();
+      if (mounted) {
+        _buttonController.forward();
+      }
     });
   }
 
@@ -207,21 +210,43 @@ class _BannerInfState extends State<BannerInf> with TickerProviderStateMixin {
 
   Widget _buildPrimaryButton() {
     return AnimatedHoverContainer(
+      hoverScale: 1.05,
+      hoverElevation: 20,
       child: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [
-              Theme.of(context).primaryColor,
-              Theme.of(context).primaryColor.withOpacity(0.8),
-            ],
+            colors: Theme.of(context).brightness == Brightness.dark
+                ? [
+                    Theme.of(context).primaryColor,
+                    Theme.of(context).primaryColor.withOpacity(0.7),
+                  ]
+                : [
+                    Theme.of(context).primaryColor,
+                    Theme.of(context).primaryColor.withOpacity(0.8),
+                  ],
           ),
           borderRadius: BorderRadius.circular(16),
+          border: Theme.of(context).brightness == Brightness.dark
+              ? Border.all(
+                  color: Colors.white.withOpacity(0.2),
+                  width: 1,
+                )
+              : null,
           boxShadow: [
             BoxShadow(
-              color: Theme.of(context).primaryColor.withOpacity(0.3),
-              blurRadius: 12,
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? Theme.of(context).primaryColor.withOpacity(0.4)
+                  : Theme.of(context).primaryColor.withOpacity(0.3),
+              blurRadius: Theme.of(context).brightness == Brightness.dark ? 16 : 12,
+              spreadRadius: Theme.of(context).brightness == Brightness.dark ? 2 : 0,
               offset: const Offset(0, 6),
             ),
+            if (Theme.of(context).brightness == Brightness.dark)
+              BoxShadow(
+                color: Colors.black.withOpacity(0.2),
+                blurRadius: 8,
+                offset: const Offset(0, 2),
+              ),
           ],
         ),
         child: ElevatedButton.icon(
@@ -229,7 +254,7 @@ class _BannerInfState extends State<BannerInf> with TickerProviderStateMixin {
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.transparent,
             shadowColor: Colors.transparent,
-            padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 18),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),
             ),
@@ -239,12 +264,21 @@ class _BannerInfState extends State<BannerInf> with TickerProviderStateMixin {
             color: Colors.white,
             size: 16,
           ),
-          label: const Text(
+          label: Text(
             'Contact Me',
             style: TextStyle(
               color: Colors.white,
               fontSize: 16,
-              fontWeight: FontWeight.w600,
+              fontWeight: FontWeight.w700,
+              shadows: Theme.of(context).brightness == Brightness.dark
+                  ? [
+                      Shadow(
+                        color: Colors.black.withOpacity(0.3),
+                        blurRadius: 2,
+                        offset: const Offset(0, 1),
+                      ),
+                    ]
+                  : null,
             ),
           ),
         ),
@@ -254,35 +288,68 @@ class _BannerInfState extends State<BannerInf> with TickerProviderStateMixin {
 
   Widget _buildSecondaryButton() {
     return AnimatedHoverContainer(
+      hoverScale: 1.05,
       child: Container(
         decoration: BoxDecoration(
+          color: Theme.of(context).brightness == Brightness.dark
+              ? AppColors.darkCardBackground.withOpacity(0.8)
+              : Colors.transparent,
           border: Border.all(
-            color: Theme.of(context).primaryColor.withOpacity(0.3),
-            width: 2,
+            color: Theme.of(context).brightness == Brightness.dark
+                ? Theme.of(context).primaryColor.withOpacity(0.6)
+                : Theme.of(context).primaryColor.withOpacity(0.3),
+            width: Theme.of(context).brightness == Brightness.dark ? 2.5 : 2,
           ),
           borderRadius: BorderRadius.circular(16),
+          boxShadow: Theme.of(context).brightness == Brightness.dark
+              ? [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.3),
+                    blurRadius: 12,
+                    offset: const Offset(0, 4),
+                  ),
+                  BoxShadow(
+                    color: Theme.of(context).primaryColor.withOpacity(0.2),
+                    blurRadius: 8,
+                    offset: const Offset(0, 2),
+                  ),
+                ]
+              : null,
         ),
         child: ElevatedButton.icon(
           onPressed: _viewProjects,
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.transparent,
             shadowColor: Colors.transparent,
-            padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 18),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(14),
             ),
           ),
           icon: Icon(
             FontAwesomeIcons.folderOpen,
-            color: Theme.of(context).primaryColor,
+            color: Theme.of(context).brightness == Brightness.dark
+                ? Colors.white
+                : Theme.of(context).primaryColor,
             size: 16,
           ),
           label: Text(
             'View Projects',
             style: TextStyle(
-              color: Theme.of(context).primaryColor,
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? Colors.white
+                  : Theme.of(context).primaryColor,
               fontSize: 16,
-              fontWeight: FontWeight.w600,
+              fontWeight: FontWeight.w700,
+              shadows: Theme.of(context).brightness == Brightness.dark
+                  ? [
+                      Shadow(
+                        color: Colors.black.withOpacity(0.3),
+                        blurRadius: 2,
+                        offset: const Offset(0, 1),
+                      ),
+                    ]
+                  : null,
             ),
           ),
         ),

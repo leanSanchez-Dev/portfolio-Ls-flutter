@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio_ls/utils/animations.dart';
+import 'package:portfolio_ls/utils/theme_data.dart';
 
 import '../models/experience.dart';
 
@@ -31,9 +32,13 @@ class _WorkExperienceState extends State<WorkExperience>
       vsync: this,
     );
 
-    _headerController.forward();
+    if (mounted) {
+      _headerController.forward();
+    }
     Future.delayed(const Duration(milliseconds: 400), () {
-      _timelineController.forward();
+      if (mounted) {
+        _timelineController.forward();
+      }
     });
   }
 
@@ -58,11 +63,11 @@ class _WorkExperienceState extends State<WorkExperience>
       child: AnimatedFadeSlide(
         child: Card(
           elevation: 0,
-          color: Theme.of(context).cardColor,
+          color: AppColors.getCardBackground(context),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(24),
             side: BorderSide(
-              color: Theme.of(context).dividerColor.withOpacity(0.1),
+              color: AppColors.getBorder(context),
               width: 1,
             ),
           ),
@@ -104,12 +109,12 @@ class _WorkExperienceState extends State<WorkExperience>
                     Container(
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
-                        color: Theme.of(context).primaryColor.withOpacity(0.1),
+                        color: AppColors.getIconBackground(context),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Icon(
                         FontAwesomeIcons.briefcase,
-                        color: Theme.of(context).primaryColor,
+                        color: AppColors.getIconColor(context),
                         size: 20,
                       ),
                     ),
@@ -215,17 +220,27 @@ class _WorkExperienceState extends State<WorkExperience>
           Column(
             children: [
               Container(
-                width: 16,
-                height: 16,
+                width: 18,
+                height: 18,
                 decoration: BoxDecoration(
                   color: isFirst
                       ? Theme.of(context).primaryColor
-                      : Theme.of(context).primaryColor.withOpacity(0.3),
+                      : Theme.of(context).brightness == Brightness.dark
+                          ? AppColors.darkChipBackground
+                          : Theme.of(context).primaryColor.withOpacity(0.3),
                   shape: BoxShape.circle,
                   border: Border.all(
                     color: Theme.of(context).primaryColor,
-                    width: 2,
+                    width: isFirst ? 3 : 2,
                   ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Theme.of(context).primaryColor.withOpacity(0.3),
+                      blurRadius: 8,
+                      spreadRadius: 0,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
                 ),
                 child: isFirst
                     ? Icon(
@@ -237,18 +252,24 @@ class _WorkExperienceState extends State<WorkExperience>
               ),
               if (experience != experiencias.last)
                 Container(
-                  width: 2,
-                  height: 80,
+                  width: 3,
+                  height: 120,
                   margin: const EdgeInsets.symmetric(vertical: 8),
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
-                      colors: [
-                        Theme.of(context).primaryColor.withOpacity(0.3),
-                        Theme.of(context).primaryColor.withOpacity(0.1),
-                      ],
+                      colors: Theme.of(context).brightness == Brightness.dark
+                          ? [
+                              Theme.of(context).primaryColor.withOpacity(0.6),
+                              Theme.of(context).primaryColor.withOpacity(0.2),
+                            ]
+                          : [
+                              Theme.of(context).primaryColor.withOpacity(0.3),
+                              Theme.of(context).primaryColor.withOpacity(0.1),
+                            ],
                     ),
+                    borderRadius: BorderRadius.circular(2),
                   ),
                 ),
             ],
@@ -258,18 +279,39 @@ class _WorkExperienceState extends State<WorkExperience>
           // Experience content
           Expanded(
             child: AnimatedHoverContainer(
+              hoverScale: 1.02,
+              hoverElevation: 15,
+              hoverShadowColor: Theme.of(context).primaryColor,
               child: Container(
-                padding: const EdgeInsets.all(20),
+                padding: const EdgeInsets.all(24),
                 decoration: BoxDecoration(
-                  color: Theme.of(context).cardColor,
+                  gradient: Theme.of(context).brightness == Brightness.dark
+                      ? LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [
+                            AppColors.darkCardBackground,
+                            AppColors.darkCardBackground.withOpacity(0.8),
+                          ],
+                        )
+                      : null,
+                  color: Theme.of(context).brightness == Brightness.light
+                      ? AppColors.getCardBackground(context)
+                      : null,
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(
-                    color: Theme.of(context).dividerColor.withOpacity(0.1),
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? AppColors.darkBorderLight.withOpacity(0.3)
+                        : AppColors.getBorder(context),
+                    width: Theme.of(context).brightness == Brightness.dark ? 1.5 : 1,
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: Theme.of(context).shadowColor.withOpacity(0.05),
-                      blurRadius: 10,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Colors.black.withOpacity(0.4)
+                          : Theme.of(context).shadowColor.withOpacity(0.05),
+                      blurRadius: Theme.of(context).brightness == Brightness.dark ? 15 : 10,
+                      spreadRadius: Theme.of(context).brightness == Brightness.dark ? 2 : 0,
                       offset: const Offset(0, 4),
                     ),
                   ],
@@ -293,10 +335,22 @@ class _WorkExperienceState extends State<WorkExperience>
                         if (isFirst)
                           Container(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 8, vertical: 4),
+                                horizontal: 12, vertical: 6),
                             decoration: BoxDecoration(
-                              color: Theme.of(context).primaryColor,
+                              gradient: LinearGradient(
+                                colors: [
+                                  Theme.of(context).primaryColor,
+                                  Theme.of(context).primaryColor.withOpacity(0.8),
+                                ],
+                              ),
                               borderRadius: BorderRadius.circular(12),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Theme.of(context).primaryColor.withOpacity(0.3),
+                                  blurRadius: 8,
+                                  offset: const Offset(0, 2),
+                                ),
+                              ],
                             ),
                             child: Text(
                               'Current',
@@ -305,7 +359,8 @@ class _WorkExperienceState extends State<WorkExperience>
                                   .bodySmall
                                   ?.copyWith(
                                     color: Colors.white,
-                                    fontWeight: FontWeight.w600,
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 12,
                                   ),
                             ),
                           ),
@@ -365,6 +420,155 @@ class _WorkExperienceState extends State<WorkExperience>
                                 .withOpacity(0.8),
                           ),
                     ),
+                    
+                    // Proyectos específicos
+                    if (experience.proyectos != null && experience.proyectos!.isNotEmpty) ...[
+                      const SizedBox(height: 16),
+                      Text(
+                        'Proyectos:',
+                        style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                              fontWeight: FontWeight.w600,
+                              color: Theme.of(context).primaryColor,
+                            ),
+                      ),
+                      const SizedBox(height: 8),
+                      ...experience.proyectos!.map((proyecto) => Padding(
+                        padding: const EdgeInsets.only(bottom: 4),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.only(top: 6),
+                              width: 4,
+                              height: 4,
+                              decoration: BoxDecoration(
+                                color: Theme.of(context).primaryColor,
+                                shape: BoxShape.circle,
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                            Expanded(
+                              child: Text(
+                                proyecto,
+                                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                      height: 1.4,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onSurface
+                                          .withOpacity(0.7),
+                                    ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      )),
+                    ],
+                    
+                    // Responsabilidades
+                    if (experience.responsabilidades != null && experience.responsabilidades!.isNotEmpty) ...[
+                      const SizedBox(height: 16),
+                      Text(
+                        'Responsabilidades:',
+                        style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                              fontWeight: FontWeight.w600,
+                              color: Theme.of(context).primaryColor,
+                            ),
+                      ),
+                      const SizedBox(height: 8),
+                      ...experience.responsabilidades!.map((responsabilidad) => Padding(
+                        padding: const EdgeInsets.only(bottom: 4),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.only(top: 6),
+                              width: 4,
+                              height: 4,
+                              decoration: BoxDecoration(
+                                color: Theme.of(context).primaryColor,
+                                shape: BoxShape.circle,
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                            Expanded(
+                              child: Text(
+                                responsabilidad,
+                                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                      height: 1.4,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onSurface
+                                          .withOpacity(0.7),
+                                    ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      )),
+                    ],
+                    
+                    // Tecnologías
+                    if (experience.tecnologias != null && experience.tecnologias!.isNotEmpty) ...[
+                      const SizedBox(height: 20),
+                      Text(
+                        'Tecnologías:',
+                        style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                              fontWeight: FontWeight.w700,
+                              color: Theme.of(context).brightness == Brightness.dark
+                                  ? AppColors.darkTextPrimary
+                                  : Theme.of(context).primaryColor,
+                              fontSize: 14,
+                            ),
+                      ),
+                      const SizedBox(height: 12),
+                      Wrap(
+                        spacing: 10,
+                        runSpacing: 10,
+                        children: experience.tecnologias!.map((tech) => AnimatedHoverContainer(
+                          hoverScale: 1.05,
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                            decoration: BoxDecoration(
+                              gradient: Theme.of(context).brightness == Brightness.dark
+                                  ? LinearGradient(
+                                      colors: [
+                                        AppColors.darkChipBackground,
+                                        AppColors.darkChipBackground.withOpacity(0.8),
+                                      ],
+                                    )
+                                  : null,
+                              color: Theme.of(context).brightness == Brightness.light
+                                  ? AppColors.getChipBackground(context)
+                                  : null,
+                              borderRadius: BorderRadius.circular(12),
+                              border: Border.all(
+                                color: Theme.of(context).brightness == Brightness.dark
+                                    ? AppColors.darkBorderLight.withOpacity(0.5)
+                                    : AppColors.getBorderStrong(context),
+                                width: 1.5,
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Theme.of(context).brightness == Brightness.dark
+                                      ? Colors.black.withOpacity(0.3)
+                                      : Theme.of(context).shadowColor.withOpacity(0.1),
+                                  blurRadius: 6,
+                                  offset: const Offset(0, 2),
+                                ),
+                              ],
+                            ),
+                            child: Text(
+                              tech,
+                              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                    color: AppColors.getChipText(context),
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 12,
+                                  ),
+                            ),
+                          ),
+                        )).toList(),
+                      ),
+                    ],
                   ],
                 ),
               ),

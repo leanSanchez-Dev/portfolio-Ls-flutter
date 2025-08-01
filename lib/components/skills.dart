@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio_ls/utils/animations.dart';
+import 'package:portfolio_ls/utils/theme_data.dart';
 
 class Skills extends StatefulWidget {
   const Skills({Key? key}) : super(key: key);
@@ -34,12 +35,19 @@ class _SkillsState extends State<Skills> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
                   decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor.withOpacity(0.1),
+                    color: Theme.of(context).primaryColor.withOpacity(0.15),
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(
-                      color: Theme.of(context).primaryColor.withOpacity(0.3),
-                      width: 1,
+                      color: Theme.of(context).primaryColor.withOpacity(0.5),
+                      width: 2,
                     ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Theme.of(context).primaryColor.withOpacity(0.1),
+                        blurRadius: 8,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
                   ),
                   child: Text(
                     'SKILLS & EXPERTISE',
@@ -207,15 +215,17 @@ class _SkillsState extends State<Skills> {
         width: _validationWidth(),
         padding: const EdgeInsets.all(24),
         decoration: BoxDecoration(
-          color: Theme.of(context).cardColor,
+          color: AppColors.getCardBackground(context),
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
-            color: Theme.of(context).dividerColor.withOpacity(0.2),
-            width: 1,
+            color: AppColors.getBorderStrong(context),
+            width: 2,
           ),
           boxShadow: [
             BoxShadow(
-              color: Theme.of(context).shadowColor.withOpacity(0.1),
+              color: Theme.of(context).brightness == Brightness.dark 
+                  ? Colors.black.withOpacity(0.4)
+                  : Theme.of(context).primaryColor.withOpacity(0.1),
               blurRadius: 20,
               spreadRadius: 0,
               offset: const Offset(0, 10),
@@ -231,13 +241,17 @@ class _SkillsState extends State<Skills> {
                 Container(
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor.withOpacity(0.1),
+                    color: AppColors.getIconBackground(context),
                     borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      color: AppColors.getBorderStrong(context),
+                      width: 1,
+                    ),
                   ),
                   child: Icon(
                     icon,
-                    color: Theme.of(context).primaryColor,
-                    size: 20,
+                    color: AppColors.getIconColor(context),
+                    size: 24,
                   ),
                 ),
                 const SizedBox(width: 12),
@@ -280,15 +294,17 @@ class _SkillsState extends State<Skills> {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         decoration: BoxDecoration(
-          color: Theme.of(context).cardColor,
+          color: AppColors.getChipBackground(context),
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
-            color: Theme.of(context).primaryColor.withOpacity(0.3),
+            color: AppColors.getBorderStrong(context),
             width: 1,
           ),
           boxShadow: [
             BoxShadow(
-              color: Theme.of(context).shadowColor.withOpacity(0.1),
+              color: Theme.of(context).brightness == Brightness.dark 
+                  ? Colors.black.withOpacity(0.3)
+                  : Theme.of(context).shadowColor.withOpacity(0.1),
               blurRadius: 8,
               spreadRadius: 0,
               offset: const Offset(0, 2),
@@ -298,7 +314,7 @@ class _SkillsState extends State<Skills> {
         child: Text(
           skill,
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: Theme.of(context).primaryColor,
+                color: AppColors.getChipText(context),
                 fontWeight: FontWeight.w500,
               ),
         ),

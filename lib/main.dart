@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_ls/portfolio.dart';
 import 'package:portfolio_ls/providers/theme_provider.dart';
+import 'package:portfolio_ls/utils/keyboard_handler.dart';
+import 'package:portfolio_ls/utils/web_config.dart';
 import 'package:provider/provider.dart';
 
 void main() {
+  // Inicializar configuraciones para web
+  initializeWebConfig();
+  
   runApp(const MyApp());
 }
 
@@ -20,7 +25,10 @@ class MyApp extends StatelessWidget {
             title: 'Leonardo Sanchez - Portfolio',
             theme: themeProvider.themeData,
             debugShowCheckedModeBanner: false,
-            home: const Portfolio(),
+            navigatorKey: NavigationService.navigatorKey,
+            home: const SafeKeyboardHandler(
+              child: Portfolio(),
+            ),
           );
         },
       ),
