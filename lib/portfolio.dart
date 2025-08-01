@@ -6,6 +6,7 @@ import 'package:portfolio_ls/components/projects.dart';
 import 'package:portfolio_ls/components/work_experience.dart';
 import 'package:portfolio_ls/components/footer.dart';
 import 'package:portfolio_ls/components/skills.dart';
+import 'package:portfolio_ls/components/cv_section.dart';
 import 'package:portfolio_ls/components/language_selector.dart';
 import 'package:portfolio_ls/providers/theme_provider.dart';
 import 'package:portfolio_ls/providers/language_provider.dart';
@@ -25,6 +26,7 @@ class _PortfolioState extends State<Portfolio> {
   final GlobalKey skillsKey = GlobalKey();
   final GlobalKey workExpKey = GlobalKey();
   final GlobalKey projectsKey = GlobalKey();
+  final GlobalKey cvKey = GlobalKey();
   final GlobalKey contactKey = GlobalKey();
 
   void _scrollToSection(GlobalKey key) {
@@ -133,6 +135,12 @@ class _PortfolioState extends State<Portfolio> {
                     child: const Projects(),
                   ),
 
+                  // CV Section
+                  Container(
+                    key: cvKey,
+                    child: const CVSection(),
+                  ),
+
                   // Banner CTA Section
                   const BannerInf(),
 
@@ -163,6 +171,7 @@ class _PortfolioState extends State<Portfolio> {
           () => _scrollToSection(workExpKey)),
       _buildNavItem(AppLocalizations.of(context)!.projectsNav,
           () => _scrollToSection(projectsKey)),
+      _buildNavItem('CV', () => _scrollToSection(cvKey)),
       _buildNavItem(AppLocalizations.of(context)!.contactNav,
           () => _scrollToSection(contactKey)),
     ];
@@ -266,6 +275,11 @@ class _PortfolioState extends State<Portfolio> {
                     AppLocalizations.of(context)!.projectsNav,
                     FontAwesomeIcons.folderOpen,
                     () => _scrollToSection(projectsKey),
+                  ),
+                  _buildMobileNavItem(
+                    'CV',
+                    FontAwesomeIcons.fileText,
+                    () => _scrollToSection(cvKey),
                   ),
                   _buildMobileNavItem(
                     AppLocalizations.of(context)!.contactNav,

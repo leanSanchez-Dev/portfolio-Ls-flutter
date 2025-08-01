@@ -1,0 +1,253 @@
+{
+  "name": "Leonardo Sánchez",
+  "title": "Desarrollador Mobile & Full Stack",
+  "email": "leansanchez124@gmail.com",
+  "phone": "(315) 273-7979",
+  "location": "Colombia",
+  "github": "https://github.com/leanSanchez-Dev",
+  "portfolio": "https://portfolio-lean-dev.web.app",
+  "summary": "Tecnólogo en Análisis y Desarrollo de Sistemas de Información (ADSI) altamente capacitado, con una amplia experiencia en el desarrollo de software y diseño móvil. Mi pasión reside en crear soluciones tecnológicas innovadoras que optimicen procesos y potencien la eficiencia empresarial. Me caracterizo por mi enfoque meticuloso hacia la excelencia técnica, trabajando bajo la metodología ágil Scrum para garantizar la planificación, gestión y ejecución exitosa de proyectos. Poseo un alto compromiso con la calidad profesional, lo que se refleja en la calidad de mi trabajo y en la confianza que deposito en mis relaciones con clientes y compañeros.",
+  "languages": [
+    "Español (Nativo)"
+  ],
+  "experience": [
+    {
+      "company": "Codesa",
+      "position": "Desarrollador mobile Flutter",
+      "startDate": "May 2024",
+      "endDate": "Presente",
+      "description": "Desarrollo de aplicaciones móviles con Flutter",
+      "achievements": [
+        "Resolución de bugs en aplicaciones desarrolladas en Flutter y Angular",
+        "Desarrollo e integración de funcionalidades en Flutter y Android nativo",
+        "Implementación de comunicación entre Angular y Flutter mediante FlutterChannel y JavascriptChannel"
+      ]
+    },
+    {
+      "company": "TCS - Bancolombia",
+      "position": "Desarrollador mobile Flutter",
+      "startDate": "Nov 2022",
+      "endDate": "Ene 2024",
+      "description": "Proveedor para Bancolombia - Desarrollador frontend (Flutter) del sistema de diseño de Bancolombia",
+      "achievements": [
+        "Desarrollo de widgets (átomos, moléculas, organismos, templates y páginas) según la asignación de HU",
+        "Atomic desing",
+        "Soporte de incidentes Sistema de diseño",
+        "Unit Test, Widget Test y Golden Test"
+      ]
+    },
+    {
+      "company": "RedCap S.A.S",
+      "position": "Desarrollador de software mobile",
+      "startDate": "Jun 2022",
+      "endDate": "Oct 2022",
+      "description": "Desarrollo de software mobile",
+      "achievements": [
+        "Desarrollo inicial de una aplicación móvil (Flutter) para una casa de apuestas",
+        "Implementación de APIs REST proporcionadas por el back-end",
+        "Cumplimiento con los lineamientos de UX/UI del equipo de diseño",
+        "Publicar en TestFlight para test interno de la app"
+      ]
+    },
+    {
+      "company": "Adomi APP",
+      "position": "Desarrollador de software mobile",
+      "startDate": "Abr 2021",
+      "endDate": "May 2022",
+      "description": "Startup - Desarrollo de tres aplicaciones móviles (adomi Pedidos, adomi aliados, Adomi drivers)",
+      "achievements": [
+        "Dos publicadas en App Store y Play Store",
+        "Desarrollador front-end",
+        "Flutter, Swift y kotlin",
+        "Implementación de las APIs para el funcionamiento de las aplicaciones",
+        "Refactorización del diseño de las aplicaciones para mejorar la UX/UI",
+        "Implementación de google maps y ubicación en tiempo real, Deep links, push Notification y analytics",
+        "Integración de pasarela de pago"
+      ]
+    },
+    {
+      "company": "Comunix",
+      "position": "Desarrollador de software mobile",
+      "startDate": "Ago 2020",
+      "endDate": "Nov 2020",
+      "description": "Desarrollo de aplicaciones móviles",
+      "achievements": [
+        "Indeportes Cauca (Android Studio): Aplicación para gestionar escenarios deportivos en el Cauca",
+        "Navipuntos (Flutter): Aplicación para brindar información y navegación a puntos de interés",
+        "Desarrollo completo de las aplicaciones móviles (front-end y back-end)",
+        "Implementación de APIs en PHP para navipuntos",
+        "Desarrollar puzzles para app navipuntos",
+        "Seguimiento de los lineamientos de UX/UI proporcionados por el equipo de diseño"
+      ]
+    },
+    {
+      "company": "APRENDIZ SENA",
+      "position": "Desarrollador de software mobile java",
+      "startDate": "Abr 2019",
+      "endDate": "Oct 2019",
+      "description": "Empresa: Banco Mundo Mujer - Aprendizaje como desarrollador de software móvil",
+      "achievements": [
+        "Desarrollo de aplicación móvil en Java para gestión empresarial",
+        "Implementación de funcionalidades nativas Android",
+        "Trabajo en equipo siguiendo metodologías ágiles"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Servicio Nacional de Aprendizaje - SENA",
+      "degree": "Tecnólogo en análisis y desarrollo de software",
+      "startDate": "2017",
+      "endDate": "2019",
+      "description": "Formación integral en análisis, diseño y desarrollo de sistemas de información"
+    },
+    {
+      "institution": "Servicio Nacional de Aprendizaje - SENA",
+      "degree": "Técnico en Sistemas",
+      "startDate": "2015",
+      "endDate": "2016",
+      "description": "Fundamentos de sistemas de información y soporte técnico"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Flutter",
+      "category": "Mobile Development",
+      "proficiency": 0.95
+    },
+    {
+      "name": "Dart",
+      "category": "Lenguajes",
+      "proficiency": 0.95
+    },
+    {
+      "name": "Android Studio",
+      "category": "Mobile Development",
+      "proficiency": 0.85
+    },
+    {
+      "name": "Java",
+      "category": "Lenguajes",
+      "proficiency": 0.80
+    },
+    {
+      "name": "Git",
+      "category": "Herramientas",
+      "proficiency": 0.90
+    },
+    {
+      "name": "Angular",
+      "category": "Frontend",
+      "proficiency": 0.75
+    },
+    {
+      "name": "Node.js",
+      "category": "Backend",
+      "proficiency": 0.70
+    },
+    {
+      "name": "PHP",
+      "category": "Backend",
+      "proficiency": 0.65
+    },
+    {
+      "name": "Swift",
+      "category": "Mobile Development",
+      "proficiency": 0.70
+    },
+    {
+      "name": "Kotlin",
+      "category": "Mobile Development",
+      "proficiency": 0.75
+    },
+    {
+      "name": "Firebase",
+      "category": "Backend",
+      "proficiency": 0.80
+    },
+    {
+      "name": "APIs REST",
+      "category": "Backend",
+      "proficiency": 0.85
+    },
+    {
+      "name": "UX/UI Design",
+      "category": "Design",
+      "proficiency": 0.75
+    },
+    {
+      "name": "Scrum",
+      "category": "Metodologías",
+      "proficiency": 0.85
+    },
+    {
+      "name": "Google Maps API",
+      "category": "APIs",
+      "proficiency": 0.80
+    },
+    {
+      "name": "Push Notifications",
+      "category": "Mobile Development",
+      "proficiency": 0.80
+    },
+    {
+      "name": "Deep Links",
+      "category": "Mobile Development",
+      "proficiency": 0.75
+    },
+    {
+      "name": "Unit Testing",
+      "category": "Testing",
+      "proficiency": 0.80
+    },
+    {
+      "name": "Widget Testing",
+      "category": "Testing",
+      "proficiency": 0.80
+    },
+    {
+      "name": "Golden Test",
+      "category": "Testing",
+      "proficiency": 0.75
+    }
+  ],
+  "projects": [
+    {
+      "name": "Portfolio Personal",
+      "description": "Portafolio web desarrollado con Flutter para mostrar proyectos y habilidades profesionales",
+      "technologies": ["Flutter", "Dart", "Web"],
+      "link": "https://portfolio-lean-dev.web.app",
+      "github": "https://github.com/leanSanchez-Dev"
+    },
+    {
+      "name": "Sistema de Diseño Bancolombia",
+      "description": "Desarrollo de widgets del sistema de diseño de Bancolombia siguiendo Atomic Design",
+      "technologies": ["Flutter", "Dart", "Atomic Design", "Unit Testing"],
+      "github": null
+    },
+    {
+      "name": "Adomi - Plataforma de Delivery",
+      "description": "Tres aplicaciones móviles para plataforma de delivery (Pedidos, Aliados, Drivers)",
+      "technologies": ["Flutter", "Swift", "Kotlin", "Google Maps", "Push Notifications"],
+      "github": null
+    },
+    {
+      "name": "Navipuntos",
+      "description": "Aplicación para navegación y puntos de interés con puzzles interactivos",
+      "technologies": ["Flutter", "PHP", "Google Maps", "APIs REST"],
+      "github": null
+    },
+    {
+      "name": "Indeportes Cauca",
+      "description": "Aplicación para gestionar escenarios deportivos en el departamento del Cauca",
+      "technologies": ["Android Studio", "Java", "APIs REST"],
+      "github": null
+    },
+    {
+      "name": "App Casa de Apuestas",
+      "description": "Aplicación móvil para casa de apuestas con integración de APIs y pasarelas de pago",
+      "technologies": ["Flutter", "APIs REST", "TestFlight"],
+      "github": null
+    }
+  ]
+}
