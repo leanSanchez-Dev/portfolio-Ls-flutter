@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio_ls/models/projects.dart';
 import 'package:portfolio_ls/utils/animations.dart';
+import 'package:portfolio_ls/utils/image_loader.dart' as image_loader;
 import 'package:url_launcher/url_launcher.dart';
 import 'package:portfolio_ls/l10n/app_localizations.dart';
 
@@ -34,6 +35,9 @@ class _ProjectsState extends State<Projects> with TickerProviderStateMixin {
       vsync: this,
     );
 
+    // Precargar imágenes del carousel
+    _preloadImages();
+
     if (mounted) {
       _headerController.forward();
     }
@@ -42,6 +46,11 @@ class _ProjectsState extends State<Projects> with TickerProviderStateMixin {
         _carouselController.forward();
       }
     });
+  }
+
+  Future<void> _preloadImages() async {
+    final imagePaths = projects.map((project) => project.url).toList();
+    await image_loader.ImagePreloader.preloadImages(imagePaths, context);
   }
 
   @override
@@ -53,9 +62,9 @@ class _ProjectsState extends State<Projects> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Container( 
+    return Container(
       margin: const EdgeInsets.symmetric(vertical: 40),
-      width: double.infinity, 
+      width: double.infinity,
       child: Column(
         children: [
           _buildHeader(),
@@ -275,12 +284,53 @@ class _ProjectsState extends State<Projects> with TickerProviderStateMixin {
           borderRadius: BorderRadius.circular(24.0),
           child: Stack(
             children: [
-              // Project image
-              Container(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(project.url),
-                    fit: BoxFit.cover,
+              // Project image con optimización de carga
+              image_loader.OptimizedImageLoader(
+                imageUrl: project.url,
+                fit: BoxFit.cover,
+                fadeInDuration: const Duration(milliseconds: 800),
+                useShimmer: true,
+                errorWidget: Container(
+                  color: Theme.of(context).cardColor,
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            color: Colors.red.withOpacity(0.1),
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          child: Icon(
+                            FontAwesomeIcons.triangleExclamation,
+                            color: Colors.red,
+                            size: 32,
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                        Text(
+                          'Error al cargar',
+                          style:
+                              Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                    color: Colors.red,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          'No se pudo cargar la imagen del proyecto',
+                          style:
+                              Theme.of(context).textTheme.bodySmall?.copyWith(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onSurface
+                                        .withOpacity(0.6),
+                                  ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

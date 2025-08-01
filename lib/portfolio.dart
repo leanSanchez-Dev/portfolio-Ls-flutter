@@ -59,7 +59,8 @@ class _PortfolioState extends State<Portfolio> {
                       color: Theme.of(context).scaffoldBackgroundColor,
                       border: Border(
                         bottom: BorderSide(
-                          color: Theme.of(context).dividerColor.withOpacity(0.1),
+                          color:
+                              Theme.of(context).dividerColor.withOpacity(0.1),
                           width: 1,
                         ),
                       ),
@@ -77,19 +78,21 @@ class _PortfolioState extends State<Portfolio> {
                         ),
                         child: Text(
                           'LS',
-                          style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
+                          style:
+                              Theme.of(context).textTheme.titleMedium?.copyWith(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                         ),
                       ),
                       const SizedBox(width: 12),
                       Expanded(
                         child: Text(
                           'Leonardo Sanchez',
-                          style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                                fontWeight: FontWeight.w600,
-                              ),
+                          style:
+                              Theme.of(context).textTheme.titleLarge?.copyWith(
+                                    fontWeight: FontWeight.w600,
+                                  ),
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
@@ -154,10 +157,14 @@ class _PortfolioState extends State<Portfolio> {
 
   List<Widget> _buildDesktopNavigation() {
     return [
-      _buildNavItem(AppLocalizations.of(context)!.skillsNav, () => _scrollToSection(skillsKey)),
-      _buildNavItem(AppLocalizations.of(context)!.experienceNav, () => _scrollToSection(workExpKey)),
-      _buildNavItem(AppLocalizations.of(context)!.projectsNav, () => _scrollToSection(projectsKey)),
-      _buildNavItem(AppLocalizations.of(context)!.contactNav, () => _scrollToSection(contactKey)),
+      _buildNavItem(AppLocalizations.of(context)!.skillsNav,
+          () => _scrollToSection(skillsKey)),
+      _buildNavItem(AppLocalizations.of(context)!.experienceNav,
+          () => _scrollToSection(workExpKey)),
+      _buildNavItem(AppLocalizations.of(context)!.projectsNav,
+          () => _scrollToSection(projectsKey)),
+      _buildNavItem(AppLocalizations.of(context)!.contactNav,
+          () => _scrollToSection(contactKey)),
     ];
   }
 
@@ -285,7 +292,9 @@ class _PortfolioState extends State<Portfolio> {
                           color: Theme.of(context).primaryColor,
                         ),
                         title: Text(
-                          themeProvider.isDarkMode ? AppLocalizations.of(context)!.lightMode : AppLocalizations.of(context)!.darkMode,
+                          themeProvider.isDarkMode
+                              ? AppLocalizations.of(context)!.lightMode
+                              : AppLocalizations.of(context)!.darkMode,
                           style: Theme.of(context).textTheme.bodyLarge,
                         ),
                         onTap: () {
@@ -295,7 +304,7 @@ class _PortfolioState extends State<Portfolio> {
                       );
                     },
                   ),
-                  
+
                   // Language Selector
                   Consumer<LanguageProvider>(
                     builder: (context, languageProvider, child) {
