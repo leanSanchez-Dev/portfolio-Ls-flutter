@@ -8,6 +8,7 @@ import 'package:portfolio_ls/components/footer.dart';
 import 'package:portfolio_ls/components/skills.dart';
 import 'package:portfolio_ls/components/language_selector.dart';
 import 'package:portfolio_ls/providers/theme_provider.dart';
+import 'package:portfolio_ls/providers/language_provider.dart';
 import 'package:portfolio_ls/utils/animations.dart';
 import 'package:provider/provider.dart';
 import 'package:portfolio_ls/l10n/app_localizations.dart';
@@ -83,11 +84,14 @@ class _PortfolioState extends State<Portfolio> {
                         ),
                       ),
                       const SizedBox(width: 12),
-                      Text(
-                        'Leonardo Sanchez',
-                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                              fontWeight: FontWeight.w600,
-                            ),
+                      Expanded(
+                        child: Text(
+                          'Leonardo Sanchez',
+                          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                fontWeight: FontWeight.w600,
+                              ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
                     ],
                   ),
@@ -138,10 +142,6 @@ class _PortfolioState extends State<Portfolio> {
               ),
             ],
           ),
-          
-          // Floating Language Selector for mobile
-          if (MediaQuery.of(context).size.width <= 800)
-            const FloatingLanguageSelector(),
         ],
       ),
 
@@ -269,28 +269,53 @@ class _PortfolioState extends State<Portfolio> {
               ),
             ),
 
-            // Theme Toggle in Drawer
+            // Theme Toggle and Language Selector in Drawer
             Container(
               padding: const EdgeInsets.all(16),
-              child: Consumer<ThemeProvider>(
-                builder: (context, themeProvider, child) {
-                  return ListTile(
-                    leading: Icon(
-                      themeProvider.isDarkMode
-                          ? FontAwesomeIcons.sun
-                          : FontAwesomeIcons.moon,
-                      color: Theme.of(context).primaryColor,
-                    ),
-                    title: Text(
-                      themeProvider.isDarkMode ? AppLocalizations.of(context)!.lightMode : AppLocalizations.of(context)!.darkMode,
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                    onTap: () {
-                      themeProvider.toggleTheme();
-                      Navigator.pop(context);
+              child: Column(
+                children: [
+                  // Theme Toggle
+                  Consumer<ThemeProvider>(
+                    builder: (context, themeProvider, child) {
+                      return ListTile(
+                        leading: Icon(
+                          themeProvider.isDarkMode
+                              ? FontAwesomeIcons.sun
+                              : FontAwesomeIcons.moon,
+                          color: Theme.of(context).primaryColor,
+                        ),
+                        title: Text(
+                          themeProvider.isDarkMode ? AppLocalizations.of(context)!.lightMode : AppLocalizations.of(context)!.darkMode,
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
+                        onTap: () {
+                          themeProvider.toggleTheme();
+                          Navigator.pop(context);
+                        },
+                      );
                     },
-                  );
-                },
+                  ),
+                  
+                  // Language Selector
+                  Consumer<LanguageProvider>(
+                    builder: (context, languageProvider, child) {
+                      return ListTile(
+                        leading: Icon(
+                          FontAwesomeIcons.globe,
+                          color: Theme.of(context).primaryColor,
+                        ),
+                        title: Text(
+                          languageProvider.otherLanguageName,
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
+                        onTap: () {
+                          languageProvider.toggleLanguage();
+                          Navigator.pop(context);
+                        },
+                      );
+                    },
+                  ),
+                ],
               ),
             ),
           ],
