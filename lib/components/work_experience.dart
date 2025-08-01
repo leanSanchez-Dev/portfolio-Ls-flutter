@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio_ls/utils/animations.dart';
 import 'package:portfolio_ls/utils/theme_data.dart';
+import 'package:portfolio_ls/l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+import 'package:portfolio_ls/providers/language_provider.dart';
 
 import '../models/experience.dart';
 
@@ -124,7 +127,7 @@ class _WorkExperienceState extends State<WorkExperience>
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Work Experience',
+                            AppLocalizations.of(context)!.workExperienceTitle,
                             style: Theme.of(context)
                                 .textTheme
                                 .headlineMedium
@@ -323,7 +326,7 @@ class _WorkExperienceState extends State<WorkExperience>
                       children: [
                         Expanded(
                           child: Text(
-                            experience.cargo,
+                            experience.getLocalizedCargo(Provider.of<LanguageProvider>(context).currentLocale),
                             style: Theme.of(context)
                                 .textTheme
                                 .titleMedium
@@ -353,7 +356,7 @@ class _WorkExperienceState extends State<WorkExperience>
                               ],
                             ),
                             child: Text(
-                              'Current',
+                              AppLocalizations.of(context)!.current,
                               style: Theme.of(context)
                                   .textTheme
                                   .bodySmall
@@ -398,7 +401,7 @@ class _WorkExperienceState extends State<WorkExperience>
                         ),
                         const SizedBox(width: 8),
                         Text(
-                          '${experience.fechaInicio} - ${experience.fechaFin}',
+                          '${experience.getLocalizedFechaInicio(Provider.of<LanguageProvider>(context).currentLocale)} - ${experience.getLocalizedFechaFin(Provider.of<LanguageProvider>(context).currentLocale)}',
                           style:
                               Theme.of(context).textTheme.bodySmall?.copyWith(
                                     color: Theme.of(context)
@@ -411,7 +414,7 @@ class _WorkExperienceState extends State<WorkExperience>
                     ),
                     const SizedBox(height: 12),
                     Text(
-                      experience.descripcion,
+                      experience.getLocalizedDescripcion(Provider.of<LanguageProvider>(context).currentLocale),
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                             height: 1.5,
                             color: Theme.of(context)
@@ -422,17 +425,17 @@ class _WorkExperienceState extends State<WorkExperience>
                     ),
                     
                     // Proyectos específicos
-                    if (experience.proyectos != null && experience.proyectos!.isNotEmpty) ...[
+                    if (experience.getLocalizedProyectos(Provider.of<LanguageProvider>(context).currentLocale) != null && experience.getLocalizedProyectos(Provider.of<LanguageProvider>(context).currentLocale)!.isNotEmpty) ...[
                       const SizedBox(height: 16),
                       Text(
-                        'Proyectos:',
+                        AppLocalizations.of(context)!.projectsLabel,
                         style: Theme.of(context).textTheme.titleSmall?.copyWith(
                               fontWeight: FontWeight.w600,
                               color: Theme.of(context).primaryColor,
                             ),
                       ),
                       const SizedBox(height: 8),
-                      ...experience.proyectos!.map((proyecto) => Padding(
+                      ...experience.getLocalizedProyectos(Provider.of<LanguageProvider>(context).currentLocale)!.map((proyecto) => Padding(
                         padding: const EdgeInsets.only(bottom: 4),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -465,17 +468,17 @@ class _WorkExperienceState extends State<WorkExperience>
                     ],
                     
                     // Responsabilidades
-                    if (experience.responsabilidades != null && experience.responsabilidades!.isNotEmpty) ...[
+                    if (experience.getLocalizedResponsabilidades(Provider.of<LanguageProvider>(context).currentLocale) != null && experience.getLocalizedResponsabilidades(Provider.of<LanguageProvider>(context).currentLocale)!.isNotEmpty) ...[
                       const SizedBox(height: 16),
                       Text(
-                        'Responsabilidades:',
+                        AppLocalizations.of(context)!.responsibilitiesLabel,
                         style: Theme.of(context).textTheme.titleSmall?.copyWith(
                               fontWeight: FontWeight.w600,
                               color: Theme.of(context).primaryColor,
                             ),
                       ),
                       const SizedBox(height: 8),
-                      ...experience.responsabilidades!.map((responsabilidad) => Padding(
+                      ...experience.getLocalizedResponsabilidades(Provider.of<LanguageProvider>(context).currentLocale)!.map((responsabilidad) => Padding(
                         padding: const EdgeInsets.only(bottom: 4),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -511,7 +514,7 @@ class _WorkExperienceState extends State<WorkExperience>
                     if (experience.tecnologias != null && experience.tecnologias!.isNotEmpty) ...[
                       const SizedBox(height: 20),
                       Text(
-                        'Tecnologías:',
+                        AppLocalizations.of(context)!.technologiesLabel,
                         style: Theme.of(context).textTheme.titleSmall?.copyWith(
                               fontWeight: FontWeight.w700,
                               color: Theme.of(context).brightness == Brightness.dark

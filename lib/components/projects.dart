@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio_ls/models/projects.dart';
 import 'package:portfolio_ls/utils/animations.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:portfolio_ls/l10n/app_localizations.dart';
 
 class Projects extends StatefulWidget {
   const Projects({super.key});
@@ -100,7 +101,7 @@ class _ProjectsState extends State<Projects> with TickerProviderStateMixin {
                     ),
                     const SizedBox(width: 16),
                     Text(
-                      'Featured Projects',
+                      AppLocalizations.of(context)!.featuredProjects,
                       style:
                           Theme.of(context).textTheme.headlineMedium?.copyWith(
                                 fontWeight: FontWeight.bold,
@@ -110,7 +111,7 @@ class _ProjectsState extends State<Projects> with TickerProviderStateMixin {
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  'Explore some of my recent work and personal projects',
+                  AppLocalizations.of(context)!.featuredProjectsDescription,
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                         color: Theme.of(context)
                             .colorScheme

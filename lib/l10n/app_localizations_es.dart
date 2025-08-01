@@ -116,4 +116,46 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get english => 'Inglés';
+
+  @override
+  String get skillsExpertiseTitle => 'HABILIDADES Y EXPERIENCIA';
+
+  @override
+  String get technicalSkills => 'Habilidades Técnicas';
+
+  @override
+  String get technicalSkillsDescription =>
+      'Estas son las tecnologías y herramientas con las que trabajo para dar vida a las ideas.';
+
+  @override
+  String get aboutMeDescription =>
+      'Soy desarrollador mobile con más de 5 años de experiencia en tecnología, especializado en Flutter para la creación de aplicaciones Android e iOS. A lo largo de mi carrera he trabajado en startups y empresas del sector financiero y tecnológico, participando en proyectos de alto impacto y enfrentando desafíos reales en producción.';
+
+  @override
+  String get myName => 'Leonardo Sanchez';
+
+  @override
+  String get myEmail => 'Leansanchez14@gmail.com';
+
+  @override
+  String get githubUsername => 'LeanSanchez-dev';
+
+  @override
+  String get featuredProjects => 'Proyectos Destacados';
+
+  @override
+  String get featuredProjectsDescription =>
+      'Explora algunos de mis trabajos recientes y proyectos personales';
+
+  @override
+  String get currently => 'Actualmente';
+
+  @override
+  String get projectsLabel => 'Proyectos:';
+
+  @override
+  String get responsibilitiesLabel => 'Responsabilidades:';
+
+  @override
+  String get technologiesLabel => 'Tecnologías:';
 }

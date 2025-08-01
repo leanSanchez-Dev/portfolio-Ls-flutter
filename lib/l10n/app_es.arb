@@ -33,5 +33,18 @@
   "projects": "Proyectos",
   "language": "Idioma",
   "spanish": "Español",
-  "english": "Inglés"
+  "english": "Inglés",
+  "skillsExpertiseTitle": "HABILIDADES Y EXPERIENCIA",
+  "technicalSkills": "Habilidades Técnicas",
+  "technicalSkillsDescription": "Estas son las tecnologías y herramientas con las que trabajo para dar vida a las ideas.",
+  "aboutMeDescription": "Soy desarrollador mobile con más de 5 años de experiencia en tecnología, especializado en Flutter para la creación de aplicaciones Android e iOS. A lo largo de mi carrera he trabajado en startups y empresas del sector financiero y tecnológico, participando en proyectos de alto impacto y enfrentando desafíos reales en producción.",
+  "myName": "Leonardo Sanchez",
+  "myEmail": "Leansanchez14@gmail.com",
+  "githubUsername": "LeanSanchez-dev",
+  "featuredProjects": "Proyectos Destacados",
+  "featuredProjectsDescription": "Explora algunos de mis trabajos recientes y proyectos personales",
+  "currently": "Actualmente",
+  "projectsLabel": "Proyectos:",
+  "responsibilitiesLabel": "Responsabilidades:",
+  "technologiesLabel": "Tecnologías:"
 }

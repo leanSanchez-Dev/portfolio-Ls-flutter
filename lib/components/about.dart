@@ -178,7 +178,7 @@ class _AboutState extends State<About> with TickerProviderStateMixin {
                 ),
                 const SizedBox(height: 24),
                 TypewriterText(
-                  text: 'Leonardo Sanchez',
+                  text: AppLocalizations.of(context)!.myName,
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                         fontWeight: FontWeight.bold,
                         color: Theme.of(context).colorScheme.onSurface,
@@ -195,7 +195,7 @@ class _AboutState extends State<About> with TickerProviderStateMixin {
                     ),
                   ),
                   child: Text(
-                    'Flutter Developer',
+                    AppLocalizations.of(context)!.roleTitle,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color: AppColors.getChipText(context),
                           fontWeight: FontWeight.w600,
@@ -225,7 +225,7 @@ class _AboutState extends State<About> with TickerProviderStateMixin {
           child: FadeTransition(
             opacity: _contentController,
             child: Text(
-              'Soy desarrollador mobile con más de 5 años de experiencia en tecnología, especializado en Flutter para la creación de aplicaciones Android e iOS. A lo largo de mi carrera he trabajado en startups y empresas del sector financiero y tecnológico, participando en proyectos de alto impacto y enfrentando desafíos reales en producción.',
+              AppLocalizations.of(context)!.aboutMeDescription,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     height: 1.6,
                     color: Theme.of(context).colorScheme.onSurface.withOpacity(0.8),
@@ -240,10 +240,10 @@ class _AboutState extends State<About> with TickerProviderStateMixin {
 
   Widget _buildSkillChips() {
     final skills = [
-      'Flutter Developer',
-      'UX / UI Design',
-      'App Developer',
-      'Frontend Developer',
+      AppLocalizations.of(context)!.flutterDeveloper,
+      AppLocalizations.of(context)!.uxUiDesign,
+      AppLocalizations.of(context)!.appDeveloper,
+      AppLocalizations.of(context)!.frontendDeveloper,
     ];
 
     return StaggeredList(
@@ -292,22 +292,22 @@ class _AboutState extends State<About> with TickerProviderStateMixin {
         ),
         const SizedBox(height: 24),
         _buildContactItem(
-          'LinkedIn',
-          'Leonardo Sanchez',
+          AppLocalizations.of(context)!.linkedin,
+          AppLocalizations.of(context)!.myName,
           FontAwesomeIcons.linkedinIn,
           () => _launchUrl('https://www.linkedin.com/in/leansanchez-dev/'),
         ),
         const SizedBox(height: 16),
         _buildContactItem(
-          'E-mail',
-          'Leansanchez14@gmail.com',
+          AppLocalizations.of(context)!.email,
+          AppLocalizations.of(context)!.myEmail,
           FontAwesomeIcons.envelope,
           () => _launchUrl('mailto:Leansanchez14@gmail.com'),
         ),
         const SizedBox(height: 16),
         _buildContactItem(
-          'GitHub',
-          'LeanSanchez-dev',
+          AppLocalizations.of(context)!.github,
+          AppLocalizations.of(context)!.githubUsername,
           FontAwesomeIcons.github,
           () => _launchUrl('https://github.com/leanSanchez-Dev'),
         ),

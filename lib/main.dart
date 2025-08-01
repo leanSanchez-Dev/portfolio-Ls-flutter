@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
       ],
       child: Consumer2<ThemeProvider, LanguageProvider>(
         builder: (context, themeProvider, languageProvider, child) {
+          print('Main app rebuilding with locale: ${languageProvider.currentLocale.languageCode}');
           return MaterialApp(
             title: 'Leonardo Sanchez - Portfolio',
             theme: themeProvider.themeData,

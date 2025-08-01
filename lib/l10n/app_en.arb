@@ -178,5 +178,70 @@
   "english": "English",
   "@english": {
     "description": "English language"
+  },
+  
+  "skillsExpertiseTitle": "SKILLS & EXPERTISE",
+  "@skillsExpertiseTitle": {
+    "description": "Skills and expertise section title"
+  },
+  
+  "technicalSkills": "Technical Skills",
+  "@technicalSkills": {
+    "description": "Technical skills subtitle"
+  },
+  
+  "technicalSkillsDescription": "Here are the technologies and tools I work with to bring ideas to life.",
+  "@technicalSkillsDescription": {
+    "description": "Technical skills description"
+  },
+  
+  "aboutMeDescription": "I am a mobile developer with more than 5 years of experience in technology, specialized in Flutter for creating Android and iOS applications. Throughout my career I have worked in startups and companies in the financial and technology sector, participating in high-impact projects and facing real challenges in production.",
+  "@aboutMeDescription": {
+    "description": "About me detailed description"
+  },
+  
+  "myName": "Leonardo Sanchez",
+  "@myName": {
+    "description": "My full name"
+  },
+  
+  "myEmail": "Leansanchez14@gmail.com",
+  "@myEmail": {
+    "description": "My email address"
+  },
+  
+  "githubUsername": "LeanSanchez-dev",
+  "@githubUsername": {
+    "description": "GitHub username"
+  },
+  
+  "featuredProjects": "Featured Projects",
+  "@featuredProjects": {
+    "description": "Featured projects section title"
+  },
+  
+  "featuredProjectsDescription": "Explore some of my recent work and personal projects",
+  "@featuredProjectsDescription": {
+    "description": "Featured projects section description"
+  },
+  
+  "currently": "Currently",
+  "@currently": {
+    "description": "Currently working indicator"
+  },
+  
+  "projectsLabel": "Projects:",
+  "@projectsLabel": {
+    "description": "Projects section label"
+  },
+  
+  "responsibilitiesLabel": "Responsibilities:",
+  "@responsibilitiesLabel": {
+    "description": "Responsibilities section label"
+  },
+  
+  "technologiesLabel": "Technologies:",
+  "@technologiesLabel": {
+    "description": "Technologies section label"
   }
 }

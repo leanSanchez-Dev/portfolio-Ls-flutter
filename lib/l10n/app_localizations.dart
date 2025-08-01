@@ -307,6 +307,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'English'**
   String get english;
+
+  /// Skills and expertise section title
+  ///
+  /// In en, this message translates to:
+  /// **'SKILLS & EXPERTISE'**
+  String get skillsExpertiseTitle;
+
+  /// Technical skills subtitle
+  ///
+  /// In en, this message translates to:
+  /// **'Technical Skills'**
+  String get technicalSkills;
+
+  /// Technical skills description
+  ///
+  /// In en, this message translates to:
+  /// **'Here are the technologies and tools I work with to bring ideas to life.'**
+  String get technicalSkillsDescription;
+
+  /// About me detailed description
+  ///
+  /// In en, this message translates to:
+  /// **'I am a mobile developer with more than 5 years of experience in technology, specialized in Flutter for creating Android and iOS applications. Throughout my career I have worked in startups and companies in the financial and technology sector, participating in high-impact projects and facing real challenges in production.'**
+  String get aboutMeDescription;
+
+  /// My full name
+  ///
+  /// In en, this message translates to:
+  /// **'Leonardo Sanchez'**
+  String get myName;
+
+  /// My email address
+  ///
+  /// In en, this message translates to:
+  /// **'Leansanchez14@gmail.com'**
+  String get myEmail;
+
+  /// GitHub username
+  ///
+  /// In en, this message translates to:
+  /// **'LeanSanchez-dev'**
+  String get githubUsername;
+
+  /// Featured projects section title
+  ///
+  /// In en, this message translates to:
+  /// **'Featured Projects'**
+  String get featuredProjects;
+
+  /// Featured projects section description
+  ///
+  /// In en, this message translates to:
+  /// **'Explore some of my recent work and personal projects'**
+  String get featuredProjectsDescription;
+
+  /// Currently working indicator
+  ///
+  /// In en, this message translates to:
+  /// **'Currently'**
+  String get currently;
+
+  /// Projects section label
+  ///
+  /// In en, this message translates to:
+  /// **'Projects:'**
+  String get projectsLabel;
+
+  /// Responsibilities section label
+  ///
+  /// In en, this message translates to:
+  /// **'Responsibilities:'**
+  String get responsibilitiesLabel;
+
+  /// Technologies section label
+  ///
+  /// In en, this message translates to:
+  /// **'Technologies:'**
+  String get technologiesLabel;
 }
 
 class _AppLocalizationsDelegate

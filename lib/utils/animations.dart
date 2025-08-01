@@ -401,7 +401,20 @@ class _TypewriterTextState extends State<TypewriterText>
       duration: widget.duration * widget.text.length,
       vsync: this,
     );
+    _initializeAnimation();
+  }
 
+  @override
+  void didUpdateWidget(TypewriterText oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.text != widget.text) {
+      _initializeAnimation();
+    }
+  }
+
+  void _initializeAnimation() {
+    _controller.duration = widget.duration * widget.text.length;
+    
     _characterCount = StepTween(
       begin: 0,
       end: widget.text.length,
@@ -410,6 +423,7 @@ class _TypewriterTextState extends State<TypewriterText>
       curve: Curves.easeOut,
     ));
 
+    _controller.reset();
     Future.delayed(widget.delay, () {
       if (mounted) {
         _controller.forward();
@@ -428,7 +442,8 @@ class _TypewriterTextState extends State<TypewriterText>
     return AnimatedBuilder(
       animation: _characterCount,
       builder: (context, child) {
-        String animatedText = widget.text.substring(0, _characterCount.value);
+        int charCount = _characterCount.value.clamp(0, widget.text.length);
+        String animatedText = widget.text.substring(0, charCount);
         return Text(
           animatedText,
           style: widget.style,

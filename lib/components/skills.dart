@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio_ls/utils/animations.dart';
 import 'package:portfolio_ls/utils/theme_data.dart';
+import 'package:portfolio_ls/l10n/app_localizations.dart';
 
 class Skills extends StatefulWidget {
   const Skills({Key? key}) : super(key: key);
@@ -50,7 +51,7 @@ class _SkillsState extends State<Skills> {
                     ],
                   ),
                   child: Text(
-                    'SKILLS & EXPERTISE',
+                    AppLocalizations.of(context)!.skillsExpertiseTitle,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color: Theme.of(context).primaryColor,
                           fontWeight: FontWeight.w600,
@@ -60,7 +61,7 @@ class _SkillsState extends State<Skills> {
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  'Technical Skills',
+                  AppLocalizations.of(context)!.technicalSkills,
                   style: Theme.of(context).textTheme.displayMedium?.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
@@ -69,7 +70,7 @@ class _SkillsState extends State<Skills> {
                 Container(
                   constraints: const BoxConstraints(maxWidth: 600),
                   child: Text(
-                    'Here are the technologies and tools I work with to bring ideas to life.',
+                    AppLocalizations.of(context)!.technicalSkillsDescription,
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                           color: Theme.of(context).textTheme.bodyMedium?.color,
                         ),
@@ -92,7 +93,7 @@ class _SkillsState extends State<Skills> {
               AnimatedFadeSlide(
                 delay: const Duration(milliseconds: 200),
                 child: _buildSkillCard(
-                  title: 'Programming Languages',
+                  title: AppLocalizations.of(context)!.programmingLanguages,
                   icon: FontAwesomeIcons.code,
                   skills: [
                     SkillData('Dart', 0.9, const Color(0xFF0175C2)),
@@ -108,7 +109,7 @@ class _SkillsState extends State<Skills> {
               AnimatedFadeSlide(
                 delay: const Duration(milliseconds: 300),
                 child: _buildSkillCard(
-                  title: 'Frameworks & Libraries',
+                  title: AppLocalizations.of(context)!.frameworksLibraries,
                   icon: FontAwesomeIcons.layerGroup,
                   skills: [
                     SkillData('Flutter', 0.95, const Color(0xFF02569B)),
@@ -124,7 +125,7 @@ class _SkillsState extends State<Skills> {
               AnimatedFadeSlide(
                 delay: const Duration(milliseconds: 400),
                 child: _buildSkillCard(
-                  title: 'Tools & Design',
+                  title: AppLocalizations.of(context)!.toolsDesign,
                   icon: FontAwesomeIcons.tools,
                   skills: [
                     SkillData('Figma', 0.9, const Color(0xFFF24E1E)),
@@ -171,7 +172,7 @@ class _SkillsState extends State<Skills> {
                   ),
                   const SizedBox(height: 16),
                   Text(
-                    'Core Competencies',
+                    AppLocalizations.of(context)!.coreCompetencies,
                     style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                           fontWeight: FontWeight.bold,
                           color: Theme.of(context).primaryColor,

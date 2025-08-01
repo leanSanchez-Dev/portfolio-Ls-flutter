@@ -12,12 +12,12 @@ class LanguageSelector extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<LanguageProvider>(
       builder: (context, languageProvider, child) {
-        final l10n = AppLocalizations.of(context)!;
-        
         return AnimatedHoverContainer(
           hoverScale: 1.05,
           child: InkWell(
-            onTap: () => languageProvider.toggleLanguage(),
+            onTap: () {
+              languageProvider.toggleLanguage();
+            },
             borderRadius: BorderRadius.circular(16),
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
