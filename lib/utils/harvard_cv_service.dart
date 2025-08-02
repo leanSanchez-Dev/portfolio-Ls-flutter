@@ -6,7 +6,7 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
 import 'package:portfolio_ls/models/cv_model.dart';
-import 'package:universal_html/html.dart' as html;
+import 'package:portfolio_ls/utils/web_pdf_utils.dart';
 
 class HarvardCVService {
   /// Obtiene los datos del CV desde el archivo JSON
@@ -439,17 +439,11 @@ class HarvardCVService {
       List<int> pdfBytes, String name) async {
     try {
       if (kIsWeb) {
-        final blob =
-            html.Blob([Uint8List.fromList(pdfBytes)], 'application/pdf');
-        final url = html.Url.createObjectUrlFromBlob(blob);
-        final anchor = html.document.createElement('a') as html.AnchorElement
-          ..href = url
-          ..style.display = 'none'
-          ..download = '${name.replaceAll(' ', '_')}_CV_Harvard.pdf';
-        html.document.body?.children.add(anchor);
-        anchor.click();
-        html.document.body?.children.remove(anchor);
-        html.Url.revokeObjectUrl(url);
+        // Usar las utilidades web para mayor compatibilidad
+        await WebPdfUtils.downloadPdfInBrowser(
+          Uint8List.fromList(pdfBytes),
+          '${name.replaceAll(' ', '_')}_CV_Harvard.pdf',
+        );
       } else {
         await Printing.sharePdf(
           bytes: Uint8List.fromList(pdfBytes),

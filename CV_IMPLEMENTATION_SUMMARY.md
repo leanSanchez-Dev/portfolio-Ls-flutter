@@ -10,7 +10,7 @@ He implementado exitosamente una funcionalidad completa de CV para tu portafolio
 
 - **Nombre:** Leonardo Sánchez
 - **Título:** Desarrollador Mobile & Full Stack
-- **Contacto:** leansanchez124@gmail.com | (315) 273-7979
+- **Contacto:** leansanchez14@gmail.com | (315) 273-7979
 - **Ubicación:** Colombia
 - **GitHub:** https://github.com/leanSanchez-Dev
 - **Portfolio:** https://portfolio-lean-dev.web.app

@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio_ls/models/cv_model.dart';
 import 'package:portfolio_ls/utils/harvard_cv_service.dart';
 import 'package:portfolio_ls/utils/animations.dart';
+import 'package:portfolio_ls/utils/web_pdf_utils.dart';
 import 'package:printing/printing.dart';
 
 class CVPreviewScreen extends StatefulWidget {
@@ -195,6 +196,12 @@ class _CVPreviewScreenState extends State<CVPreviewScreen> {
     }
 
     if (_pdfBytes != null) {
+      // Verificar si PdfPreview es compatible con el entorno actual
+      if (!WebPdfUtils.isPdfPreviewSupported) {
+        return _buildWebProductionPreview();
+      }
+
+      // En debug o móvil, usar PdfPreview normal
       return Container(
         padding: const EdgeInsets.all(16),
         child: Center(
@@ -235,6 +242,172 @@ class _CVPreviewScreenState extends State<CVPreviewScreen> {
     return const Center(
       child: Text('No se pudo cargar la vista previa'),
     );
+  }
+
+  Widget _buildWebProductionPreview() {
+    final theme = Theme.of(context);
+
+    return Container(
+      padding: const EdgeInsets.all(16),
+      child: Center(
+        child: Container(
+          constraints: const BoxConstraints(maxWidth: 800),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(40),
+                decoration: BoxDecoration(
+                  color: theme.cardColor,
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(
+                    color: theme.dividerColor.withOpacity(0.3),
+                  ),
+                ),
+                child: Column(
+                  children: [
+                    Icon(
+                      FontAwesomeIcons.filePdf,
+                      size: 80,
+                      color: theme.primaryColor,
+                    ),
+                    const SizedBox(height: 24),
+                    Text(
+                      'Vista previa del CV',
+                      style: theme.textTheme.headlineSmall?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    Text(
+                      'El CV de ${widget.cvData.name} está listo para descargar.',
+                      style: theme.textTheme.bodyLarge?.copyWith(
+                        color: theme.colorScheme.onSurface.withOpacity(0.7),
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      'En la versión web, la previsualización está limitada por seguridad del navegador.',
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        color: theme.colorScheme.onSurface.withOpacity(0.5),
+                        fontStyle: FontStyle.italic,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 32),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        AnimatedHoverContainer(
+                          child: ElevatedButton.icon(
+                            onPressed: _downloadPDF,
+                            icon: const Icon(FontAwesomeIcons.download),
+                            label: const Text('Descargar CV'),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: theme.primaryColor,
+                              foregroundColor: Colors.white,
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 24,
+                                vertical: 16,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                        AnimatedHoverContainer(
+                          child: OutlinedButton.icon(
+                            onPressed: () => _openPdfInNewTab(),
+                            icon: const Icon(FontAwesomeIcons.externalLinkAlt),
+                            label: const Text('Abrir en nueva pestaña'),
+                            style: OutlinedButton.styleFrom(
+                              foregroundColor: theme.primaryColor,
+                              side: BorderSide(color: theme.primaryColor),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 24,
+                                vertical: 16,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 24),
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.blue.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(
+                    color: Colors.blue.withOpacity(0.3),
+                  ),
+                ),
+                child: Row(
+                  children: [
+                    Icon(
+                      FontAwesomeIcons.infoCircle,
+                      color: Colors.blue,
+                      size: 20,
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Text(
+                        'Consejo: Para una mejor experiencia de previsualización, usa la aplicación móvil o descarga el PDF.',
+                        style: theme.textTheme.bodySmall?.copyWith(
+                          color: Colors.blue.shade700,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _openPdfInNewTab() async {
+    if (_pdfBytes == null) return;
+
+    try {
+      if (kIsWeb) {
+        await WebPdfUtils.openPdfInNewTab(
+          _pdfBytes!,
+          '${widget.cvData.name.replaceAll(' ', '_')}_CV.pdf',
+        );
+
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('CV abierto en nueva pestaña'),
+              backgroundColor: Colors.green,
+              duration: Duration(seconds: 2),
+            ),
+          );
+        }
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Error al abrir: $e'),
+            backgroundColor: Colors.red,
+            duration: const Duration(seconds: 3),
+          ),
+        );
+      }
+    }
   }
 }
 

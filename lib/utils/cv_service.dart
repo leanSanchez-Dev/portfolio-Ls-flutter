@@ -6,7 +6,7 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
 import 'package:portfolio_ls/models/cv_model.dart';
-import 'package:universal_html/html.dart' as html;
+import 'package:portfolio_ls/utils/web_pdf_utils.dart';
 
 class CVService {
   /// Construye la sección de declaración personal estilo Harvard
@@ -468,17 +468,11 @@ class CVService {
       Uint8List pdfBytes, String name) async {
     try {
       if (kIsWeb) {
-        // Para web, usar download directo
-        final blob = html.Blob([pdfBytes], 'application/pdf');
-        final url = html.Url.createObjectUrlFromBlob(blob);
-        final anchor = html.document.createElement('a') as html.AnchorElement
-          ..href = url
-          ..style.display = 'none'
-          ..download = '${name.replaceAll(' ', '_')}_CV.pdf';
-        html.document.body?.children.add(anchor);
-        anchor.click();
-        html.document.body?.children.remove(anchor);
-        html.Url.revokeObjectUrl(url);
+        // Usar las utilidades web para mayor compatibilidad
+        await WebPdfUtils.downloadPdfInBrowser(
+          pdfBytes,
+          '${name.replaceAll(' ', '_')}_CV.pdf',
+        );
       } else {
         // Para móvil, usar el paquete printing
         await Printing.sharePdf(
@@ -500,10 +494,27 @@ class CVService {
       final cvData = customCVData ?? await getCVData();
       final pdfBytes = await generateCVPDF(cvData);
 
-      await Printing.layoutPdf(
-        onLayout: (PdfPageFormat format) async => pdfBytes,
-        name: '${cvData.name} - CV',
-      );
+      // Verificar si podemos usar Printing.layoutPdf
+      if (WebPdfUtils.isPdfPreviewSupported) {
+        await Printing.layoutPdf(
+          onLayout: (PdfPageFormat format) async => pdfBytes,
+          name: '${cvData.name} - CV',
+        );
+      } else {
+        // En web production, abrir en nueva pestaña
+        if (kIsWeb) {
+          await WebPdfUtils.openPdfInNewTab(
+            pdfBytes,
+            '${cvData.name.replaceAll(' ', '_')}_CV.pdf',
+          );
+        } else {
+          // Fallback para móvil
+          await Printing.sharePdf(
+            bytes: pdfBytes,
+            filename: '${cvData.name.replaceAll(' ', '_')}_CV.pdf',
+          );
+        }
+      }
     } catch (e) {
       if (kDebugMode) {
         print('Error al previsualizar CV: $e');
