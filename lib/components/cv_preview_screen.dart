@@ -196,47 +196,50 @@ class _CVPreviewScreenState extends State<CVPreviewScreen> {
     }
 
     if (_pdfBytes != null) {
-      // Verificar si PdfPreview es compatible con el entorno actual
-      if (!WebPdfUtils.isPdfPreviewSupported) {
-        return _buildWebProductionPreview();
-      }
-
-      // En debug o móvil, usar PdfPreview normal
-      return Container(
-        padding: const EdgeInsets.all(16),
-        child: Center(
-          child: Container(
-            constraints: const BoxConstraints(maxWidth: 800),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.1),
-                  blurRadius: 10,
-                  offset: const Offset(0, 4),
-                ),
-              ],
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: PdfPreview(
-                build: (format) => _pdfBytes!,
-                allowPrinting: false,
-                allowSharing: true,
-                canChangePageFormat: false,
-                canDebug: false,
-                maxPageWidth: 800,
-                pdfFileName:
-                    '${widget.cvData.name.replaceAll(' ', '_')}_CV.pdf',
-                actions: const [], // Remover acciones por defecto
-                scrollViewDecoration: BoxDecoration(
-                  color: theme.cardColor,
+      // Primero intentar con PdfPreview
+      try {
+        return Container(
+          padding: const EdgeInsets.all(16),
+          child: Center(
+            child: Container(
+              constraints: const BoxConstraints(maxWidth: 800),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withValues(alpha: 0.1),
+                    blurRadius: 10,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: PdfPreview(
+                  build: (format) => _pdfBytes!,
+                  allowPrinting: false,
+                  allowSharing: true,
+                  canChangePageFormat: false,
+                  canDebug: false,
+                  maxPageWidth: 800,
+                  pdfFileName:
+                      '${widget.cvData.name.replaceAll(' ', '_')}_CV.pdf',
+                  actions: const [], // Remover acciones por defecto
+                  scrollViewDecoration: BoxDecoration(
+                    color: theme.cardColor,
+                  ),
                 ),
               ),
             ),
           ),
-        ),
-      );
+        );
+      } catch (e) {
+        // Si PdfPreview falla, mostrar vista alternativa
+        if (kDebugMode) {
+          print('PdfPreview falló, usando vista alternativa: $e');
+        }
+        return _buildWebProductionPreview();
+      }
     }
 
     return const Center(
@@ -280,7 +283,7 @@ class _CVPreviewScreenState extends State<CVPreviewScreen> {
                     ),
                     const SizedBox(height: 12),
                     Text(
-                      'El CV de ${widget.cvData.name} está listo para descargar.',
+                      'El CV de ${widget.cvData.name} está listo para ver y descargar.',
                       style: theme.textTheme.bodyLarge?.copyWith(
                         color: theme.colorScheme.onSurface.withOpacity(0.7),
                       ),
@@ -288,7 +291,7 @@ class _CVPreviewScreenState extends State<CVPreviewScreen> {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      'En la versión web, la previsualización está limitada por seguridad del navegador.',
+                      'Haz clic en "Abrir en nueva pestaña" para previsualizar el CV completo.',
                       style: theme.textTheme.bodySmall?.copyWith(
                         color: theme.colorScheme.onSurface.withOpacity(0.5),
                         fontStyle: FontStyle.italic,
@@ -361,7 +364,7 @@ class _CVPreviewScreenState extends State<CVPreviewScreen> {
                     const SizedBox(width: 12),
                     Expanded(
                       child: Text(
-                        'Consejo: Para una mejor experiencia de previsualización, usa la aplicación móvil o descarga el PDF.',
+                        'Consejo: El botón "Abrir en nueva pestaña" te permitirá ver el CV completo con todas las funciones de tu navegador.',
                         style: theme.textTheme.bodySmall?.copyWith(
                           color: Colors.blue.shade700,
                         ),

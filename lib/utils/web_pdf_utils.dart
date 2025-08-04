@@ -71,7 +71,7 @@ class WebPdfUtils {
       return true; // En móvil/desktop siempre funciona
     }
 
-    // En web, PdfPreview tiene problemas en modo release
-    return kDebugMode;
+    // Ahora habilitamos PdfPreview en web para mejorar la experiencia del usuario
+    return true;
   }
 }
