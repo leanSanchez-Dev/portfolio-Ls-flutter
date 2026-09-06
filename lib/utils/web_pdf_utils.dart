@@ -1,77 +1,14 @@
-import 'package:flutter/foundation.dart';
-import 'dart:typed_data';
+/// Fachada de [WebPdfUtils].
+///
+/// El import directo de `dart:html` que vivía aquí impedía compilar cualquier
+/// test de widget que alcanzara la sección de CV (`flutter test` corre en la
+/// VM de Dart). Esta librería añade la indirección condicional: en VM y móvil
+/// resuelve al stub, en web a la implementación DOM.
+///
+/// La condición es `dart.library.js_interop` (no `dart.library.html`) para
+/// alinearse con `utils/web_embed/` y seguir resolviendo a la implementación
+/// web cuando se compile a Wasm, donde `dart:html` no existe.
+library;
 
-// Solo importar dart:html en web
-import 'dart:html' as html;
-
-/// Utilidades específicas para el manejo de PDFs en Flutter Web
-class WebPdfUtils {
-  /// Abre un PDF en una nueva pestaña del navegador
-  static Future<void> openPdfInNewTab(
-      Uint8List pdfBytes, String filename) async {
-    if (!kIsWeb) {
-      throw UnsupportedError(
-          'Esta función solo está disponible en Flutter Web');
-    }
-
-    try {
-      final blob = html.Blob([pdfBytes], 'application/pdf');
-      final url = html.Url.createObjectUrlFromBlob(blob);
-
-      // Abrir en nueva pestaña
-      html.window.open(url, '_blank');
-
-      // Limpiar la URL del blob después de un tiempo
-      Future.delayed(const Duration(seconds: 1), () {
-        html.Url.revokeObjectUrl(url);
-      });
-    } catch (e) {
-      if (kDebugMode) {
-        print('Error al abrir PDF en nueva pestaña: $e');
-      }
-      rethrow;
-    }
-  }
-
-  /// Descargar PDF directamente en el navegador
-  static Future<void> downloadPdfInBrowser(
-      Uint8List pdfBytes, String filename) async {
-    if (!kIsWeb) {
-      throw UnsupportedError(
-          'Esta función solo está disponible en Flutter Web');
-    }
-
-    try {
-      final blob = html.Blob([pdfBytes], 'application/pdf');
-      final url = html.Url.createObjectUrlFromBlob(blob);
-
-      // Crear enlace de descarga
-      final anchor = html.document.createElement('a') as html.AnchorElement
-        ..href = url
-        ..style.display = 'none'
-        ..download = filename;
-
-      html.document.body?.children.add(anchor);
-      anchor.click();
-      html.document.body?.children.remove(anchor);
-
-      // Limpiar la URL del blob
-      html.Url.revokeObjectUrl(url);
-    } catch (e) {
-      if (kDebugMode) {
-        print('Error al descargar PDF: $e');
-      }
-      rethrow;
-    }
-  }
-
-  /// Verificar si PdfPreview es compatible en el entorno actual
-  static bool get isPdfPreviewSupported {
-    if (!kIsWeb) {
-      return true; // En móvil/desktop siempre funciona
-    }
-
-    // Ahora habilitamos PdfPreview en web para mejorar la experiencia del usuario
-    return true;
-  }
-}
+export 'web_pdf/web_pdf_utils_stub.dart'
+    if (dart.library.js_interop) 'web_pdf/web_pdf_utils_web.dart';
