@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:portfolio_ls/data/datasources/projects_local_datasource.dart';
+import 'package:portfolio_ls/data/repositories/projects_repository_impl.dart';
 import 'package:portfolio_ls/portfolio.dart';
+import 'package:portfolio_ls/providers/projects_provider.dart';
 import 'package:portfolio_ls/providers/theme_provider.dart';
 import 'package:portfolio_ls/providers/language_provider.dart';
 import 'package:portfolio_ls/utils/keyboard_handler.dart';
@@ -24,10 +27,14 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => ThemeProvider()),
         ChangeNotifierProvider(create: (context) => LanguageProvider()),
+        ChangeNotifierProvider(
+          create: (context) => ProjectsProvider(
+            const ProjectsRepositoryImpl(ProjectsLocalDataSource()),
+          )..load(),
+        ),
       ],
       child: Consumer2<ThemeProvider, LanguageProvider>(
         builder: (context, themeProvider, languageProvider, child) {
-          print('Main app rebuilding with locale: ${languageProvider.currentLocale.languageCode}');
           return MaterialApp(
             title: 'Leonardo Sanchez - Portfolio',
             theme: themeProvider.themeData,
