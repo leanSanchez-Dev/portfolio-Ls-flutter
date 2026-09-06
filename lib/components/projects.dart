@@ -1,9 +1,14 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:portfolio_ls/domain/config/external_integrations.dart';
 import 'package:portfolio_ls/models/projects.dart';
+import 'package:portfolio_ls/providers/projects_provider.dart';
+import 'package:provider/provider.dart';
 import 'package:portfolio_ls/utils/animations.dart';
 import 'package:portfolio_ls/utils/image_loader.dart' as image_loader;
+import 'package:portfolio_ls/utils/reveal_on_scroll.dart';
+import 'package:portfolio_ls/utils/theme_data.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:portfolio_ls/l10n/app_localizations.dart';
 
@@ -19,8 +24,8 @@ class _ProjectsState extends State<Projects> with TickerProviderStateMixin {
   late AnimationController _headerController;
   late AnimationController _carouselController;
 
-  List<Project> projects =
-      jsonPj.map((item) => Project.fromJson(item)).toList();
+  /// Última lista filtrada vista en `build`, para detectar cambios de filtro.
+  List<Project>? _lastFiltered;
   int currentIndex = 0;
 
   @override
@@ -34,13 +39,20 @@ class _ProjectsState extends State<Projects> with TickerProviderStateMixin {
       duration: const Duration(milliseconds: 1200),
       vsync: this,
     );
+  }
 
-    // Precargar imágenes del carousel
+  /// La sección está muy por debajo del fold: ni animación ni precarga de
+  /// imágenes ocurren hasta que entra en el viewport.
+  void _onRevealed() {
     _preloadImages();
 
-    if (mounted) {
-      _headerController.forward();
+    if (prefersReducedMotion(context)) {
+      _headerController.value = 1;
+      _carouselController.value = 1;
+      return;
     }
+
+    _headerController.forward();
     Future.delayed(const Duration(milliseconds: 400), () {
       if (mounted) {
         _carouselController.forward();
@@ -49,7 +61,9 @@ class _ProjectsState extends State<Projects> with TickerProviderStateMixin {
   }
 
   Future<void> _preloadImages() async {
+    final projects = _lastFiltered ?? const <Project>[];
     final imagePaths = projects.map((project) => project.url).toList();
+    if (!mounted || imagePaths.isEmpty) return;
     await image_loader.ImagePreloader.preloadImages(imagePaths, context);
   }
 
@@ -60,18 +74,151 @@ class _ProjectsState extends State<Projects> with TickerProviderStateMixin {
     super.dispose();
   }
 
+  /// Al cambiar el filtro la lista se acorta y `currentIndex` puede quedar
+  /// fuera de rango, así que se resetea el índice y se lleva el carrusel a la
+  /// primera posición.
+  void _syncWithFilter(List<Project> filtered) {
+    if (identical(filtered, _lastFiltered)) return;
+    final isFirstBuild = _lastFiltered == null;
+    _lastFiltered = filtered;
+    currentIndex = 0;
+    if (isFirstBuild || filtered.isEmpty) return;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      _controller.jumpToPage(0);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 40),
-      width: double.infinity,
+    final projects = context
+        .select<ProjectsProvider, List<Project>>((p) => p.filteredProjects);
+    final isEmptyResult =
+        context.select<ProjectsProvider, bool>((p) => p.isEmptyResult);
+    // Los `select` viven aquí, en el `build` de este State: dentro del
+    // `builder` de RevealOnScroll ya sería otro elemento en construcción.
+    final technologies =
+        context.select<ProjectsProvider, List<String>>((p) => p.technologies);
+    final selected =
+        context.select<ProjectsProvider, String?>((p) => p.selectedTechnology);
+    _syncWithFilter(projects);
+
+    return RevealOnScroll(
+      onRevealed: _onRevealed,
+      builder: (context, _) => Container(
+        margin: const EdgeInsets.symmetric(vertical: 40),
+        width: double.infinity,
+        child: Column(
+          children: [
+            _buildHeader(),
+            const SizedBox(height: 32),
+            _buildFilterChips(technologies, selected),
+            const SizedBox(height: 24),
+            if (isEmptyResult)
+              _buildEmptyState()
+            else ...[
+              _buildProjectsCarousel(projects),
+              const SizedBox(height: 32),
+              _buildIndicators(projects),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildFilterChips(List<String> technologies, String? selected) {
+    final l10n = AppLocalizations.of(context)!;
+    if (technologies.isEmpty) return const SizedBox.shrink();
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         children: [
-          _buildHeader(),
-          const SizedBox(height: 40),
-          _buildProjectsCarousel(),
-          const SizedBox(height: 32),
-          _buildIndicators(),
+          Text(
+            l10n.projectsFilterLabel,
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: AppColors.getTextSecondary(context),
+                  fontWeight: FontWeight.w600,
+                ),
+          ),
+          const SizedBox(height: 12),
+          Wrap(
+            alignment: WrapAlignment.center,
+            spacing: 8,
+            runSpacing: 8,
+            children: [
+              _buildChoiceChip(
+                label: l10n.filterAll,
+                value: null,
+                isSelected: selected == null,
+              ),
+              for (final tecnologia in technologies)
+                _buildChoiceChip(
+                  label: tecnologia,
+                  value: tecnologia,
+                  isSelected: selected == tecnologia,
+                ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildChoiceChip({
+    required String label,
+    required String? value,
+    required bool isSelected,
+  }) {
+    final theme = Theme.of(context);
+    return ChoiceChip(
+      label: Text(label),
+      selected: isSelected,
+      showCheckmark: false,
+      // El estado de selección no se transmite solo por color: `ChoiceChip`
+      // expone `selected` en semántica y además cambia el peso tipográfico.
+      labelStyle: theme.textTheme.bodyMedium?.copyWith(
+        color: isSelected ? Colors.white : AppColors.getChipText(context),
+        fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
+      ),
+      backgroundColor: AppColors.getChipBackground(context),
+      selectedColor: theme.primaryColor,
+      side: BorderSide(
+        color: isSelected
+            ? theme.primaryColor
+            : AppColors.getBorderStrong(context),
+      ),
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+      onSelected: (_) =>
+          context.read<ProjectsProvider>().selectTechnology(value),
+    );
+  }
+
+  Widget _buildEmptyState() {
+    final l10n = AppLocalizations.of(context)!;
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
+      child: Column(
+        children: [
+          Icon(
+            FontAwesomeIcons.folderOpen,
+            size: 28,
+            color: AppColors.getTextSecondary(context),
+          ),
+          const SizedBox(height: 16),
+          Text(
+            l10n.noProjectsForFilter,
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  color: AppColors.getTextSecondary(context),
+                ),
+          ),
+          const SizedBox(height: 16),
+          TextButton(
+            onPressed: () => context.read<ProjectsProvider>().clearFilter(),
+            child: Text(l10n.clearFilter),
+          ),
         ],
       ),
     );
@@ -151,7 +298,7 @@ class _ProjectsState extends State<Projects> with TickerProviderStateMixin {
     );
   }
 
-  Widget _buildProjectsCarousel() {
+  Widget _buildProjectsCarousel(List<Project> projects) {
     return AnimatedBuilder(
       animation: _carouselController,
       builder: (context, child) {
@@ -174,13 +321,17 @@ class _ProjectsState extends State<Projects> with TickerProviderStateMixin {
                     options: CarouselOptions(
                       height: MediaQuery.of(context).size.height * 0.6,
                       aspectRatio: 16 / 9,
-                      autoPlay: true,
+                      // Con un solo resultado el autoplay solo provocaría
+                      // saltos innecesarios (y pelearía con el reseteo de
+                      // índice al filtrar).
+                      autoPlay: projects.length > 1,
                       autoPlayInterval: const Duration(seconds: 5),
                       enlargeCenterPage: true,
                       enableInfiniteScroll: true,
                       viewportFraction:
                           MediaQuery.of(context).size.width < 900 ? 0.85 : 0.7,
                       onPageChanged: (index, reason) {
+                        if (!mounted || index == currentIndex) return;
                         setState(() {
                           currentIndex = index;
                         });
@@ -219,6 +370,8 @@ class _ProjectsState extends State<Projects> with TickerProviderStateMixin {
                                 FontAwesomeIcons.chevronLeft,
                                 color: Theme.of(context).primaryColor,
                               ),
+                              tooltip:
+                                  AppLocalizations.of(context)!.previousProject,
                               onPressed: () => _controller.previousPage(),
                             ),
                           ),
@@ -250,6 +403,8 @@ class _ProjectsState extends State<Projects> with TickerProviderStateMixin {
                                 FontAwesomeIcons.chevronRight,
                                 color: Theme.of(context).primaryColor,
                               ),
+                              tooltip:
+                                  AppLocalizations.of(context)!.nextProject,
                               onPressed: () => _controller.nextPage(),
                             ),
                           ),
@@ -409,6 +564,8 @@ class _ProjectsState extends State<Projects> with TickerProviderStateMixin {
                                   color: Colors.white,
                                   size: 16,
                                 ),
+                                tooltip:
+                                    AppLocalizations.of(context)!.viewOnGitHub,
                                 onPressed: () => _launchGitHub(),
                                 iconSize: 16,
                                 padding: const EdgeInsets.all(8),
@@ -457,7 +614,7 @@ class _ProjectsState extends State<Projects> with TickerProviderStateMixin {
     );
   }
 
-  Widget _buildIndicators() {
+  Widget _buildIndicators(List<Project> projects) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: projects.asMap().entries.map((entry) {
@@ -478,7 +635,10 @@ class _ProjectsState extends State<Projects> with TickerProviderStateMixin {
   }
 
   Future<void> _launchGitHub() async {
-    const url = 'https://github.com/leanSanchez-Dev';
-    await launchUrl(Uri.parse(url), webOnlyWindowName: '_blank');
+    // La URL sale de la config de dominio, no se compone en el widget.
+    await launchUrl(
+      GitHubStatsConfig.profileUri,
+      webOnlyWindowName: '_blank',
+    );
   }
 }

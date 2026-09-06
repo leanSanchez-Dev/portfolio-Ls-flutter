@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio_ls/utils/animations.dart';
+import 'package:portfolio_ls/utils/reveal_on_scroll.dart';
 import 'package:portfolio_ls/utils/theme_data.dart';
 import 'package:portfolio_ls/l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
@@ -34,10 +35,18 @@ class _WorkExperienceState extends State<WorkExperience>
       duration: const Duration(milliseconds: 1500),
       vsync: this,
     );
+  }
 
-    if (mounted) {
-      _headerController.forward();
+  /// La entrada escalonada del timeline se dispara al entrar en el viewport,
+  /// no al montar. Con *reduced motion* el contenido aparece ya en su estado
+  /// final.
+  void _onRevealed() {
+    if (prefersReducedMotion(context)) {
+      _headerController.value = 1;
+      _timelineController.value = 1;
+      return;
     }
+    _headerController.forward();
     Future.delayed(const Duration(milliseconds: 400), () {
       if (mounted) {
         _timelineController.forward();
@@ -63,8 +72,9 @@ class _WorkExperienceState extends State<WorkExperience>
                 ? 700
                 : 800,
       ),
-      child: AnimatedFadeSlide(
-        child: Card(
+      child: RevealOnScroll(
+        onRevealed: _onRevealed,
+        builder: (context, _) => Card(
           elevation: 0,
           color: AppColors.getCardBackground(context),
           shape: RoundedRectangleBorder(

@@ -260,6 +260,21 @@
     "description": "Projects navigation item"
   },
   
+  "githubNav": "GitHub",
+  "@githubNav": {
+    "description": "GitHub stats navigation item"
+  },
+
+  "musicNav": "Music",
+  "@musicNav": {
+    "description": "Music / Spotify navigation item"
+  },
+
+  "moreNav": "More",
+  "@moreNav": {
+    "description": "Label of the desktop navigation overflow menu"
+  },
+
   "contactNav": "Contact",
   "@contactNav": {
     "description": "Contact navigation item"
@@ -283,5 +298,65 @@
   "darkMode": "Dark Mode",
   "@darkMode": {
     "description": "Dark mode label"
+  },
+  
+  "githubStatsTitle": "GitHub Stats",
+  "@githubStatsTitle": {
+    "description": "GitHub stats section title"
+  },
+  
+  "githubStatsDescription": "A real-time look at my activity and the languages I use the most on GitHub.",
+  "@githubStatsDescription": {
+    "description": "GitHub stats section description"
+  },
+  
+  "musicTitle": "Music While I Code",
+  "@musicTitle": {
+    "description": "Spotify / music section title"
+  },
+  
+  "musicDescription": "The soundtrack that keeps me company on every line of code.",
+  "@musicDescription": {
+    "description": "Spotify / music section description"
+  },
+  
+  "projectsFilterLabel": "Filter by technology",
+  "@projectsFilterLabel": {
+    "description": "Label for the projects technology filter"
+  },
+  
+  "filterAll": "All",
+  "@filterAll": {
+    "description": "Filter option that shows every project"
+  },
+  
+  "noProjectsForFilter": "No projects with this technology yet.",
+  "@noProjectsForFilter": {
+    "description": "Empty state shown when the technology filter returns no projects"
+  },
+
+  "clearFilter": "Clear filter",
+  "@clearFilter": {
+    "description": "Button that removes the active technology filter"
+  },
+
+  "githubStatsUnavailable": "GitHub stats aren't available right now.",
+  "@githubStatsUnavailable": {
+    "description": "Fallback message shown when the GitHub stats card fails to load"
+  },
+
+  "openInSpotify": "Open in Spotify",
+  "@openInSpotify": {
+    "description": "Link that opens the playlist on the Spotify website"
+  },
+
+  "previousProject": "Previous project",
+  "@previousProject": {
+    "description": "Accessible label for the carousel back arrow"
+  },
+
+  "nextProject": "Next project",
+  "@nextProject": {
+    "description": "Accessible label for the carousel forward arrow"
   }
 }

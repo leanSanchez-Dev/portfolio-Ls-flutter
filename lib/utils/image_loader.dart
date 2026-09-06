@@ -1,22 +1,74 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 
 // Widget para precargar imágenes en background
 class ImagePreloader {
   static final Map<String, ImageProvider> _cache = {};
 
+  /// Precarga los assets indicados en la caché de imágenes.
+  ///
+  /// [context] se usa **solo de forma sincrónica**, antes del primer `await`:
+  /// se resuelve una única [ImageConfiguration] y el bucle ya trabaja con
+  /// ella. Cruzar un `BuildContext` por un `await` es lo que producía
+  /// "Looking up a deactivated widget's ancestor is unsafe" cuando la sección
+  /// que llamaba moría a mitad de la precarga.
+  ///
+  /// Un `context` inválido en la llamada es un error de uso de la API y se
+  /// propaga: el `try` de abajo solo cubre fallos de carga de un asset, que sí
+  /// son tolerables.
   static Future<void> preloadImages(
       List<String> imagePaths, BuildContext context) async {
-    for (String path in imagePaths) {
-      if (!_cache.containsKey(path)) {
-        try {
-          final imageProvider = AssetImage(path);
-          await precacheImage(imageProvider, context);
-          _cache[path] = imageProvider;
-        } catch (e) {
-          debugPrint('Error preloading image $path: $e');
-        }
+    final pending =
+        imagePaths.where((path) => !_cache.containsKey(path)).toList();
+    if (pending.isEmpty) return;
+
+    final configuration = createLocalImageConfiguration(context);
+
+    for (final path in pending) {
+      final imageProvider = AssetImage(path);
+      try {
+        await _precache(imageProvider, configuration);
+        _cache[path] = imageProvider;
+      } catch (e) {
+        // Un asset que no carga degrada esa tarjeta, no la sección.
+        debugPrint('Error preloading image $path: $e');
       }
     }
+  }
+
+  /// Equivalente a `precacheImage` sin depender de un [BuildContext].
+  static Future<void> _precache(
+    ImageProvider provider,
+    ImageConfiguration configuration,
+  ) {
+    final completer = Completer<void>();
+    final stream = provider.resolve(configuration);
+    ImageStreamListener? listener;
+
+    void detach() {
+      // Igual que `precacheImage`: se suelta el listener al final del frame
+      // para no evictar la imagen de la caché antes de que nadie la use.
+      final current = listener;
+      if (current == null) return;
+      listener = null;
+      SchedulerBinding.instance
+          .addPostFrameCallback((_) => stream.removeListener(current));
+    }
+
+    listener = ImageStreamListener(
+      (ImageInfo image, bool synchronousCall) {
+        if (!completer.isCompleted) completer.complete();
+        detach();
+      },
+      onError: (Object error, StackTrace? stackTrace) {
+        if (!completer.isCompleted) completer.completeError(error, stackTrace);
+        detach();
+      },
+    );
+    stream.addListener(listener!);
+    return completer.future;
   }
 
   static ImageProvider? getCachedImage(String path) {

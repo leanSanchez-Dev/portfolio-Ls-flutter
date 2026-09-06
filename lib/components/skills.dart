@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio_ls/utils/animations.dart';
+import 'package:portfolio_ls/utils/reveal_on_scroll.dart';
 import 'package:portfolio_ls/utils/theme_data.dart';
 import 'package:portfolio_ls/l10n/app_localizations.dart';
 
@@ -28,7 +29,7 @@ class _SkillsState extends State<Skills> {
       child: Column(
         children: [
           // Section Header
-          AnimatedFadeSlide(
+          RevealAnimation(
             delay: const Duration(milliseconds: 100),
             child: Column(
               children: [
@@ -90,7 +91,7 @@ class _SkillsState extends State<Skills> {
             alignment: WrapAlignment.center,
             children: [
               // Programming Languages
-              AnimatedFadeSlide(
+              RevealAnimation(
                 delay: const Duration(milliseconds: 200),
                 child: _buildSkillCard(
                   title: AppLocalizations.of(context)!.programmingLanguages,
@@ -106,7 +107,7 @@ class _SkillsState extends State<Skills> {
               ),
 
               // Frameworks & Libraries
-              AnimatedFadeSlide(
+              RevealAnimation(
                 delay: const Duration(milliseconds: 300),
                 child: _buildSkillCard(
                   title: AppLocalizations.of(context)!.frameworksLibraries,
@@ -122,7 +123,7 @@ class _SkillsState extends State<Skills> {
               ),
 
               // Tools & Design
-              AnimatedFadeSlide(
+              RevealAnimation(
                 delay: const Duration(milliseconds: 400),
                 child: _buildSkillCard(
                   title: AppLocalizations.of(context)!.toolsDesign,
@@ -142,7 +143,7 @@ class _SkillsState extends State<Skills> {
           const SizedBox(height: 60),
 
           // Additional Skills Section
-          AnimatedFadeSlide(
+          RevealAnimation(
             delay: const Duration(milliseconds: 500),
             child: Container(
               width: double.infinity,

@@ -169,6 +169,15 @@ class AppLocalizationsEs extends AppLocalizations {
   String get projectsNav => 'Proyectos';
 
   @override
+  String get githubNav => 'GitHub';
+
+  @override
+  String get musicNav => 'Música';
+
+  @override
+  String get moreNav => 'Más';
+
+  @override
   String get contactNav => 'Contacto';
 
   @override
@@ -182,4 +191,43 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get darkMode => 'Modo Oscuro';
+
+  @override
+  String get githubStatsTitle => 'Estadísticas de GitHub';
+
+  @override
+  String get githubStatsDescription =>
+      'Un vistazo en tiempo real a mi actividad y a los lenguajes que más uso en GitHub.';
+
+  @override
+  String get musicTitle => 'Música Mientras Programo';
+
+  @override
+  String get musicDescription =>
+      'La banda sonora que me acompaña en cada línea de código.';
+
+  @override
+  String get projectsFilterLabel => 'Filtrar por tecnología';
+
+  @override
+  String get filterAll => 'Todos';
+
+  @override
+  String get noProjectsForFilter => 'Aún no hay proyectos con esta tecnología.';
+
+  @override
+  String get clearFilter => 'Quitar filtro';
+
+  @override
+  String get githubStatsUnavailable =>
+      'Las estadísticas de GitHub no están disponibles ahora mismo.';
+
+  @override
+  String get openInSpotify => 'Abrir en Spotify';
+
+  @override
+  String get previousProject => 'Proyecto anterior';
+
+  @override
+  String get nextProject => 'Proyecto siguiente';
 }

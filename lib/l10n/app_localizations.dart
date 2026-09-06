@@ -404,6 +404,24 @@ abstract class AppLocalizations {
   /// **'Projects'**
   String get projectsNav;
 
+  /// GitHub stats navigation item
+  ///
+  /// In en, this message translates to:
+  /// **'GitHub'**
+  String get githubNav;
+
+  /// Music / Spotify navigation item
+  ///
+  /// In en, this message translates to:
+  /// **'Music'**
+  String get musicNav;
+
+  /// Label of the desktop navigation overflow menu
+  ///
+  /// In en, this message translates to:
+  /// **'More'**
+  String get moreNav;
+
   /// Contact navigation item
   ///
   /// In en, this message translates to:
@@ -433,6 +451,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Dark Mode'**
   String get darkMode;
+
+  /// GitHub stats section title
+  ///
+  /// In en, this message translates to:
+  /// **'GitHub Stats'**
+  String get githubStatsTitle;
+
+  /// GitHub stats section description
+  ///
+  /// In en, this message translates to:
+  /// **'A real-time look at my activity and the languages I use the most on GitHub.'**
+  String get githubStatsDescription;
+
+  /// Spotify / music section title
+  ///
+  /// In en, this message translates to:
+  /// **'Music While I Code'**
+  String get musicTitle;
+
+  /// Spotify / music section description
+  ///
+  /// In en, this message translates to:
+  /// **'The soundtrack that keeps me company on every line of code.'**
+  String get musicDescription;
+
+  /// Label for the projects technology filter
+  ///
+  /// In en, this message translates to:
+  /// **'Filter by technology'**
+  String get projectsFilterLabel;
+
+  /// Filter option that shows every project
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get filterAll;
+
+  /// Empty state shown when the technology filter returns no projects
+  ///
+  /// In en, this message translates to:
+  /// **'No projects with this technology yet.'**
+  String get noProjectsForFilter;
+
+  /// Button that removes the active technology filter
+  ///
+  /// In en, this message translates to:
+  /// **'Clear filter'**
+  String get clearFilter;
+
+  /// Fallback message shown when the GitHub stats card fails to load
+  ///
+  /// In en, this message translates to:
+  /// **'GitHub stats aren\'t available right now.'**
+  String get githubStatsUnavailable;
+
+  /// Link that opens the playlist on the Spotify website
+  ///
+  /// In en, this message translates to:
+  /// **'Open in Spotify'**
+  String get openInSpotify;
+
+  /// Accessible label for the carousel back arrow
+  ///
+  /// In en, this message translates to:
+  /// **'Previous project'**
+  String get previousProject;
+
+  /// Accessible label for the carousel forward arrow
+  ///
+  /// In en, this message translates to:
+  /// **'Next project'**
+  String get nextProject;
 }
 
 class _AppLocalizationsDelegate
