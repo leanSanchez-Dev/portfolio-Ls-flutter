@@ -92,14 +92,88 @@ class Experience {
 
 List<Map<String, dynamic>> jsonStr = [
   {
+    "cargo": "Desarrollador Full Stack",
+    "empresa": "Sunset Software House",
+    "fecha_inicio": "Dic 2025",
+    "fecha_fin": "Actualmente",
+    "descripcion":
+        "Productos Full Stack Angular/Java para clientes Sunset. Actual: Fisioterapp (SaaS multitenant fisioterapia — Angular 21 + Spring Boot 3 / Java 17). Cerrado Sep 2026: Cliente Quipux (cobro coactivo — Angular 19 microfrontends + Java 21 / Spring Boot 3).",
+    "cargo_en": "Full Stack Developer",
+    "fecha_inicio_en": "Dec 2025",
+    "fecha_fin_en": "Currently",
+    "descripcion_en":
+        "Full Stack Angular/Java products for Sunset clients. Current: Fisioterapp (multitenant physio SaaS — Angular 21 + Spring Boot 3 / Java 17). Closed Sep 2026: Quipux client (coercive collection — Angular 19 microfrontends + Java 21 / Spring Boot 3).",
+    "proyectos": [
+      "Fisioterapp (actual)",
+      "Cliente Quipux (Dic 2025 — Sep 2026)"
+    ],
+    "proyectos_en": [
+      "Fisioterapp (current)",
+      "Quipux client (Dec 2025 — Sep 2026)"
+    ],
+    "responsabilidades": [
+      "Entrega Full Stack en productos Angular y Spring Boot para clientes de Sunset",
+      "Pacientes, agenda, historia clínica y reportes (Fisioterapp)",
+      "Módulos de cartera, títulos judiciales, reportes y notificaciones (Quipux)"
+    ],
+    "responsabilidades_en": [
+      "Full Stack delivery on Angular and Spring Boot products for Sunset clients",
+      "Patients, scheduling, clinical history, and reports (Fisioterapp)",
+      "Portfolio, judicial titles, reports, and notifications modules (Quipux)"
+    ],
+    "tecnologias": [
+      "Angular 21",
+      "Spring Boot 3",
+      "Java 17",
+      "PostgreSQL",
+      "Nx",
+      "Module Federation",
+      "JWT",
+      "Docker",
+      "GitLab CI/CD"
+    ]
+  },
+  {
+    "cargo": "Desarrollador Full Stack",
+    "empresa": "FUNDASER — Proyecto independiente",
+    "fecha_inicio": "2026",
+    "fecha_fin": "2026",
+    "descripcion":
+        "Plataforma integral operador ICBF (internado 24/7): portal, turnos, asistencia PWA, pre-nómina, bóveda documental. Next.js 15, React 19, TypeScript, Supabase (PostgreSQL, RLS, Edge Functions), Tailwind/Shadcn, PWA Serwist.",
+    "cargo_en": "Full Stack Developer",
+    "fecha_inicio_en": "2026",
+    "fecha_fin_en": "2026",
+    "descripcion_en":
+        "End-to-end platform for an ICBF operator (24/7 residential care): portal, shifts, PWA attendance, pre-payroll, document vault. Next.js 15, React 19, TypeScript, Supabase (PostgreSQL, RLS, Edge Functions), Tailwind/Shadcn, PWA Serwist.",
+    "responsabilidades": [
+      "Entrega end-to-end: auth RBAC, CMS, motor de turnos, marcación GPS/QR offline, liquidación horaria y certificados QR",
+      "Esquema RLS orientado al cumplimiento ICBF"
+    ],
+    "responsabilidades_en": [
+      "End-to-end delivery: RBAC auth, CMS, shift engine, offline GPS/QR check-in, hourly settlement, and QR certificates",
+      "RLS schema oriented to ICBF compliance"
+    ],
+    "tecnologias": [
+      "Next.js 15",
+      "React 19",
+      "TypeScript",
+      "Supabase",
+      "PostgreSQL",
+      "Tailwind",
+      "Shadcn",
+      "PWA",
+      "Serwist"
+    ]
+  },
+  {
     "cargo": "Desarrollador FullStack Flutter",
     "empresa": "CODESA S.A.",
     "fecha_inicio": "May 2024",
-    "fecha_fin": "Actualmente",
+    "fecha_fin": "Nov 2025",
     "descripcion": "Desarrollador Full Stack especializado en Flutter y Angular",
     "cargo_en": "FullStack Flutter Developer",
     "fecha_inicio_en": "May 2024",
-    "fecha_fin_en": "Currently",
+    "fecha_fin_en": "Nov 2025",
     "descripcion_en": "Full Stack Developer specialized in Flutter and Angular",
     "responsabilidades": [
       "Resolución de bugs en aplicaciones desarrolladas en Flutter y Angular",

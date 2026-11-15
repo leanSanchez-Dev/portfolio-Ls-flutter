@@ -19,7 +19,7 @@
     "description": "Introduction text"
   },
   
-  "roleTitle": "Flutter Developer & Frontend Specialist",
+  "roleTitle": "ADSI Technologist · Full Stack & Mobile",
   "@roleTitle": {
     "description": "Professional role title"
   },
@@ -195,7 +195,7 @@
     "description": "Technical skills description"
   },
   
-  "aboutMeDescription": "I am a mobile developer with more than 5 years of experience in technology, specialized in Flutter for creating Android and iOS applications. Throughout my career I have worked in startups and companies in the financial and technology sector, participating in high-impact projects and facing real challenges in production.",
+  "aboutMeDescription": "Information Systems Analysis and Development Technologist (ADSI) with experience in mobile and full-stack software development. I have built mobile apps (Flutter, Android, iOS) and enterprise web platforms with Angular, Next.js/React and backends in Java/Spring Boot and Supabase. I specialize in modern architectures (microfrontends, hexagonal/CQRS, PWA) and solutions that optimize operational processes. I work with Scrum agile methodology, with a proactive, methodical approach and a strong ethical commitment to product quality and teams.",
   "@aboutMeDescription": {
     "description": "About me detailed description"
   },
@@ -358,5 +358,60 @@
   "nextProject": "Next project",
   "@nextProject": {
     "description": "Accessible label for the carousel forward arrow"
+  },
+
+  "cvDownloadLabel": "Download CV",
+  "@cvDownloadLabel": {
+    "description": "Primary label for the CV download button"
+  },
+
+  "cvDownloading": "Downloading...",
+  "@cvDownloading": {
+    "description": "Loading label while the CV PDF is being generated"
+  },
+
+  "cvDownloadSuccess": "CV downloaded successfully",
+  "@cvDownloadSuccess": {
+    "description": "SnackBar shown after a successful CV download"
+  },
+
+  "cvDownloadError": "Error downloading CV",
+  "@cvDownloadError": {
+    "description": "SnackBar shown when CV download fails"
+  },
+
+  "cvPreviewLabel": "Preview",
+  "@cvPreviewLabel": {
+    "description": "Button label that opens the CV preview screen"
+  },
+
+  "cvDownloadPdfLabel": "Download PDF",
+  "@cvDownloadPdfLabel": {
+    "description": "Button label that downloads the Harvard CV PDF"
+  },
+
+  "cvPreviewOpening": "Opening CV preview",
+  "@cvPreviewOpening": {
+    "description": "SnackBar shown when navigating to CV preview"
+  },
+
+  "cvPreviewError": "Error opening CV preview",
+  "@cvPreviewError": {
+    "description": "SnackBar shown when CV preview fails to open"
+  },
+
+  "cvFloatingTitle": "My Resume",
+  "@cvFloatingTitle": {
+    "description": "Title on the floating CV download card"
+  },
+
+  "cvFloatingSubtitle": "Download my full CV",
+  "@cvFloatingSubtitle": {
+    "description": "Subtitle on the floating CV download card"
+  },
+
+  "cvFloatingDownload": "Download",
+  "@cvFloatingDownload": {
+    "description": "Compact download label on the floating CV card"
   }
 }

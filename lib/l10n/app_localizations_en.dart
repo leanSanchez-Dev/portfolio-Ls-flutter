@@ -21,7 +21,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get intro => 'I\'m Leonardo';
 
   @override
-  String get roleTitle => 'Flutter Developer & Frontend Specialist';
+  String get roleTitle => 'ADSI Technologist · Full Stack & Mobile';
 
   @override
   String get introDescription =>
@@ -129,7 +129,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get aboutMeDescription =>
-      'I am a mobile developer with more than 5 years of experience in technology, specialized in Flutter for creating Android and iOS applications. Throughout my career I have worked in startups and companies in the financial and technology sector, participating in high-impact projects and facing real challenges in production.';
+      'Information Systems Analysis and Development Technologist (ADSI) with experience in mobile and full-stack software development. I have built mobile apps (Flutter, Android, iOS) and enterprise web platforms with Angular, Next.js/React and backends in Java/Spring Boot and Supabase. I specialize in modern architectures (microfrontends, hexagonal/CQRS, PWA) and solutions that optimize operational processes. I work with Scrum agile methodology, with a proactive, methodical approach and a strong ethical commitment to product quality and teams.';
 
   @override
   String get myName => 'Leonardo Sanchez';
@@ -230,4 +230,37 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get nextProject => 'Next project';
+
+  @override
+  String get cvDownloadLabel => 'Download CV';
+
+  @override
+  String get cvDownloading => 'Downloading...';
+
+  @override
+  String get cvDownloadSuccess => 'CV downloaded successfully';
+
+  @override
+  String get cvDownloadError => 'Error downloading CV';
+
+  @override
+  String get cvPreviewLabel => 'Preview';
+
+  @override
+  String get cvDownloadPdfLabel => 'Download PDF';
+
+  @override
+  String get cvPreviewOpening => 'Opening CV preview';
+
+  @override
+  String get cvPreviewError => 'Error opening CV preview';
+
+  @override
+  String get cvFloatingTitle => 'My Resume';
+
+  @override
+  String get cvFloatingSubtitle => 'Download my full CV';
+
+  @override
+  String get cvFloatingDownload => 'Download';
 }

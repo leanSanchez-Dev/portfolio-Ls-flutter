@@ -125,7 +125,7 @@ abstract class AppLocalizations {
   /// Professional role title
   ///
   /// In en, this message translates to:
-  /// **'Flutter Developer & Frontend Specialist'**
+  /// **'ADSI Technologist · Full Stack & Mobile'**
   String get roleTitle;
 
   /// Introduction description
@@ -329,7 +329,7 @@ abstract class AppLocalizations {
   /// About me detailed description
   ///
   /// In en, this message translates to:
-  /// **'I am a mobile developer with more than 5 years of experience in technology, specialized in Flutter for creating Android and iOS applications. Throughout my career I have worked in startups and companies in the financial and technology sector, participating in high-impact projects and facing real challenges in production.'**
+  /// **'Information Systems Analysis and Development Technologist (ADSI) with experience in mobile and full-stack software development. I have built mobile apps (Flutter, Android, iOS) and enterprise web platforms with Angular, Next.js/React and backends in Java/Spring Boot and Supabase. I specialize in modern architectures (microfrontends, hexagonal/CQRS, PWA) and solutions that optimize operational processes. I work with Scrum agile methodology, with a proactive, methodical approach and a strong ethical commitment to product quality and teams.'**
   String get aboutMeDescription;
 
   /// My full name
@@ -523,6 +523,72 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Next project'**
   String get nextProject;
+
+  /// Primary label for the CV download button
+  ///
+  /// In en, this message translates to:
+  /// **'Download CV'**
+  String get cvDownloadLabel;
+
+  /// Loading label while the CV PDF is being generated
+  ///
+  /// In en, this message translates to:
+  /// **'Downloading...'**
+  String get cvDownloading;
+
+  /// SnackBar shown after a successful CV download
+  ///
+  /// In en, this message translates to:
+  /// **'CV downloaded successfully'**
+  String get cvDownloadSuccess;
+
+  /// SnackBar shown when CV download fails
+  ///
+  /// In en, this message translates to:
+  /// **'Error downloading CV'**
+  String get cvDownloadError;
+
+  /// Button label that opens the CV preview screen
+  ///
+  /// In en, this message translates to:
+  /// **'Preview'**
+  String get cvPreviewLabel;
+
+  /// Button label that downloads the Harvard CV PDF
+  ///
+  /// In en, this message translates to:
+  /// **'Download PDF'**
+  String get cvDownloadPdfLabel;
+
+  /// SnackBar shown when navigating to CV preview
+  ///
+  /// In en, this message translates to:
+  /// **'Opening CV preview'**
+  String get cvPreviewOpening;
+
+  /// SnackBar shown when CV preview fails to open
+  ///
+  /// In en, this message translates to:
+  /// **'Error opening CV preview'**
+  String get cvPreviewError;
+
+  /// Title on the floating CV download card
+  ///
+  /// In en, this message translates to:
+  /// **'My Resume'**
+  String get cvFloatingTitle;
+
+  /// Subtitle on the floating CV download card
+  ///
+  /// In en, this message translates to:
+  /// **'Download my full CV'**
+  String get cvFloatingSubtitle;
+
+  /// Compact download label on the floating CV card
+  ///
+  /// In en, this message translates to:
+  /// **'Download'**
+  String get cvFloatingDownload;
 }
 
 class _AppLocalizationsDelegate
