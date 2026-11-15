@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio_ls/models/cv_model.dart';
+import 'package:portfolio_ls/l10n/app_localizations.dart';
 import 'package:portfolio_ls/utils/harvard_cv_service.dart';
 import 'package:portfolio_ls/utils/animations.dart';
 import 'package:portfolio_ls/components/cv_preview_screen.dart';
@@ -40,9 +41,9 @@ class _CVSectionState extends State<CVSection> {
   Future<void> _previewCV() async {
     if (_cvData == null) return;
 
+    final l10n = AppLocalizations.of(context)!;
     setState(() => _isLoading = true);
     try {
-      // Navegar a la pantalla de preview
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (context) => CVPreviewScreen(cvData: _cvData!),
@@ -51,8 +52,8 @@ class _CVSectionState extends State<CVSection> {
 
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Opening CV preview'),
+          SnackBar(
+            content: Text(l10n.cvPreviewOpening),
             backgroundColor: Colors.green,
           ),
         );
@@ -60,8 +61,8 @@ class _CVSectionState extends State<CVSection> {
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Error opening CV preview'),
+          SnackBar(
+            content: Text(l10n.cvPreviewError),
             backgroundColor: Colors.red,
           ),
         );
@@ -74,17 +75,15 @@ class _CVSectionState extends State<CVSection> {
   Future<void> _downloadCV() async {
     if (_cvData == null) return;
 
+    final l10n = AppLocalizations.of(context)!;
     setState(() => _isLoading = true);
     try {
-      // Generar PDF en formato Harvard
-      final pdfBytes = await HarvardCVService.generateHarvardCVPDF(_cvData!);
-      // Descargar el PDF
-      await HarvardCVService.downloadCVFromBytes(pdfBytes, _cvData!.name);
+      await HarvardCVService.downloadCV(customCVData: _cvData);
 
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Harvard CV downloaded successfully'),
+          SnackBar(
+            content: Text(l10n.cvDownloadSuccess),
             backgroundColor: Colors.green,
           ),
         );
@@ -92,8 +91,8 @@ class _CVSectionState extends State<CVSection> {
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Error downloading CV'),
+          SnackBar(
+            content: Text(l10n.cvDownloadError),
             backgroundColor: Colors.red,
           ),
         );
@@ -106,6 +105,7 @@ class _CVSectionState extends State<CVSection> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context)!;
 
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
@@ -262,7 +262,7 @@ class _CVSectionState extends State<CVSection> {
                                   child: ElevatedButton.icon(
                                     onPressed: _isLoading ? null : _previewCV,
                                     icon: const Icon(FontAwesomeIcons.eye),
-                                    label: const Text('Previsualizar'),
+                                    label: Text(l10n.cvPreviewLabel),
                                     style: ElevatedButton.styleFrom(
                                       padding: const EdgeInsets.symmetric(
                                         horizontal: 24,
@@ -280,7 +280,7 @@ class _CVSectionState extends State<CVSection> {
                                   child: ElevatedButton.icon(
                                     onPressed: _isLoading ? null : _downloadCV,
                                     icon: const Icon(FontAwesomeIcons.download),
-                                    label: const Text('Descargar PDF'),
+                                    label: Text(l10n.cvDownloadPdfLabel),
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: theme.primaryColor,
                                       foregroundColor: Colors.white,

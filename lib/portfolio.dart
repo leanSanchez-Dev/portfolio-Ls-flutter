@@ -183,7 +183,7 @@ class _PortfolioState extends State<Portfolio> {
       // Música cierra en personal antes del CTA: tras la evidencia técnica y
       // el CV, el toque humano.
       Container(key: musicKey, child: const MusicSection()),
-      const BannerInf(),
+      BannerInf(onViewProjects: () => _scrollToSection(projectsKey)),
       Container(key: contactKey, child: const Footer()),
     ];
 

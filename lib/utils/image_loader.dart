@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:portfolio_ls/utils/reveal_on_scroll.dart';
 
 // Widget para precargar imágenes en background
 class ImagePreloader {
@@ -106,6 +107,8 @@ class _ShimmerLoaderState extends State<ShimmerLoader>
   late AnimationController _controller;
   late Animation<double> _animation;
 
+  bool _motionResolved = false;
+
   @override
   void initState() {
     super.initState();
@@ -121,8 +124,16 @@ class _ShimmerLoaderState extends State<ShimmerLoader>
       parent: _controller,
       curve: Curves.easeInOut,
     ));
+  }
 
-    _controller.repeat();
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (_motionResolved) return;
+    _motionResolved = true;
+    if (!prefersReducedMotion(context)) {
+      _controller.repeat();
+    }
   }
 
   @override
@@ -137,6 +148,18 @@ class _ShimmerLoaderState extends State<ShimmerLoader>
         Theme.of(context).colorScheme.surface.withOpacity(0.3);
     final highlightColor = widget.highlightColor ??
         Theme.of(context).colorScheme.surface.withOpacity(0.1);
+    final borderRadius = widget.borderRadius ?? BorderRadius.circular(12);
+
+    if (prefersReducedMotion(context)) {
+      return Container(
+        width: widget.width,
+        height: widget.height,
+        decoration: BoxDecoration(
+          borderRadius: borderRadius,
+          color: baseColor,
+        ),
+      );
+    }
 
     return AnimatedBuilder(
       animation: _animation,
@@ -145,7 +168,7 @@ class _ShimmerLoaderState extends State<ShimmerLoader>
           width: widget.width,
           height: widget.height,
           decoration: BoxDecoration(
-            borderRadius: widget.borderRadius ?? BorderRadius.circular(12),
+            borderRadius: borderRadius,
             gradient: LinearGradient(
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,

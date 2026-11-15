@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_ls/utils/reveal_on_scroll.dart';
 
 // Widget para animaciones de entrada con fade y slide
 class AnimatedFadeSlide extends StatefulWidget {
@@ -60,6 +61,14 @@ class _AnimatedFadeSlideState extends State<AnimatedFadeSlide>
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (prefersReducedMotion(context) && _controller.value < 1.0) {
+      _controller.value = 1.0;
+    }
+  }
+
+  @override
   void dispose() {
     _controller.dispose();
     super.dispose();
@@ -67,6 +76,9 @@ class _AnimatedFadeSlideState extends State<AnimatedFadeSlide>
 
   @override
   Widget build(BuildContext context) {
+    if (prefersReducedMotion(context)) {
+      return widget.child;
+    }
     return AnimatedBuilder(
       animation: _controller,
       builder: (context, child) {
@@ -433,6 +445,14 @@ class _TypewriterTextState extends State<TypewriterText>
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (prefersReducedMotion(context) && _controller.value < 1.0) {
+      _controller.value = 1.0;
+    }
+  }
+
+  @override
   void dispose() {
     _controller.dispose();
     super.dispose();
@@ -440,6 +460,9 @@ class _TypewriterTextState extends State<TypewriterText>
 
   @override
   Widget build(BuildContext context) {
+    if (prefersReducedMotion(context)) {
+      return Text(widget.text, style: widget.style);
+    }
     return AnimatedBuilder(
       animation: _characterCount,
       builder: (context, child) {
@@ -498,10 +521,18 @@ class _AnimatedCircularProgressState extends State<AnimatedCircularProgress>
     ));
 
     Future.delayed(widget.delay, () {
-      if (mounted) {
+      if (mounted && !prefersReducedMotion(context)) {
         _controller.forward();
       }
     });
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (prefersReducedMotion(context) && _controller.value < 1.0) {
+      _controller.value = 1.0;
+    }
   }
 
   @override
@@ -510,50 +541,57 @@ class _AnimatedCircularProgressState extends State<AnimatedCircularProgress>
     super.dispose();
   }
 
+  Widget _progressRow(BuildContext context, double value) {
+    return Row(
+      children: [
+        SizedBox(
+          height: 50,
+          width: 50,
+          child: CircularProgressIndicator(
+            value: value,
+            strokeWidth: 4,
+            backgroundColor:
+                Theme.of(context).dividerColor.withValues(alpha: 0.3),
+            valueColor: AlwaysStoppedAnimation<Color>(
+              widget.color ?? Theme.of(context).primaryColor,
+            ),
+          ),
+        ),
+        const SizedBox(width: 16),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                widget.label,
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      fontWeight: FontWeight.w500,
+                    ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                '${(value * 100).round()}%',
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: widget.color ?? Theme.of(context).primaryColor,
+                      fontWeight: FontWeight.w600,
+                    ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    if (prefersReducedMotion(context)) {
+      return _progressRow(context, widget.progress);
+    }
     return AnimatedBuilder(
       animation: _progressAnimation,
       builder: (context, child) {
-        return Row(
-          children: [
-            SizedBox(
-              height: 50,
-              width: 50,
-              child: CircularProgressIndicator(
-                value: _progressAnimation.value,
-                strokeWidth: 4,
-                backgroundColor:
-                    Theme.of(context).dividerColor.withValues(alpha: 0.3),
-                valueColor: AlwaysStoppedAnimation<Color>(
-                  widget.color ?? Theme.of(context).primaryColor,
-                ),
-              ),
-            ),
-            const SizedBox(width: 16),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    widget.label,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          fontWeight: FontWeight.w500,
-                        ),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    '${(_progressAnimation.value * 100).round()}%',
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          color: widget.color ?? Theme.of(context).primaryColor,
-                          fontWeight: FontWeight.w600,
-                        ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        );
+        return _progressRow(context, _progressAnimation.value);
       },
     );
   }

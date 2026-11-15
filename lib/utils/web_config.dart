@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
 
 /// Configuración específica para Flutter web
 /// Ayuda a manejar problemas conocidos de la plataforma web
@@ -41,6 +42,7 @@ class WebConfig {
 /// Inicialización de configuraciones web
 void initializeWebConfig() {
   if (kIsWeb) {
+    usePathUrlStrategy();
     WebConfig.configureWebKeyboardHandling();
     WebConfig.preventCommonWebErrors();
   }

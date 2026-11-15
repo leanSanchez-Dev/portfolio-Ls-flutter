@@ -9,12 +9,13 @@ import 'package:url_launcher/url_launcher.dart';
 
 /// Sección "Música mientras programo" con el reproductor embebido de Spotify.
 ///
-/// El iframe se monta siempre, sin click-to-load: es el código de inserción
-/// oficial que pidió el usuario. Conserva `loading="lazy"` porque la sección
-/// vive muy por debajo del fold y así no compite con el primer paint.
+/// **Diferido por reveal (P0):** [HtmlIframeEmbed] solo se monta cuando
+/// [RevealOnScroll] marca `revealed == true`. Hasta entonces se muestra
+/// [_PlayerPlaceholder]. Eso basta para no cargar Spotify en el page load;
+/// no se exige tap-to-load adicional.
 ///
-/// Implicación de privacidad asumida a petición del usuario: todo visitante
-/// contacta a Spotify y recibe sus cookies de terceros sin interacción previa.
+/// Al revelarse, el visitante contacta a Spotify (cookies de terceros) sin
+/// un click explícito previo — trade-off aceptado para P0.
 class MusicSection extends StatelessWidget {
   const MusicSection({super.key});
 
@@ -57,12 +58,9 @@ class MusicSection extends StatelessWidget {
                     width: double.infinity,
                     // La platform view no auto-dimensiona: altura explícita.
                     height: _playerHeight,
-                    // El iframe se monta al entrar la sección en pantalla, no
-                    // al construirse el árbol. Sigue sin haber click-to-load:
-                    // el reproductor se carga solo, sin pedir permiso. Es el
-                    // mismo momento en que se montaba cuando las secciones
-                    // eran hijas de un `SliverList`, y evita que el arranque
-                    // de la página compita con Spotify por el ancho de banda.
+                    // Gate P0: HtmlIframeEmbed solo si `revealed`. El
+                    // reveal-on-scroll cumple el criterio; tap-to-load no
+                    // es necesario para evitar montaje en page load.
                     child: RevealOnScroll(
                       builder: (context, revealed) => revealed
                           ? HtmlIframeEmbed(

@@ -434,6 +434,13 @@ class HarvardCVService {
     );
   }
 
+  /// Pipeline completo: carga datos → genera PDF Harvard → descarga.
+  static Future<void> downloadCV({CVModel? customCVData}) async {
+    final cvData = customCVData ?? await getCVData();
+    final pdfBytes = await generateHarvardCVPDF(cvData);
+    await downloadCVFromBytes(pdfBytes, cvData.name);
+  }
+
   /// Descarga CV desde bytes ya generados
   static Future<void> downloadCVFromBytes(
       List<int> pdfBytes, String name) async {

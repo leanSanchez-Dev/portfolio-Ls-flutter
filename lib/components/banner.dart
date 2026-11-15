@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio_ls/utils/animations.dart';
+import 'package:portfolio_ls/utils/reveal_on_scroll.dart';
 import 'package:portfolio_ls/utils/theme_data.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:portfolio_ls/l10n/app_localizations.dart';
 
 class BannerInf extends StatefulWidget {
-  const BannerInf({super.key});
+  const BannerInf({super.key, this.onViewProjects});
+
+  /// Scroll hacia la sección de proyectos (inyectado desde [Portfolio]).
+  final VoidCallback? onViewProjects;
 
   @override
   State<BannerInf> createState() => _BannerInfState();
@@ -15,6 +19,7 @@ class BannerInf extends StatefulWidget {
 class _BannerInfState extends State<BannerInf> with TickerProviderStateMixin {
   late AnimationController _controller;
   late AnimationController _buttonController;
+  bool _motionResolved = false;
 
   @override
   void initState() {
@@ -27,7 +32,18 @@ class _BannerInfState extends State<BannerInf> with TickerProviderStateMixin {
       duration: const Duration(milliseconds: 1500),
       vsync: this,
     );
+  }
 
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (_motionResolved) return;
+    _motionResolved = true;
+    if (prefersReducedMotion(context)) {
+      _controller.value = 1.0;
+      _buttonController.value = 1.0;
+      return;
+    }
     _controller.forward();
     Future.delayed(const Duration(milliseconds: 600), () {
       if (mounted) {
@@ -385,7 +401,6 @@ class _BannerInfState extends State<BannerInf> with TickerProviderStateMixin {
   }
 
   void _viewProjects() {
-    // Scroll to projects section
-    // This could be improved by using a callback or navigation
+    widget.onViewProjects?.call();
   }
 }

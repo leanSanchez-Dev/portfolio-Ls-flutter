@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:portfolio_ls/utils/cv_service.dart';
+import 'package:portfolio_ls/l10n/app_localizations.dart';
+import 'package:portfolio_ls/utils/harvard_cv_service.dart';
 import 'package:portfolio_ls/utils/animations.dart';
 
 class CVDownloadButton extends StatefulWidget {
-  final String label;
+  final String? label;
   final bool showIcon;
   final bool isCompact;
   final Color? backgroundColor;
@@ -12,7 +13,7 @@ class CVDownloadButton extends StatefulWidget {
 
   const CVDownloadButton({
     super.key,
-    this.label = 'Descargar CV',
+    this.label,
     this.showIcon = true,
     this.isCompact = false,
     this.backgroundColor,
@@ -29,25 +30,26 @@ class _CVDownloadButtonState extends State<CVDownloadButton> {
   Future<void> _downloadCV() async {
     if (_isLoading) return;
 
+    final l10n = AppLocalizations.of(context)!;
     setState(() => _isLoading = true);
     try {
-      await CVService.downloadCV();
+      await HarvardCVService.downloadCV();
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('CV descargado exitosamente'),
+          SnackBar(
+            content: Text(l10n.cvDownloadSuccess),
             backgroundColor: Colors.green,
-            duration: Duration(seconds: 2),
+            duration: const Duration(seconds: 2),
           ),
         );
       }
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Error al descargar el CV'),
+          SnackBar(
+            content: Text(l10n.cvDownloadError),
             backgroundColor: Colors.red,
-            duration: Duration(seconds: 3),
+            duration: const Duration(seconds: 3),
           ),
         );
       }
@@ -61,6 +63,8 @@ class _CVDownloadButtonState extends State<CVDownloadButton> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context)!;
+    final label = widget.label ?? l10n.cvDownloadLabel;
 
     if (widget.isCompact) {
       return AnimatedHoverContainer(
@@ -78,7 +82,7 @@ class _CVDownloadButtonState extends State<CVDownloadButton> {
                     ),
                   ),
                 )
-              : Icon(
+              : const Icon(
                   FontAwesomeIcons.download,
                   size: 20,
                 ),
@@ -87,7 +91,7 @@ class _CVDownloadButtonState extends State<CVDownloadButton> {
             foregroundColor: widget.foregroundColor ?? Colors.white,
             padding: const EdgeInsets.all(12),
           ),
-          tooltip: widget.label,
+          tooltip: label,
         ),
       );
     }
@@ -111,8 +115,8 @@ class _CVDownloadButtonState extends State<CVDownloadButton> {
                 ? const Icon(FontAwesomeIcons.download)
                 : const SizedBox.shrink(),
         label: Text(
-          _isLoading ? 'Descargando...' : widget.label,
-          style: TextStyle(
+          _isLoading ? l10n.cvDownloading : label,
+          style: const TextStyle(
             fontWeight: FontWeight.w600,
           ),
         ),
@@ -133,12 +137,13 @@ class _CVDownloadButtonState extends State<CVDownloadButton> {
   }
 }
 
-// Widget para botón flotante de CV
+/// Widget para botón flotante de CV
 class FloatingCVButton extends StatelessWidget {
   const FloatingCVButton({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return AnimatedFadeSlide(
       delay: const Duration(milliseconds: 800),
       child: HoverCard(
@@ -147,7 +152,7 @@ class FloatingCVButton extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(
+            const Icon(
               FontAwesomeIcons.fileText,
               color: Colors.white,
               size: 20,
@@ -157,18 +162,18 @@ class FloatingCVButton extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Text(
-                  'Mi Curriculum',
-                  style: TextStyle(
+                Text(
+                  l10n.cvFloatingTitle,
+                  style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                     fontSize: 14,
                   ),
                 ),
                 const SizedBox(height: 2),
-                const Text(
-                  'Descarga mi CV completo',
-                  style: TextStyle(
+                Text(
+                  l10n.cvFloatingSubtitle,
+                  style: const TextStyle(
                     color: Colors.white70,
                     fontSize: 12,
                   ),
@@ -176,11 +181,11 @@ class FloatingCVButton extends StatelessWidget {
               ],
             ),
             const SizedBox(width: 16),
-            const CVDownloadButton(
-              label: 'Descargar',
+            CVDownloadButton(
+              label: l10n.cvFloatingDownload,
               isCompact: true,
               backgroundColor: Colors.white,
-              foregroundColor: Color(0xFF1565C0),
+              foregroundColor: const Color(0xFF1565C0),
               showIcon: true,
             ),
           ],
