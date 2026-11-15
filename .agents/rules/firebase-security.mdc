@@ -1,0 +1,24 @@
+---
+description: Seguridad Firebase — Rules, keys y secretos
+globs: "**/firestore.rules"
+alwaysApply: false
+---
+
+# Seguridad Firebase
+
+- Deny by default. Prohibido `allow read, write: if true` en prod.
+- API key web ≠ autorización; la auth real está en Rules + Auth + Functions.
+- Nunca service accounts, SMTP keys ni Admin SDK en el cliente Flutter Web.
+- PII (`contact_messages`): sin `list` anónimo; `create` validado o vía Function.
+- Secretos solo en Functions / Secret Manager.
+- También aplica al tocar `firebase.json`, Functions o código Firebase en `lib/`.
+- Aplicar skill `seguridad-firebase`; owner `agent-firebase-expert`.
+
+```
+// ❌ BAD
+allow read, write: if true;
+
+// ✅ GOOD
+allow read: if resource.data.published == true;
+allow write: if request.auth != null && request.auth.token.admin == true;
+```

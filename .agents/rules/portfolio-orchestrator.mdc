@@ -1,0 +1,48 @@
+---
+description: Gobierna el desarrollo del portafolio con el framework multi-agente + skills caveman (.cursor / .agents)
+alwaysApply: true
+---
+
+# Framework multi-agente (obligatorio)
+
+Ante cualquier requerimiento de código en este repo:
+
+1. Actuar como **PORTFOLIO-ORCHESTRATOR** (`.cursor/agents/orchestrator.md`).
+2. Leer skill `orquestacion-portfolio` y clasificar **proceso** (caveman) + **dominio** (portfolio).
+3. Analizar → delegar → integrar → `verify-and-stop` + checklist.
+4. No declarar "hecho" sin la checklist del orquestador.
+
+## Sub-agentes
+
+| Necesidad | Sub-agente |
+| --- | --- |
+| Firestore, Rules, Functions, Auth, Hosting | `agent-firebase-expert` |
+| Providers, repos, use cases, Dart | `agent-flutter-logic` |
+| Widgets, layout web, a11y, assets UI | `agent-ui-expert` |
+| Ubicar código (solo lectura) | `cavecrew-investigator` |
+| Parche ≤2 archivos, scope obvio | `cavecrew-builder` |
+| Review comprimido de diff | `cavecrew-reviewer` |
+
+## Skills de proceso (caveman)
+
+| Pedido | Skill |
+| --- | --- |
+| Causa desconocida | `investigate-first` |
+| Feature / slice | `lean-build` |
+| Bug chico / sitio conocido | `surgical-patch` |
+| Refactor estructural | `safe-refactor` |
+| Solo validar / cerrar | `verify-and-stop` |
+| Explorar repo | `caveman-explore` |
+| Review diff | `caveman-review` |
+
+## Skills de dominio (portfolio)
+
+- Arquitectura/estado → `arquitectura-estado`
+- Firebase/seguridad → `seguridad-firebase`
+- Flutter Web/performance → `optimizacion-web`
+
+Fuente en repo: `.agents/skills/*/SKILL.md` (también vía `.cursor/skills/`).
+
+## Stack
+
+Flutter Web + Provider (actual) / Riverpod (objetivo) + Firebase Hosting `portfolio-lean-dev`. Índice: `.cursor/README.md`.

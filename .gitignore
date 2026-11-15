@@ -8,6 +8,23 @@
 .buildlog/
 .history
 .svn/
+# Cursor local caches; track framework explicitly
+.cursor/*
+!.cursor/README.md
+!.cursor/hooks.json
+!.cursor/agents/
+!.cursor/agents/**
+!.cursor/rules/
+!.cursor/rules/**
+!.cursor/hooks/
+!.cursor/hooks/**
+!.cursor/skills/
+!.cursor/skills/**
+# keep ignoring cursor package install noise if present
+.cursor/node_modules/
+.cursor/package.json
+.cursor/package-lock.json
+.cursor/bun.lock
 migrate_working_dir/
 
 # IntelliJ related
@@ -41,3 +58,6 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+__pycache__/
+.cursor/hooks/__pycache__/

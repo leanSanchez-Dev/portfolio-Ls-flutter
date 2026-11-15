@@ -1,0 +1,1 @@
+../../.agents/hooks/stop-quality-gate.py

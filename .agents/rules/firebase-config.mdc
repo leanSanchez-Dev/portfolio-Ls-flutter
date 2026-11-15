@@ -1,0 +1,11 @@
+---
+description: Config Firebase Hosting / índices
+globs: firebase.json
+alwaysApply: false
+---
+
+# Firebase config
+
+- Al cambiar `firebase.json` o índices, revisar Hosting public dir, rewrites SPA y cache.
+- No desplegar Rules permisivas. Aplicar skill `seguridad-firebase`.
+- Delegar a `agent-firebase-expert` si hay schema o Rules involucrados.

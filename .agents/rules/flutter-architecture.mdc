@@ -1,0 +1,22 @@
+---
+description: Clean Architecture y estado (Provider/Riverpod) en lib/
+globs: lib/**/*.dart
+alwaysApply: false
+---
+
+# Arquitectura Flutter
+
+- UI (`components/`) no llama Firestore/HTTP ni parsea JSON de negocio.
+- Flujo: Widget → Provider/Notifier → UseCase → Repository → Datasource.
+- Inyección por constructor o registro en root (`main.dart`); sin singletons ad hoc.
+- Provider actual (`ThemeProvider`, `LanguageProvider`): cambios mínimos.
+- Features nuevas async: preferir Riverpod + capas limpias.
+- Aplicar skill `arquitectura-estado` y delegar lógica a `agent-flutter-logic`.
+
+```dart
+// ❌ BAD — datos desde el widget
+FirebaseFirestore.instance.collection('projects').get();
+
+// ✅ GOOD — intención al notifier
+ref.read(projectsNotifierProvider.notifier).load();
+```

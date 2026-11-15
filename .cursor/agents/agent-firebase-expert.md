@@ -1,0 +1,1 @@
+../../.agents/agents/agent-firebase-expert.md

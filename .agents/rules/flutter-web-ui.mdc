@@ -1,0 +1,29 @@
+---
+description: UI Flutter Web — responsividad, a11y y assets
+globs: lib/components/**/*.dart
+alwaysApply: false
+---
+
+# UI Flutter Web
+
+- Breakpoints: móvil `<600`, tablet `600–1023`, desktop `≥1024`.
+- Icon-only: Semantics/tooltip; contraste en temas claro/oscuro.
+- Sin lógica de negocio ni datasources en widgets.
+- Lazy-load imágenes offscreen; comprimir assets nuevos; tipografía Poppins solo pesos usados.
+- CanvasKit por defecto visual; no cambiar renderer sin QA multi-browser.
+- También aplica a `lib/utils/`, `assets/` y builds web.
+- Aplicar skill `optimizacion-web`; owner `agent-ui-expert`.
+
+```dart
+// ❌ BAD — trabajo pesado en build
+Widget build(BuildContext context) {
+  final data = jsonDecode(hugeJson);
+  return ProjectGrid(items: data);
+}
+
+// ✅ GOOD — estado precargado
+Widget build(BuildContext context) {
+  final async = context.watch<ProjectsNotifier>().state;
+  return async.when(...);
+}
+```

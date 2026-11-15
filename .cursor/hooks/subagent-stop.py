@@ -1,0 +1,1 @@
+../../.agents/hooks/subagent-stop.py
