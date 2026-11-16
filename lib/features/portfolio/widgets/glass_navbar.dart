@@ -12,9 +12,21 @@ import 'package:portfolio_ls/utils/theme_data.dart';
 import 'package:provider/provider.dart';
 
 class GlassNavbar extends StatelessWidget {
-  const GlassNavbar({super.key});
+  const GlassNavbar({
+    super.key,
+    this.isScrolling = false,
+  });
 
   static const double height = 68;
+
+  /// When true, uses near-zero blur sigma to keep scroll cheap.
+  final bool isScrolling;
+
+  /// Idle blur — cheaper than legacy σ18 while preserving glass look.
+  static const double _idleSigma = 12;
+
+  /// Near-zero sigma while scrolling — keeps [BackdropFilter] mounted (no pop).
+  static const double _scrollSigma = 0.01;
 
   @override
   Widget build(BuildContext context) {
@@ -47,74 +59,82 @@ class GlassNavbar extends StatelessWidget {
       ),
     ];
 
-    return ClipRect(
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 18, sigmaY: 18),
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            color: colors.bgCanvas.withValues(alpha: 0.78),
-            border: Border(
-              bottom: BorderSide(color: colors.borderSubtle),
-            ),
-          ),
-          child: SafeArea(
-            bottom: false,
-            child: SizedBox(
-              height: height,
-              child: Center(
-                child: ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 1152),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: width < 600 ? 16 : 24,
+    final bar = DecoratedBox(
+      decoration: BoxDecoration(
+        color: colors.bgCanvas.withValues(
+          alpha: isScrolling ? 0.92 : 0.78,
+        ),
+        border: Border(
+          bottom: BorderSide(color: colors.borderSubtle),
+        ),
+      ),
+      child: SafeArea(
+        bottom: false,
+        child: SizedBox(
+          height: height,
+          child: Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 1152),
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: width < 600 ? 16 : 24,
+                ),
+                child: Row(
+                  children: [
+                    _BrandMark(
+                      brandName: bento.data.brandName,
+                      onTap: ScrollAnchorHelper.scrollToHome,
                     ),
-                    child: Row(
-                      children: [
-                        _BrandMark(
-                          brandName: bento.data.brandName,
-                          onTap: ScrollAnchorHelper.scrollToHome,
+                    const Spacer(),
+                    if (!isMobile) ...[
+                      for (final link in links)
+                        _NavTextButton(
+                          label: link.label,
+                          onPressed: link.onTap,
                         ),
-                        const Spacer(),
-                        if (!isMobile) ...[
-                          for (final link in links)
-                            _NavTextButton(
-                              label: link.label,
-                              onPressed: link.onTap,
-                            ),
-                          const SizedBox(width: 8),
-                        ],
-                        _LangToggle(
-                          isSpanish: language.isSpanish,
-                          onToggle: language.toggleLanguage,
-                        ),
-                        const SizedBox(width: 8),
-                        _ThemeSelector(
-                          themeId: theme.themeId,
-                          isSpanish: language.isSpanish,
-                          onSelected: theme.setTheme,
-                        ),
-                        if (isMobile) ...[
-                          const SizedBox(width: 4),
-                          Semantics(
-                            button: true,
-                            label: 'Menu',
-                            child: IconButton(
-                              tooltip: 'Menu',
-                              onPressed: () => _openMobileNav(context, links),
-                              icon: Icon(
-                                Icons.menu_rounded,
-                                color: colors.textPrimary,
-                              ),
-                            ),
+                      const SizedBox(width: 8),
+                    ],
+                    _LangToggle(
+                      isSpanish: language.isSpanish,
+                      onToggle: language.toggleLanguage,
+                    ),
+                    const SizedBox(width: 8),
+                    _ThemeSelector(
+                      themeId: theme.themeId,
+                      isSpanish: language.isSpanish,
+                      onSelected: theme.setTheme,
+                    ),
+                    if (isMobile) ...[
+                      const SizedBox(width: 4),
+                      Semantics(
+                        button: true,
+                        label: 'Menu',
+                        child: IconButton(
+                          tooltip: 'Menu',
+                          onPressed: () => _openMobileNav(context, links),
+                          icon: Icon(
+                            Icons.menu_rounded,
+                            color: colors.textPrimary,
                           ),
-                        ],
-                      ],
-                    ),
-                  ),
+                        ),
+                      ),
+                    ],
+                  ],
                 ),
               ),
             ),
           ),
+        ),
+      ),
+    );
+
+    final sigma = isScrolling ? _scrollSigma : _idleSigma;
+
+    return RepaintBoundary(
+      child: ClipRect(
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: sigma, sigmaY: sigma),
+          child: bar,
         ),
       ),
     );

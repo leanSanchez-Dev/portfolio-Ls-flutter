@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:portfolio_ls/core/theme/app_colors_extension.dart';
 import 'package:portfolio_ls/features/portfolio/widgets/bento_section_header.dart';
@@ -34,10 +36,82 @@ class PortfolioPage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: colors.bgCanvas,
-      body: Stack(
-        children: [
-          const Positioned.fill(child: _AmbientGlows()),
-          SelectionArea(
+      body: _ScrollAwareShell(
+        brand: bento.data.brandName,
+        rights: copy.footerRights.resolveCode(lang),
+        builtWith: copy.footerBuiltWith.resolveCode(lang),
+        year: year,
+        developerName: bento.data.developerName,
+      ),
+    );
+  }
+}
+
+/// Owns scroll-idle state for [GlassNavbar] without setState on every frame.
+class _ScrollAwareShell extends StatefulWidget {
+  const _ScrollAwareShell({
+    required this.brand,
+    required this.rights,
+    required this.builtWith,
+    required this.year,
+    required this.developerName,
+  });
+
+  final String brand;
+  final String rights;
+  final String builtWith;
+  final int year;
+  final String developerName;
+
+  @override
+  State<_ScrollAwareShell> createState() => _ScrollAwareShellState();
+}
+
+class _ScrollAwareShellState extends State<_ScrollAwareShell> {
+  static const _idleDelay = Duration(milliseconds: 140);
+
+  /// Isolates navbar rebuilds from the [CustomScrollView] tree.
+  final ValueNotifier<bool> _isScrolling = ValueNotifier(false);
+  Timer? _idleTimer;
+
+  @override
+  void dispose() {
+    _idleTimer?.cancel();
+    _isScrolling.dispose();
+    super.dispose();
+  }
+
+  void _markScrolling() {
+    _idleTimer?.cancel();
+    _idleTimer = Timer(_idleDelay, () {
+      if (!mounted) return;
+      _isScrolling.value = false;
+    });
+    if (!_isScrolling.value) {
+      _isScrolling.value = true;
+    }
+  }
+
+  bool _onScrollNotification(ScrollNotification notification) {
+    if (notification.depth != 0) return false;
+    if (notification is ScrollUpdateNotification ||
+        notification is ScrollStartNotification ||
+        notification is OverscrollNotification) {
+      _markScrolling();
+    } else if (notification is ScrollEndNotification) {
+      _markScrolling();
+    }
+    return false;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        const Positioned.fill(child: _AmbientGlows()),
+        NotificationListener<ScrollNotification>(
+          onNotification: _onScrollNotification,
+          child: SelectionArea(
             child: CustomScrollView(
               physics: const BouncingScrollPhysics(
                 parent: AlwaysScrollableScrollPhysics(),
@@ -50,25 +124,29 @@ class PortfolioPage extends StatelessWidget {
                 const SliverToBoxAdapter(child: ContactSection()),
                 SliverToBoxAdapter(
                   child: _Footer(
-                    brand: bento.data.brandName,
-                    rights: copy.footerRights.resolveCode(lang),
-                    builtWith: copy.footerBuiltWith.resolveCode(lang),
-                    year: year,
-                    developerName: bento.data.developerName,
+                    brand: widget.brand,
+                    rights: widget.rights,
+                    builtWith: widget.builtWith,
+                    year: widget.year,
+                    developerName: widget.developerName,
                   ),
                 ),
                 const SliverToBoxAdapter(child: SizedBox(height: 24)),
               ],
             ),
           ),
-          const Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            child: GlassNavbar(),
+        ),
+        Positioned(
+          top: 0,
+          left: 0,
+          right: 0,
+          child: ValueListenableBuilder<bool>(
+            valueListenable: _isScrolling,
+            builder: (context, scrolling, _) =>
+                GlassNavbar(isScrolling: scrolling),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
@@ -180,7 +258,8 @@ class _Footer extends StatelessWidget {
                         text: '.',
                         style: TextStyle(color: colors.accentPrimary),
                       ),
-                      if (parts.length > 1) TextSpan(text: parts.sublist(1).join('.')),
+                      if (parts.length > 1)
+                        TextSpan(text: parts.sublist(1).join('.')),
                     ],
                   ),
                 ),

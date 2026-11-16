@@ -432,6 +432,15 @@ class _ProfileAvatar extends StatelessWidget {
                       fit: BoxFit.cover,
                       alignment: const Alignment(0, -0.08),
                       gaplessPlayback: true,
+                      // Square display — both dims match exact avatar size.
+                      cacheWidth: (size *
+                              MediaQuery.devicePixelRatioOf(context))
+                          .round()
+                          .clamp(1, 1024),
+                      cacheHeight: (size *
+                              MediaQuery.devicePixelRatioOf(context))
+                          .round()
+                          .clamp(1, 1024),
                       errorBuilder: (_, __, ___) => ColoredBox(
                         color: colors.bgSurfaceElevated,
                         child: Icon(

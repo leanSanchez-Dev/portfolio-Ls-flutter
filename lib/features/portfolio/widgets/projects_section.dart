@@ -12,6 +12,7 @@ import 'package:portfolio_ls/features/portfolio/widgets/mockups/fundacer_pwa_pre
 import 'package:portfolio_ls/features/portfolio/widgets/mockups/smart_tv_launcher_preview.dart';
 import 'package:portfolio_ls/providers/language_provider.dart';
 import 'package:portfolio_ls/providers/portfolio_bento_provider.dart';
+import 'package:portfolio_ls/utils/reveal_on_scroll.dart';
 import 'package:portfolio_ls/utils/theme_data.dart';
 import 'package:provider/provider.dart';
 
@@ -79,6 +80,7 @@ class ProjectsSection extends StatelessWidget {
                         for (var i = 0; i < projects.length; i++) ...[
                           if (i > 0) const SizedBox(height: 18),
                           _ProjectCard(
+                            key: ValueKey(projects[i].id),
                             project: projects[i],
                             caseLabel: copy.projectsCaseStudy.resolveCode(lang),
                             lang: lang,
@@ -98,6 +100,7 @@ class ProjectsSection extends StatelessWidget {
                         children: [
                           Expanded(
                             child: _ProjectCard(
+                              key: ValueKey(left.id),
                               project: left,
                               caseLabel:
                                   copy.projectsCaseStudy.resolveCode(lang),
@@ -109,6 +112,7 @@ class ProjectsSection extends StatelessWidget {
                             child: right == null
                                 ? const SizedBox.shrink()
                                 : _ProjectCard(
+                                    key: ValueKey(right.id),
                                     project: right,
                                     caseLabel:
                                         copy.projectsCaseStudy.resolveCode(lang),
@@ -189,6 +193,7 @@ class _ProjectFilterPill extends StatelessWidget {
 
 class _ProjectCard extends StatelessWidget {
   const _ProjectCard({
+    super.key,
     required this.project,
     required this.caseLabel,
     required this.lang,
@@ -320,31 +325,65 @@ class _ProjectCard extends StatelessWidget {
 
   Widget _mockupFor(BuildContext context, ProjectItem project) {
     final asset = project.imageAsset;
+    const placeholder = ColoredBox(color: Color(0xFF1A1B26));
     if (asset != null && asset.isNotEmpty) {
       final reduceMotion = MediaQuery.disableAnimationsOf(context);
       return AspectRatio(
         aspectRatio: 16 / 10,
-        child: Image.asset(
-          asset,
-          fit: BoxFit.cover,
-          gaplessPlayback: true,
-          frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
-            if (wasSynchronouslyLoaded || reduceMotion) {
-              return child;
-            }
-            return AnimatedOpacity(
-              opacity: frame == null ? 0 : 1,
-              duration: const Duration(milliseconds: 220),
-              curve: Curves.easeOut,
-              child: child,
-            );
-          },
-          errorBuilder: (_, __, ___) => const ColoredBox(
-            color: Color(0xFF1A1B26),
+        child: RepaintBoundary(
+          child: RevealOnScroll(
+            key: ValueKey(asset),
+            builder: (context, revealed) {
+              if (!revealed) return placeholder;
+              return LayoutBuilder(
+                builder: (context, constraints) {
+                  final dpr = MediaQuery.devicePixelRatioOf(context);
+                  final cacheWidth =
+                      (constraints.maxWidth * dpr).round().clamp(1, 2048);
+                  // Only cacheWidth with BoxFit.cover — paired cacheHeight
+                  // would force decode aspect and distort cover crops.
+                  return Image.asset(
+                    asset,
+                    key: ValueKey(asset),
+                    fit: BoxFit.cover,
+                    gaplessPlayback: true,
+                    cacheWidth: cacheWidth,
+                    frameBuilder:
+                        (context, child, frame, wasSynchronouslyLoaded) {
+                      if (wasSynchronouslyLoaded || reduceMotion) {
+                        return child;
+                      }
+                      return AnimatedOpacity(
+                        opacity: frame == null ? 0 : 1,
+                        duration: const Duration(milliseconds: 220),
+                        curve: Curves.easeOut,
+                        child: child,
+                      );
+                    },
+                    errorBuilder: (_, __, ___) => placeholder,
+                  );
+                },
+              );
+            },
           ),
         ),
       );
     }
+    return RevealOnScroll(
+      key: ValueKey(project.id),
+      builder: (context, revealed) {
+        if (!revealed) {
+          return const AspectRatio(
+            aspectRatio: 16 / 10,
+            child: placeholder,
+          );
+        }
+        return RepaintBoundary(child: _builtInMockup(project));
+      },
+    );
+  }
+
+  Widget _builtInMockup(ProjectItem project) {
     switch (project.id) {
       case BentoProjectId.fundacer:
         return const FundacerPwaPreview();
